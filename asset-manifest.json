@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/xtcbanhang.com/static/css/main.31d6cfe0.css",
-    "main.js": "/xtcbanhang.com/static/js/main.583d1de9.js",
+    "main.js": "/xtcbanhang.com/static/js/main.a2dfb144.js",
     "static/js/787.cda612ba.chunk.js": "/xtcbanhang.com/static/js/787.cda612ba.chunk.js",
     "index.html": "/xtcbanhang.com/index.html",
-    "main.583d1de9.js.map": "/xtcbanhang.com/static/js/main.583d1de9.js.map",
+    "main.a2dfb144.js.map": "/xtcbanhang.com/static/js/main.a2dfb144.js.map",
     "787.cda612ba.chunk.js.map": "/xtcbanhang.com/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.583d1de9.js"
+    "static/js/main.a2dfb144.js"
   ]
 }
