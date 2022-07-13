@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/xtcbanle.com/static/css/main.31d6cfe0.css",
-    "main.js": "/xtcbanle.com/static/js/main.2f568199.js",
-    "static/js/787.cda612ba.chunk.js": "/xtcbanle.com/static/js/787.cda612ba.chunk.js",
-    "index.html": "/xtcbanle.com/index.html",
-    "main.2f568199.js.map": "/xtcbanle.com/static/js/main.2f568199.js.map",
-    "787.cda612ba.chunk.js.map": "/xtcbanle.com/static/js/787.cda612ba.chunk.js.map"
+    "main.css": "/xtcbanhang.com/static/css/main.31d6cfe0.css",
+    "main.js": "/xtcbanhang.com/static/js/main.c4c8beaf.js",
+    "static/js/787.cda612ba.chunk.js": "/xtcbanhang.com/static/js/787.cda612ba.chunk.js",
+    "index.html": "/xtcbanhang.com/index.html",
+    "main.c4c8beaf.js.map": "/xtcbanhang.com/static/js/main.c4c8beaf.js.map",
+    "787.cda612ba.chunk.js.map": "/xtcbanhang.com/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.2f568199.js"
+    "static/js/main.c4c8beaf.js"
   ]
 }
