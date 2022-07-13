@@ -49,7 +49,7 @@ function App() {
 									<div className={`gallery lightgallery`}>
 										{product.images.map((image, index) => (
 											<a key={index} data-src={process.env.PUBLIC_URL + `/assets/images/product/${image}`}>
-												<img src={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} alt={product.title} title={product.title} />
+												<img src={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} alt={product.title} title={product.title} loading="lazy" />
 											</a>										
 										))}										
 									</div>
