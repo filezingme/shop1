@@ -15,18 +15,18 @@ function App() {
 						<section>
 							<header>
 								<h2>Giá: <span className="price">1.118.000</span></h2>
-								<h3>Mã sp: 1 | Nhóm: <a href="#">Ví cá sấu</a></h3>
+								<h3>Mã sp: 1 | Nhóm: <a href={process.env.PUBLIC_URL + "#"}>Ví cá sấu</a></h3>
 								<p>Mô tả về sản phẩm...</p>
-								<h2><a href="#contact" className="buy">Đặt mua</a></h2>
+								<h2><a href={process.env.PUBLIC_URL + "#contact"} className="buy">Đặt mua</a></h2>
 							</header>
 							<div className="content">
 								<div className="gallery">
-									<a href="/assets/images/product/z3558303688902_dc22306e950a45e8a467f63938be0c5c.jpg"><img src="/assets/images/product/thumbnail/z3558303688902_dc22306e950a45e8a467f63938be0c5c.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558303696525_8834ed31a743d50aa729119347f66f92.jpg"><img src="/assets/images/product/thumbnail/z3558303696525_8834ed31a743d50aa729119347f66f92.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558303696691_79007583a3edcf30572dda0ad31e002c.jpg"><img src="/assets/images/product/thumbnail/z3558303696691_79007583a3edcf30572dda0ad31e002c.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558303696765_01fbcd8b71a1b87a9c607f42c1dbdca0.jpg"><img src="/assets/images/product/thumbnail/z3558303696765_01fbcd8b71a1b87a9c607f42c1dbdca0.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558303696903_f32776726295d1772e69b48e29782a91.jpg"><img src="/assets/images/product/thumbnail/z3558303696903_f32776726295d1772e69b48e29782a91.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558303697034_ad03d895db8d2016849005843501e294.jpg"><img src="/assets/images/product/thumbnail/z3558303697034_ad03d895db8d2016849005843501e294.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558303688902_dc22306e950a45e8a467f63938be0c5c.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558303688902_dc22306e950a45e8a467f63938be0c5c.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558303696525_8834ed31a743d50aa729119347f66f92.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558303696525_8834ed31a743d50aa729119347f66f92.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558303696691_79007583a3edcf30572dda0ad31e002c.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558303696691_79007583a3edcf30572dda0ad31e002c.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558303696765_01fbcd8b71a1b87a9c607f42c1dbdca0.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558303696765_01fbcd8b71a1b87a9c607f42c1dbdca0.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558303696903_f32776726295d1772e69b48e29782a91.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558303696903_f32776726295d1772e69b48e29782a91.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558303697034_ad03d895db8d2016849005843501e294.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558303697034_ad03d895db8d2016849005843501e294.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
 								</div>
 							</div>
 						</section>
@@ -43,17 +43,17 @@ function App() {
 						<section>
 							<header>
 								<h2>Giá: <span className="price">1.118.000</span></h2>
-								<h3>Mã sp: 1 | Nhóm: <a href="#">Ví cá sấu</a></h3>
+								<h3>Mã sp: 1 | Nhóm: <a href={process.env.PUBLIC_URL + "#"}>Ví cá sấu</a></h3>
 								<p>Mô tả về sản phẩm...</p>
-								<h2><a href="#contact" className="buy">Đặt mua</a></h2>
+								<h2><a href={process.env.PUBLIC_URL + "#contact"} className="buy">Đặt mua</a></h2>
 							</header>
 							<div className="content">
 								<div className="gallery">
-									<a href="/assets/images/product/z3558304365106_e2127fe6732f8878c6fd0242ae91f78f.jpg"><img src="/assets/images/product/thumbnail/z3558304365106_e2127fe6732f8878c6fd0242ae91f78f.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558304370739_7c71feadbc25f002889f84b5d8ce011c.jpg"><img src="/assets/images/product/thumbnail/z3558304370739_7c71feadbc25f002889f84b5d8ce011c.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558304370794_e268adb241b336b9f2f3e557ecb2bdc9.jpg"><img src="/assets/images/product/thumbnail/z3558304370794_e268adb241b336b9f2f3e557ecb2bdc9.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558304370829_70dc71f943f8948b03fcfa0a2fdde76a.jpg"><img src="/assets/images/product/thumbnail/z3558304370829_70dc71f943f8948b03fcfa0a2fdde76a.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
-									<a href="/assets/images/product/z3558304378635_1ca8b6eaf1d565b8d82393fc45ee06ec.jpg"><img src="/assets/images/product/thumbnail/z3558304378635_1ca8b6eaf1d565b8d82393fc45ee06ec.jpg" alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558304365106_e2127fe6732f8878c6fd0242ae91f78f.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558304365106_e2127fe6732f8878c6fd0242ae91f78f.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558304370739_7c71feadbc25f002889f84b5d8ce011c.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558304370739_7c71feadbc25f002889f84b5d8ce011c.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558304370794_e268adb241b336b9f2f3e557ecb2bdc9.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558304370794_e268adb241b336b9f2f3e557ecb2bdc9.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558304370829_70dc71f943f8948b03fcfa0a2fdde76a.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558304370829_70dc71f943f8948b03fcfa0a2fdde76a.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
+									<a href={process.env.PUBLIC_URL + "/assets/images/product/z3558304378635_1ca8b6eaf1d565b8d82393fc45ee06ec.jpg"}><img src={process.env.PUBLIC_URL + "/assets/images/product/thumbnail/z3558304378635_1ca8b6eaf1d565b8d82393fc45ee06ec.jpg"} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>
 								</div>
 							</div>
 						</section>
@@ -95,12 +95,12 @@ Hãy liên hệ với chúng tôi để được phục vụ!</p>
 					<ul className="items">
 						<li>
 							<ul className="icons">
-								<li><a href="#" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
-								<li><a href="#" className="icon brands fa-facebook-f"><span className="label">Facebook</span></a></li>
-								<li><a href="#" className="icon brands fa-instagram"><span className="label">Instagram</span></a></li>
-								<li><a href="#" className="icon brands fa-linkedin-in"><span className="label">LinkedIn</span></a></li>
-								<li><a href="#" className="icon brands fa-github"><span className="label">GitHub</span></a></li>
-								<li><a href="#" className="icon brands fa-codepen"><span className="label">Codepen</span></a></li>
+								<li><a href={process.env.PUBLIC_URL + "#"} className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
+								<li><a href={process.env.PUBLIC_URL + "#"} className="icon brands fa-facebook-f"><span className="label">Facebook</span></a></li>
+								<li><a href={process.env.PUBLIC_URL + "#"} className="icon brands fa-instagram"><span className="label">Instagram</span></a></li>
+								<li><a href={process.env.PUBLIC_URL + "#"} className="icon brands fa-linkedin-in"><span className="label">LinkedIn</span></a></li>
+								<li><a href={process.env.PUBLIC_URL + "#"} className="icon brands fa-github"><span className="label">GitHub</span></a></li>
+								<li><a href={process.env.PUBLIC_URL + "#"} className="icon brands fa-codepen"><span className="label">Codepen</span></a></li>
 							</ul>
 						</li>
 					</ul>
