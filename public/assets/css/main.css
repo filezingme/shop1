@@ -182,11 +182,12 @@ input, select, textarea {
 
 		a:hover {
 			text-decoration: none;
-			border-bottom-color: transparent;
+			border-color: #11be99;
+			background-color: #5cefce2b;
 		}
 
 	strong, b {
-		font-weight: 600;
+		font-weight: bold;
 		color: #000000;
 	}
 
@@ -3759,6 +3760,13 @@ input, select, textarea {
 	display: inline-block;
 	transform: rotate(-135deg);
 	-webkit-transform: rotate(-135deg);
+}
+
+.buy {
+	cursor: pointer;
+	border: dotted 1px;
+    padding: 10px;
+	font-weight: normal;
 }
 
 .gallery img {

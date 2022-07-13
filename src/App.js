@@ -14,8 +14,11 @@ function App() {
 			const { data } = await axios.get(process.env.PUBLIC_URL+'/data.json')
 			setSiteInfo(data.siteInfo)
 			setProducts(data.products)
-			console.log(data)
+
+			//set page title
+			document.title = data.siteInfo.pageTitle
 		}
+
 		fetchData();
 
 	}, [])
@@ -38,9 +41,9 @@ function App() {
 							<section>
 								<header>
 									<h2>Giá: <span className="price">{currencyFormat(product.priceInfo.price)}</span></h2>
-									<h3>Mã sp: {product.id}<br/>Nhóm: <a href={process.env.PUBLIC_URL + "#"}>{product.category}</a></h3>
+									<h3>Mã sp: <strong>{product.id}</strong><br/>Nhóm: <a href={process.env.PUBLIC_URL + "#"}>{product.category}</a></h3>
 									<p>{product.description}</p>
-									<h2><a href={process.env.PUBLIC_URL + "#!"} className="buy">Đặt mua</a></h2>
+									<h2><a href className="buy">Đặt mua</a></h2>
 								</header>
 								<div className="content">
 									<div className={`gallery lightgallery`}>
@@ -60,15 +63,13 @@ function App() {
 			<section id="contact">
 				<header>
 					<h2>Liên hệ</h2>
-					<h3>Điện Thoại: 0971265356</h3>
-					<p>Email: xuongvitruongchinh@gmail.com</p>
+					<h3>Điện Thoại: {siteInfo.phone}</h3>
+					<p>Email: {siteInfo.email}</p>
 				</header>
 				<div className="content">
-				<p><strong>Chúng tôi</strong> có xưởng trực tiếp sản xuất các sản phẩm đồ da cá sấu/da bò cao cấp thật 100% (cam kết đền gấp 10 giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật).<br/>
-	- Chúng tôi sản xuất nhiều loại sản phẩm.<br/>
-	- Chúng tôi nhận gia công cho khách hàng có nhu cầu đặt hàng theo thương hiệu riêng, sản xuất mẫu mã theo yêu cầu.<br/>
-	- Chúng tôi có đội ngũ công nhân tay nghề cao có nhiều năm kinh nghiệm.<br/>
-	Hãy liên hệ với chúng tôi để được phục vụ!</p>
+
+					<div dangerouslySetInnerHTML={ {__html: siteInfo.description} } />
+
 					<form>
 						<div className="fields">
 							<div className="field half">
