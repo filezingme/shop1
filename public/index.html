@@ -53,6 +53,14 @@
 					}
 				});
 
+				//Click Buy button go to contact form
+				$('.buy').click(function(){
+					$('html, body').animate({
+						scrollTop: $("#contact").offset().top
+					},100);
+					return false;
+				});
+
 				//Check to see if the window is top if not then display button
 				$(window).scroll(function(){
 					if ($(this).scrollTop() > 100) {
@@ -64,7 +72,7 @@
 				
 				//Click event to scroll to top
 				$('#toTop').click(function(){
-					$('html, body').animate({scrollTop : 0},10);
+					$('html, body').animate({scrollTop : 0},100);
 					return false;
 				});
 			}	
