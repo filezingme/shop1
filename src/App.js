@@ -21,6 +21,11 @@ function App() {
 	}, [])
 
 
+	function currencyFormat(num) {
+		return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+	}
+
+
 	return (
 		<div id="wrapper">
 
@@ -32,7 +37,7 @@ function App() {
 					<div className="content">
 							<section>
 								<header>
-									<h2>Giá: <span className="price">{product.priceInfo.price}</span></h2>
+									<h2>Giá: <span className="price">{currencyFormat(product.priceInfo.price)}</span></h2>
 									<h3>Mã sp: {product.id}<br/>Nhóm: <a href={process.env.PUBLIC_URL + "#"}>{product.category}</a></h3>
 									<p>{product.description}</p>
 									<h2><a href={process.env.PUBLIC_URL + "#contact"} className="buy">Đặt mua</a></h2>
