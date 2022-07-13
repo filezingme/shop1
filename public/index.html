@@ -43,23 +43,8 @@
         <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-share.js"></script>
 			
 		<script>	
-			window.onload = function(e){
-
-				//zoom out/in photo
-				var lightgalleries = document.querySelectorAll('.lightgallery');
-				lightgalleries.forEach(function (lightgallery) {
-					if (lightgallery){
-						lightGallery(lightgallery);
-					}
-				});
-
-				//Click Buy button go to contact form
-				$('.buy').click(function(){
-					$('html, body').animate({
-						scrollTop: $("#contact").offset().top
-					},100);
-					return false;
-				});
+			$(document).ready(function() {
+				console.log( "ready loaded" );
 
 				//Check to see if the window is top if not then display button
 				$(window).scroll(function(){
@@ -75,6 +60,30 @@
 					$('html, body').animate({scrollTop : 0},100);
 					return false;
 				});
+			});
+		
+			$(window).on( "load", function() {
+				console.log( "window loaded" );
+				//zoom out/in photo
+				var lightgalleries = document.querySelectorAll('.lightgallery');
+				lightgalleries.forEach(function (lightgallery) {
+					if (lightgallery){
+						lightGallery(lightgallery);
+					}
+				});
+
+				//Click Buy button go to contact form
+				$('.buy').click(function(){
+					alert(1);
+					$('html, body').animate({
+						scrollTop: $("#contact").offset().top
+					},100);
+					return false;
+				});
+			});
+
+			window.onload = function(e){
+				
 			}	
 		</script>
   </body>

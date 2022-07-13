@@ -43,7 +43,7 @@ function App() {
 									<h2>Giá: <span className="price">{currencyFormat(product.priceInfo.price)}</span></h2>
 									<h3>Mã sp: <strong>{product.id}</strong><br/>Nhóm: <a href={process.env.PUBLIC_URL + "#"}>{product.category}</a></h3>
 									<p>{product.description}</p>
-									<h2><a href className="buy">Đặt mua</a></h2>
+									<h2><a href="#" className="buy">Đặt mua</a></h2>
 								</header>
 								<div className="content">
 									<div className={`gallery lightgallery`}>
