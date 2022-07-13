@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/xtcbanle.com/static/css/main.31d6cfe0.css",
-    "main.js": "/xtcbanle.com/static/js/main.c22131c3.js",
+    "main.js": "/xtcbanle.com/static/js/main.2f568199.js",
     "static/js/787.cda612ba.chunk.js": "/xtcbanle.com/static/js/787.cda612ba.chunk.js",
     "index.html": "/xtcbanle.com/index.html",
-    "main.c22131c3.js.map": "/xtcbanle.com/static/js/main.c22131c3.js.map",
+    "main.2f568199.js.map": "/xtcbanle.com/static/js/main.2f568199.js.map",
     "787.cda612ba.chunk.js.map": "/xtcbanle.com/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.c22131c3.js"
+    "static/js/main.2f568199.js"
   ]
 }

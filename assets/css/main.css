@@ -3305,7 +3305,7 @@ input, select, textarea {
 				background: #43d9b8;
 				content: '';
 				display: block;
-				margin-top: 3rem;
+				margin-top: 2rem;
 				position: absolute;
 				width: 2px;
 			}
@@ -3339,11 +3339,11 @@ input, select, textarea {
 			}
 
 				#wrapper > section > header h1:before {
-					top: 3rem;
+					top: 2rem;
 				}
 
 				#wrapper > section > header h1:after {
-					top: 2.75rem;
+					top: 1.85rem;
 				}
 
 			#wrapper > section > .content > section {
