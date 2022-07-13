@@ -215,7 +215,7 @@ input, select, textarea {
 
 	h1 {
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
-		font-size: 4rem;
+		font-size: 3.5rem;
 		font-weight: 700;
 		letter-spacing: -0.05em;
 		line-height: 1.1;
@@ -3257,7 +3257,7 @@ input, select, textarea {
 			}
 
 				#wrapper section > header h2 {
-					margin: 0 0 1rem 0;
+					margin: 3rem 0 1rem 0;
 				}
 
 				#wrapper section > header h2 .price {
@@ -3392,7 +3392,7 @@ input, select, textarea {
 
 			#wrapper section > header {
 				padding: 0 10rem 0 5rem;
-				width: 38rem;
+				width: 41rem;
 			}
 
 			#wrapper section > .content {
@@ -3746,19 +3746,25 @@ input, select, textarea {
 
 	}
 	
-	#toTop {
-	  display: none;
-	  position: fixed;
-	  bottom: 20px;
-	  right: 5px;
-	  z-index: 99;
-	  border: none;
-	  outline: none;
-	  color: white;
-	  cursor: pointer;
-	  cursor: pointer;
-	  padding: 4px 9px;
-	  border-radius: 4px;
-	  background-color: rgb(144 144 144 / 10%);
-	  font-size: 9px;
+#toTop {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 5px;
+	z-index: 99;
+	border: none;
+	outline: none;
+	color: white;
+	cursor: pointer;
+	cursor: pointer;
+	padding: 4px 9px;
+	border-radius: 4px;
+	background-color: rgb(144 144 144 / 10%);
+	font-size: 9px;
+}
+
+@media screen and (max-width: 1024px) {
+	#wrapper section > header h2 {
+		margin-top: 0rem;
 	}
+}
