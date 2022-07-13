@@ -8,6 +8,7 @@
 		<meta name="description" content="Ví da bò, ví da cá sấu" />
 		<meta name="keywords" content="Ví da bò, ví da cá sấu" />
 		<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/main.css" />
+        <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/lightgallery.css">
 		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   </head>
   <body class="is-preload">
@@ -26,14 +27,32 @@
 
 		<!-- Scripts -->
 		<script src="%PUBLIC_URL%/assets/js/jquery.min.js"></script>
+        
 		<script src="%PUBLIC_URL%/assets/js/jquery.scrolly.min.js"></script>
 		<script src="%PUBLIC_URL%/assets/js/browser.min.js"></script>
 		<script src="%PUBLIC_URL%/assets/js/breakpoints.min.js"></script>
 		<script src="%PUBLIC_URL%/assets/js/util.js"></script>
 		<script src="%PUBLIC_URL%/assets/js/main.js"></script>
+		
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/picturefill.min.js"></script>
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/lightgallery.js"></script>
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-pager.js"></script>
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-fullscreen.js"></script>
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-zoom.js"></script>
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-hash.js"></script>
+        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-share.js"></script>
 			
-		<script>			
-			$(document).ready(function(){    
+		<script>	
+			window.onload = function(e){
+
+				//zoom out/in photo
+				var lightgalleries = document.querySelectorAll('.lightgallery');
+				lightgalleries.forEach(function (lightgallery) {
+					if (lightgallery){
+						lightGallery(lightgallery);
+					}
+				});
+
 				//Check to see if the window is top if not then display button
 				$(window).scroll(function(){
 					if ($(this).scrollTop() > 100) {
@@ -48,8 +67,7 @@
 					$('html, body').animate({scrollTop : 0},10);
 					return false;
 				});
-				
-			});
+			}	
 		</script>
   </body>
 </html>

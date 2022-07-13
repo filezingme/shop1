@@ -29,7 +29,7 @@ function App() {
 	return (
 		<div id="wrapper">
 
-			{products.map(product => (
+			{products.map((product) => (
 				<section key={product.id}>
 					<header>
 						<h1>{product.title}</h1>
@@ -43,9 +43,11 @@ function App() {
 									<h2><a href={process.env.PUBLIC_URL + "#contact"} className="buy">Đặt mua</a></h2>
 								</header>
 								<div className="content">
-									<div className="gallery">
+									<div className={`gallery lightgallery`}>
 										{product.images.map((image, index) => (
-											<a key={index} href={process.env.PUBLIC_URL + `/assets/images/product/${image}`}><img src={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} alt="Click để xem ảnh rõ nét" title="Click để xem ảnh rõ nét" /></a>										
+											<a key={index} data-src={process.env.PUBLIC_URL + `/assets/images/product/${image}`}>
+												<img src={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} alt={product.title} title={product.title} />
+											</a>										
 										))}										
 									</div>
 								</div>
@@ -103,7 +105,7 @@ function App() {
 				{/* Copyright */}
 			<div className="copyright">&copy; All rights reserved.</div>
 			
-			<button  id="toTop" title="Go to top">Top</button>
+			<i id="toTop"></i>
 
 		</div>
 	);

@@ -3747,20 +3747,22 @@ input, select, textarea {
 	}
 	
 #toTop {
-	display: none;
 	position: fixed;
-	bottom: 20px;
-	right: 5px;
-	z-index: 99;
-	border: none;
-	outline: none;
-	color: white;
+    bottom: 20px;
+    right: 7px;
+    z-index: 99;
+    cursor: pointer;
+    width: 17px;
+    height: 17px;
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+}
+
+.gallery img {
 	cursor: pointer;
-	cursor: pointer;
-	padding: 4px 9px;
-	border-radius: 4px;
-	background-color: rgb(144 144 144 / 10%);
-	font-size: 9px;
 }
 
 @media screen and (max-width: 1024px) {
