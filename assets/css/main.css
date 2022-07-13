@@ -3765,6 +3765,10 @@ input, select, textarea {
 	cursor: pointer;
 }
 
+#wrapper section#contact > header {
+	margin-top: -3rem;
+}
+
 @media screen and (max-width: 1024px) {
 	#wrapper section > header h2 {
 		margin-top: 0rem;
