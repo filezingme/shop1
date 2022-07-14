@@ -3777,6 +3777,20 @@ input, select, textarea {
 	margin-top: -3rem;
 }
 
+.menu {
+	margin-bottom: 20px;
+}
+
+.menu i {
+	font-size: 12px;
+	color: rgb(141 141 141)
+}
+
+.menu .home {
+	border-color: #11be99;
+    background-color: #5cefce2b;
+}
+
 @media screen and (max-width: 1024px) {
 	#wrapper section > header h2 {
 		margin-top: 0rem;
