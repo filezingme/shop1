@@ -79,6 +79,45 @@
 						.css('opacity', '0');
 
 			});
-
 		}
+
+	//
+		$(document).ready(function() {
+			//console.log( "ready loaded" );
+
+			//Check to see if the window is top if not then display button
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 100) {
+					$('#toTop').fadeIn();
+				} else {
+					$('#toTop').fadeOut();
+				}
+			});
+			
+			//Click event to scroll to top
+			$('#toTop').click(function(){
+				$('html, body').animate({scrollTop : 0},100);
+				return false;
+			});
+		});
+	
+		$(window).on( "load", function() {
+			//console.log( "window loaded" );
+			
+			//zoom out/in photo
+			var lightgalleries = document.querySelectorAll('.lightgallery');
+			lightgalleries.forEach(function (lightgallery) {
+				if (lightgallery){
+					lightGallery(lightgallery);
+				}
+			});
+	
+			//Click Buy button go to contact form
+			$('.buy').click(function(){
+				$('html, body').animate({
+					scrollTop: $("#contact").offset().top
+				},100);
+				return false;
+			});
+		});
 })(jQuery);

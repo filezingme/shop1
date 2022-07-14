@@ -2,88 +2,36 @@
 <html lang="en">
   <head>
     <title>Loading...</title>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="Ví da bò, ví da cá sấu" />
-		<meta name="keywords" content="Ví da bò, ví da cá sấu" />
-		<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/main.css" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/lightgallery.css">
-		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Ví da bò, ví da cá sấu" />
+	<meta name="keywords" content="Ví da bò, ví da cá sấu" />
+	<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/main.css" />
+	<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/lightgallery.css">
+	<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   </head>
+  
   <body class="is-preload">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-
-		<!-- Scripts -->
-		<script src="%PUBLIC_URL%/assets/js/jquery.min.js"></script>
-        
-		<script src="%PUBLIC_URL%/assets/js/jquery.scrolly.min.js"></script>
-		<script src="%PUBLIC_URL%/assets/js/browser.min.js"></script>
-		<script src="%PUBLIC_URL%/assets/js/breakpoints.min.js"></script>
-		<script src="%PUBLIC_URL%/assets/js/util.js"></script>
-		<script src="%PUBLIC_URL%/assets/js/main.js"></script>
-		
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/picturefill.min.js"></script>
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/lightgallery.js"></script>
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-pager.js"></script>
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-fullscreen.js"></script>
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-zoom.js"></script>
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-hash.js"></script>
-        <script src="%PUBLIC_URL%/assets/js/lightGallery/lg-share.js"></script>
-			
-		<script>	
-			$(document).ready(function() {
-				console.log( "ready loaded" );
-
-				//Check to see if the window is top if not then display button
-				$(window).scroll(function(){
-					if ($(this).scrollTop() > 100) {
-						$('#toTop').fadeIn();
-					} else {
-						$('#toTop').fadeOut();
-					}
-				});
-				
-				//Click event to scroll to top
-				$('#toTop').click(function(){
-					$('html, body').animate({scrollTop : 0},100);
-					return false;
-				});
-			});
-		
-			$(window).on( "load", function() {
-				console.log( "window loaded" );
-				//zoom out/in photo
-				var lightgalleries = document.querySelectorAll('.lightgallery');
-				lightgalleries.forEach(function (lightgallery) {
-					if (lightgallery){
-						lightGallery(lightgallery);
-					}
-				});
-
-				//Click Buy button go to contact form
-				$('.buy').click(function(){
-					$('html, body').animate({
-						scrollTop: $("#contact").offset().top
-					},100);
-					return false;
-				});
-			});
-
-			window.onload = function(e){
-				
-			}	
-		</script>
+	<!-- Scripts -->
+	<script src="%PUBLIC_URL%/assets/js/jquery.min.js"></script>
+	
+	<script src="%PUBLIC_URL%/assets/js/jquery.scrolly.min.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/browser.min.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/breakpoints.min.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/util.js"></script>
+	
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/picturefill.min.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/lightgallery.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/lg-pager.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/lg-fullscreen.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/lg-zoom.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/lg-hash.js"></script>
+	<script src="%PUBLIC_URL%/assets/js/lightGallery/lg-share.js"></script>
+	
+	<script src="%PUBLIC_URL%/assets/js/main.js"></script>
   </body>
 </html>
