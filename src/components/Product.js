@@ -19,7 +19,7 @@ function Product({ products, siteInfo }) {
                         <header>
                             <h2>Giá: <span className="price">{currencyFormat(product.priceInfo.price)}</span></h2>
                             <h3>Mã sp: <strong>{product.id}</strong><br/>
-                                Nhóm: <a href={`category/${product.category}`}>{product.category}</a></h3>
+                                Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category}`}>{product.category}</a></h3>
                             <p>{product.description}</p>
                             <h2><a href="#" className="buy">{siteInfo.buyBtnText}</a></h2>
                         </header>
