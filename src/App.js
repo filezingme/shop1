@@ -32,7 +32,10 @@ function App() {
 			<div id="wrapper">
 				<Routes>
 					<Route path="/" element={ <Product products={products} siteInfo={siteInfo} /> } exact />
+					<Route path="/xtcbanhang.com/" element={ <Product products={products} siteInfo={siteInfo} /> } exact />
+
 					<Route path="/category/:categoryName" element={ <Product products={products} siteInfo={siteInfo} /> } />
+					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product products={products} siteInfo={siteInfo} /> } />
 			    </Routes>
 
 				{/* Contact form */}
