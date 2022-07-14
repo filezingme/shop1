@@ -2,9 +2,7 @@ import React from 'react'
 
 function Contact({ siteInfo }) {
 
-    //console.log(product)
-
-    return (
+    return (siteInfo && (
         <section id="contact">
             <header>
                 <h2>Liên hệ</h2>
@@ -47,7 +45,7 @@ function Contact({ siteInfo }) {
                 </ul>
             </footer>
         </section>
-    )
+    ))
 }
 
 export default Contact

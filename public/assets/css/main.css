@@ -3750,16 +3750,11 @@ input, select, textarea {
 #toTop {
 	position: fixed;
     bottom: 20px;
-    right: 7px;
+    right: 5px;
     z-index: 99;
     cursor: pointer;
-    width: 17px;
-    height: 17px;
-	border: solid black;
-	border-width: 0 3px 3px 0;
-	display: inline-block;
-	transform: rotate(-135deg);
-	-webkit-transform: rotate(-135deg);
+    font-size:25px;
+	color: #5a5a5a;
 }
 
 .buy {
