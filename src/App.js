@@ -54,7 +54,7 @@ function App() {
 		<Router>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} categoryMenuComponent={renderToString(<CategoryMenu categoryList={categories} />)} /> } exact />
+					<Route path="/" element={ <Product data={originalData} /> } exact />
 					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} /> } exact />
 
 					<Route path="/category/:categoryName" element={ <Product data={originalData} /> } />
@@ -62,15 +62,7 @@ function App() {
 			    </Routes>
 
 				{/* Menu */}
-				{categories && (
-					<ul id="menu"> 
-						{categories.map((category, index) => (
-							<React.Fragment key={index}>
-								<li><a href={process.env.PUBLIC_URL + `/category/${category.name.toLowerCase()}`}>{category.name} ({category.count})</a></li>
-							</React.Fragment>
-						))}
-					</ul>
-				)}
+				<CategoryMenu categoryList={categories} />
 
 				{/* Contact form */}
 				<Contact siteInfo={originalData.siteInfo} /> 

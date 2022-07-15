@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
 
-function Product({ data, categoryMenuComponent }) {
+function Product({ data }) {
 
 	const [productList, setProductList] = useState([])
 
@@ -46,8 +46,6 @@ function Product({ data, categoryMenuComponent }) {
                             <div className='menu-wrapper'>
                                 <a href="#menu" className="menu-toggle"><span></span></a>
                             </div>
-
-                            <div dangerouslySetInnerHTML={ {__html: categoryMenuComponent} } />
 
                             <h2><a href="#" className="buy">{data.siteInfo.buyBtnText}</a></h2>
                         </header>
