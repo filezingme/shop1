@@ -103,7 +103,7 @@
 	
 		$(window).on( "load", function() {
 			//console.log( "window loaded" );
-			
+
 			//zoom out/in photo
 			var lightgalleries = document.querySelectorAll('.lightgallery');
 			lightgalleries.forEach(function (lightgallery) {
@@ -118,6 +118,16 @@
 					scrollTop: $("#contact").offset().top
 				},100);
 				return false;
+			});
+
+			//menu
+			$('.menu-toggle').on('click',function(e) {
+				e.preventDefault();
+
+				var parent = $(this).parent();
+				parent.append( $('#menu'));
+
+				$("#menu").slideToggle();
 			});
 		});
 })(jQuery);

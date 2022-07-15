@@ -42,8 +42,12 @@ function Product({ data, categoryMenuComponent }) {
                             </h3>
                             
                             <p>{product.description}</p>
+                            
+                            <div className='menu-wrapper'>
+                                <a href="#menu" className="menu-toggle"><span></span></a>
+                            </div>
 
-                            {categoryMenuComponent}
+                            <div dangerouslySetInnerHTML={ {__html: categoryMenuComponent} } />
 
                             <h2><a href="#" className="buy">{data.siteInfo.buyBtnText}</a></h2>
                         </header>

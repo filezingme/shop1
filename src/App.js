@@ -5,6 +5,7 @@ import Product from './components/Product';
 import Contact from './components/Contact';
 import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { renderToString } from 'react-dom/server' //npm install react react-dom
 
 function App() {
 
@@ -53,12 +54,23 @@ function App() {
 		<Router>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} categoryMenuComponent={<CategoryMenu categoryList={categories} />} /> } exact />
+					<Route path="/" element={ <Product data={originalData} categoryMenuComponent={renderToString(<CategoryMenu categoryList={categories} />)} /> } exact />
 					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} /> } exact />
 
 					<Route path="/category/:categoryName" element={ <Product data={originalData} /> } />
 					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} /> } />
 			    </Routes>
+
+				{/* Menu */}
+				{categories && (
+					<ul id="menu"> 
+						{categories.map((category, index) => (
+							<React.Fragment key={index}>
+								<li><a href={process.env.PUBLIC_URL + `/category/${category.name.toLowerCase()}`}>{category.name} ({category.count})</a></li>
+							</React.Fragment>
+						))}
+					</ul>
+				)}
 
 				{/* Contact form */}
 				<Contact siteInfo={originalData.siteInfo} /> 
