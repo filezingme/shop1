@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 function Product({ data }) {
 
@@ -26,7 +27,7 @@ function Product({ data }) {
         return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
-    return (productList && (
+    return (<>{productList && (
         productList.map((product) => (
             <section key={product.id}>
                 <header>
@@ -44,7 +45,7 @@ function Product({ data }) {
                             <p>{product.description}</p>
                             
                             <div className='menu-wrapper'>
-                                <a href="#menu" className="menu-toggle"><span></span></a>
+                                <a href="#" className="menu-toggle"><span></span></a>
                             </div>
 
                             <h2><a href="#" className="buy">{data.siteInfo.buyBtnText}</a></h2>
@@ -62,7 +63,9 @@ function Product({ data }) {
                 </div>
             </section>
         ))
-    ))
+        )//productList &&
+    }
+    </>)//return
 }
 
 export default Product
