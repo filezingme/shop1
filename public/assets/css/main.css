@@ -3879,8 +3879,14 @@ input, select, textarea {
 	color: #fff;
   }
 
-  .gallery {
+.gallery {
     padding-top: 2rem;
+}
+
+.react_lightgallery_item {
+	max-width: 33%; 
+	width: 33%; 
+	padding: 5px;
 }
   
 
@@ -3930,6 +3936,11 @@ input, select, textarea {
 
 	#wrapper > section > header {
 		padding: 2rem 2rem;
+	}
+
+	.react_lightgallery_item {
+		max-width: 50%; 
+		width: 50%; 
 	}
 
 }

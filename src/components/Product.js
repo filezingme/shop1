@@ -10,11 +10,9 @@ import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/exa
 
 
 const PhotoItem = ({ image, thumb, title, group }) => (
-    <div style={{ maxWidth: "33%", width: "33%", padding: "5px" }}>
-        <LightgalleryItem group={group} src={image} thumb={thumb}>
-            <img src={thumb} style={{ width: "100%" }} loading="lazy" alt={title} title={title} />
-        </LightgalleryItem>
-    </div>
+    <LightgalleryItem group={group} src={image} thumb={thumb}>
+        <img src={thumb} style={{ width: "100%" }} loading="lazy" alt={title} title={title} />
+    </LightgalleryItem>
 );
 PhotoItem.propTypes = {
     image: PT.string.isRequired,
