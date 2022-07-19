@@ -107,7 +107,7 @@ input, select, textarea {
 		overflow-x: hidden;
 	}
 
-		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
+		/* body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			-moz-animation: none !important;
 			-webkit-animation: none !important;
 			-ms-animation: none !important;
@@ -116,7 +116,7 @@ input, select, textarea {
 			-webkit-transition: none !important;
 			-ms-transition: none !important;
 			transition: none !important;
-		}
+		} */
 
 /* Typography */
 
@@ -3401,7 +3401,7 @@ input, select, textarea {
 			}
 
 			#wrapper section > .content {
-				padding: 0 5rem;
+				padding: 0 0 0 2rem;
 			}
 
 			#wrapper section > footer {
@@ -3454,7 +3454,7 @@ input, select, textarea {
 					}
 
 					#wrapper section > .content {
-						padding: 0 4rem;
+						padding: 0 0 0 2rem;
 					}
 
 					#wrapper section > footer {
@@ -3719,9 +3719,9 @@ input, select, textarea {
 		transition: opacity 1s ease;
 	}
 
-		body.is-preload #wrapper:before {
+		/* body.is-preload #wrapper:before {
 			opacity: 0;
-		}
+		} */
 
 	body.is-ie #wrapper section {
 		display: flex;
@@ -3763,6 +3763,7 @@ input, select, textarea {
     cursor: pointer;
     font-size:25px;
 	color: #5a5a5a;
+	display: none;
 }
 
 .buy {
