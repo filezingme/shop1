@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
-import {Helmet} from "react-helmet";
+// import {Helmet} from "react-helmet";
 import PT from "prop-types";
 import {
   LightgalleryProvider,
@@ -21,11 +21,12 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data }) {
+function Product({ data, showContactForm }) {
 
 	const [productList, setProductList] = useState([])
 
     const {categoryName} = useParams()
+
 
     useEffect(() => {
 
@@ -67,30 +68,19 @@ function Product({ data }) {
                                 <a href="#" className="menu-toggle"><span></span></a>
                             </div>
 
-                            <h2><a href="#" className="buy">{data.siteInfo.buyBtnText}</a></h2>
+                            <h2><a href="#" className="buy" onClick={(e) => showContactForm(e)}>{data.siteInfo.buyBtnText}</a></h2>
                         </header>
                         <div className="content">
                             <div className={`gallery`}>
-                                {/* {product.images.map((image, index) => (
-                                    <a key={index} data-src={process.env.PUBLIC_URL + `/assets/images/product/${image}`}>
-                                        <img src={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} alt={product.title} title={product.title} loading="lazy" />
-                                    </a>										
-                                ))}		 */}
-
                                 <LightgalleryProvider>
-                                    {/* {GROUP1.map((p, idx) => (
-                                    <PhotoItem key={idx} image={p[0]} thumb={p[1]} group="group1" />
-                                    ))} */}
-
                                     {product.images.map((image, index) => (
                                         <PhotoItem key={index} 
                                             image={process.env.PUBLIC_URL + `/assets/images/product/${image}`}
                                             thumb={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} 
                                             title={product.title}
-                                            group={product.id} 
+                                            group={product.id.toString()} 
                                         />									
-                                    ))}		
-                                    
+                                    ))}		                                    
                                 </LightgalleryProvider>								
                             </div>
                         </div>

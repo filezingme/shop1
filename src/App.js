@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
 import Product from './components/Product';
-import Contact from './components/Contact';
 import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { renderToString } from 'react-dom/server' //npm install react react-dom
+import $ from 'jquery';
+import ContactForm from './components/ContactForm';
 
 function App() {
 
@@ -49,29 +49,52 @@ function App() {
 
 	}, [])
 
+	const goTop = () => {
+		$('html, body').animate({scrollTop : 0},100);
+		return false;
+	}
+
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('#toTop').fadeIn();
+		} else {
+			$('#toTop').fadeOut();
+		}
+	});
+
+	
+	const [show, setShow] = useState(false);
+	const showContactForm = (e) => {
+		e.preventDefault()
+		setShow(true)
+	}
+	const hideContactForm = () => {
+		setShow(false)
+	}
+
 
 	return (
 		<Router>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} /> } exact />
-					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} /> } exact />
+					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
+					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
 
-					<Route path="/category/:categoryName" element={ <Product data={originalData} /> } />
-					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} /> } />
+					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
+					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
 			    </Routes>
 
 				{/* Menu */}
 				<CategoryMenu categoryList={categories} />
 
 				{/* Contact form */}
-				<Contact siteInfo={originalData.siteInfo} /> 
+				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} />				 
 
 				{/* Copyright */}
 				<div className="copyright">&copy; All rights reserved.</div>
 				
 				{/* Goto top button */}
-				<i className="fa fa-arrow-up" id="toTop"></i>
+				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
 
 			</div>
 		</Router>
