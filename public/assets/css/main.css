@@ -3889,6 +3889,10 @@ input, select, textarea {
 	width: 33%; 
 	padding: 5px;
 }
+
+.nav-link {
+    color: black !important;
+}
   
 
 @media screen and (max-width: 1024px) {

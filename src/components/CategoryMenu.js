@@ -14,7 +14,7 @@ function CategoryMenu({categoryList, handleClose, isShow}) {
                     <Nav.Link href={process.env.PUBLIC_URL}><b>Trang chủ</b></Nav.Link>
                     {categoryList.map((category, index) => (
                         <React.Fragment key={index}>
-                            <Nav.Link href={process.env.PUBLIC_URL + `/category/${category.name.toLowerCase()}`}>{category.name} ({category.count})</Nav.Link>
+                            <Nav.Link href={`/category/${category.name.toLowerCase()}`}>{category.name} ({category.count})</Nav.Link>
                         </React.Fragment>
                     ))}
                 </Nav>
