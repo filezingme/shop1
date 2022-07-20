@@ -7,6 +7,7 @@ import {
   LightgalleryItem
 } from "react-lightgallery";
 import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/examples/package/react-lightgallery > https://codesandbox.io/s/mo45kpo92j
+import Card from 'react-bootstrap/Card';
 
 
 const PhotoItem = ({ image, thumb, title, group }) => (
@@ -14,6 +15,7 @@ const PhotoItem = ({ image, thumb, title, group }) => (
         <img src={thumb} style={{ width: "100%" }} loading="lazy" alt={title} title={title} />
     </LightgalleryItem>
 );
+
 PhotoItem.propTypes = {
     image: PT.string.isRequired,
     thumb: PT.string,
@@ -21,7 +23,7 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, showContactForm }) {
+function Product({ data, showContactForm, showCategoryMenu }) {
 
 	const [productList, setProductList] = useState([])
 
@@ -29,7 +31,6 @@ function Product({ data, showContactForm }) {
 
 
     useEffect(() => {
-
         if(data.products) {
 
             if(categoryName) {
@@ -40,12 +41,13 @@ function Product({ data, showContactForm }) {
                 setProductList(data.products)
             }
         }
-
 	}, [categoryName, data])
+    
 
     function currencyFormat(num) {
         return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
+
 
     return (<>{productList && (
         productList.map((product) => (
@@ -65,7 +67,7 @@ function Product({ data, showContactForm }) {
                             <p>{product.description}</p>
                             
                             <div className='menu-wrapper'>
-                                <a href="#" className="menu-toggle"><span></span></a>
+                                <a href="#" className="menu-toggle" onClick={(e) => showCategoryMenu(e)}><span></span></a>
                             </div>
 
                             <h2><a href="#" className="buy" onClick={(e) => showContactForm(e)}>{data.siteInfo.buyBtnText}</a></h2>

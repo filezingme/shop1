@@ -72,20 +72,30 @@ function App() {
 		setShow(false)
 	}
 
+	
+	const [showMenu, setShowMenu] = useState(false);
+	const showCategoryMenu = (e) => {
+		e.preventDefault()
+		setShowMenu(true)
+	}
+	const hideCategoryMenu = () => {
+		setShowMenu(false)
+	}
+
 
 	return (
 		<Router>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
-					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
+					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} showCategoryMenu={showCategoryMenu} /> } exact />
+					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} showCategoryMenu={showCategoryMenu} /> } exact />
 
 					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
-					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
+					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} showCategoryMenu={showCategoryMenu} /> } />
 			    </Routes>
 
 				{/* Menu */}
-				<CategoryMenu categoryList={categories} />
+				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} />
 
 				{/* Contact form */}
 				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} />				 
