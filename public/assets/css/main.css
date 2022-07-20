@@ -201,12 +201,10 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #000000;
-		font-family: "Raleway", Helvetica, sans-serif;
-		font-weight: 600;
 		letter-spacing: 0.175em;
 		line-height: 1.75;
 		margin: 0 0 1.5rem 0;
-		text-transform: uppercase;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -231,7 +229,7 @@ input, select, textarea {
 	}
 
 	h3 {
-		font-size: 0.875rem !important;
+		font-size: 1rem !important;
 	}
 
 	h4 {
@@ -3220,7 +3218,7 @@ input, select, textarea {
 	#wrapper {
 		position: relative;
 		width: 100vw;
-		padding: 3rem 0 10rem 0;
+		padding: 3rem 0 3rem 0;
 	}
 		/*
 		#wrapper:before {
@@ -3271,8 +3269,9 @@ input, select, textarea {
 				}
 
 				#wrapper section > header h2 .buy {
-					color: red;
+					color: black;
 					font-size: 1.5rem;
+					border-radius: 5px;
 				}
 
 				#wrapper section > header h1 + p {
@@ -3436,6 +3435,8 @@ input, select, textarea {
 
 		#wrapper .copyright {
 			padding: 0 5rem;
+			margin-top: 6rem;
+    		padding-left: 0px;
 		}
 
 		@media screen and (max-width: 1280px) {
@@ -3619,10 +3620,12 @@ input, select, textarea {
 
 					#wrapper > section > header {
 						padding: 4rem 4rem;
+						padding-bottom: 2rem;
 					}
 
 					#wrapper > section > .content {
 						padding: 4rem 4rem;
+						padding-top: 0;
 					}
 
 						#wrapper > section > .content > section {
@@ -3655,6 +3658,7 @@ input, select, textarea {
 
 				#wrapper > section > .content {
 					padding: 3rem 2rem;
+					padding-top: 0;
 				}
 
 					#wrapper > section > .content > section {
@@ -3757,7 +3761,7 @@ input, select, textarea {
 	
 #toTop {
 	position: fixed;
-    bottom: 20px;
+    bottom: 47px;
     right: 5px;
     z-index: 99;
     cursor: pointer;
@@ -3765,12 +3769,24 @@ input, select, textarea {
 	color: #5a5a5a;
 	display: none;
 }
+	
+#toBottom {
+	position: fixed;
+    bottom: 20px;
+    right: 5px;
+    z-index: 99;
+    cursor: pointer;
+    font-size:25px;
+	color: #5a5a5a;
+	/* display: none; */
+}
 
 .buy {
 	cursor: pointer;
-	border: dotted 1px;
+	border: solid 1px #888888;
     padding: 10px;
 	font-weight: normal;
+	color: #888888;
 }
 
 .gallery img {
@@ -3786,7 +3802,7 @@ input, select, textarea {
 	display: block;
 	width: 28px;
 	height: 30px;
-	margin: 30px auto 10px;
+	margin: 45px auto 10px;
     border-bottom: none;
   }
 
@@ -3899,6 +3915,10 @@ input, select, textarea {
 	#wrapper section > header h2 {
 		margin-top: 0rem;
 	}
+
+	.menu-toggle {
+		margin-bottom:30px;
+	}
 }
 
 
@@ -3919,6 +3939,10 @@ input, select, textarea {
 
 	#wrapper > section > header {
 		padding: 2rem 4rem;
+	}
+
+	#wrapper > section > header {
+		padding-bottom: 1rem;
 	}
 
 }

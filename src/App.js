@@ -54,11 +54,24 @@ function App() {
 		return false;
 	}
 
-	$(window).scroll(function(){
+	const goBottom = () => {
+		$('html, body').animate({scrollTop : $(document).height()},100);
+		return false;
+	}
+
+	$(window).on('scroll', function(){
+		//show goTop button
 		if ($(this).scrollTop() > 100) {
 			$('#toTop').fadeIn();
 		} else {
 			$('#toTop').fadeOut();
+		}
+		
+		//show goBottom button
+		if (($(window).scrollTop() + $(window).height()) == $(document).height()) {
+			$('#toBottom').fadeOut();
+		} else {
+			$('#toBottom').fadeIn();
 		}
 	});
 
@@ -105,6 +118,7 @@ function App() {
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
+				<i className="fa fa-arrow-down" id="toBottom" onClick={goBottom}></i>
 
 			</div>
 		</Router>
