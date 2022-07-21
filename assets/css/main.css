@@ -3909,6 +3909,16 @@ input, select, textarea {
 .nav-link {
     color: black !important;
 }
+
+#imgloading {
+	margin: 0 1rem;
+}
+
+#ploading {
+	width: 180px;
+    margin: 0 1rem;
+    color: green;
+}
   
 
 @media screen and (max-width: 1024px) {
