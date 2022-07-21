@@ -7,7 +7,6 @@ import {
   LightgalleryItem
 } from "react-lightgallery";
 import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/examples/package/react-lightgallery > https://codesandbox.io/s/mo45kpo92j
-import Card from 'react-bootstrap/Card';
 
 
 const PhotoItem = ({ image, thumb, title, group }) => (
@@ -70,7 +69,7 @@ function Product({ data, showContactForm, showCategoryMenu }) {
                                 <a href="#" className="menu-toggle" onClick={(e) => showCategoryMenu(e)}><span></span></a>
                             </div>
 
-                            <h2><a href="#" className="buy" onClick={(e) => showContactForm(e)}>{data.siteInfo.buyBtnText}</a></h2>
+                            <h2><a href="#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig, true)}>{data.siteInfo.buyBtnText}</a></h2>
                         </header>
                         <div className="content">
                             <div className={`gallery`}>

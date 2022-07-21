@@ -68,7 +68,7 @@ function App() {
 		}
 		
 		//show goBottom button
-		if (($(window).scrollTop() + $(window).height()) == $(document).height()) {
+		if (($(window).scrollTop() + $(window).height()) === $(document).height()) {
 			$('#toBottom').fadeOut();
 		} else {
 			$('#toBottom').fadeIn();
@@ -77,9 +77,14 @@ function App() {
 
 	
 	const [show, setShow] = useState(false);
-	const showContactForm = (e) => {
+	const [product, setProduct] = useState({});
+	const [contactFormConfig, setContactFormConfig] = useState({});
+
+	const showContactForm = (e, product, contactFormConfig) => {
 		e.preventDefault()
 		setShow(true)
+		setProduct(product)
+		setContactFormConfig(contactFormConfig)
 	}
 	const hideContactForm = () => {
 		setShow(false)
@@ -87,6 +92,7 @@ function App() {
 
 	
 	const [showMenu, setShowMenu] = useState(false);
+
 	const showCategoryMenu = (e) => {
 		e.preventDefault()
 		setShowMenu(true)
@@ -111,7 +117,7 @@ function App() {
 				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} />
 
 				{/* Contact form */}
-				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} />				 
+				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />				 
 
 				{/* Copyright */}
 				<div className="copyright">&copy; All rights reserved.</div>

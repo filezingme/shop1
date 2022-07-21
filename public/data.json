@@ -8,6 +8,12 @@
 		"phone": "0971265356",
 		"email": "xuongvitruongchinh@gmail.com"
 	},
+	"contactFormConfig": {
+		"receiverEmail": "filezingme@gmail.com",
+		"receiverName": "Contact From [xtcbanhang.com]",
+		"cc": "",
+		"bcc": ""
+	},
 	"products": [
 		{
 			"id": 1307001,
