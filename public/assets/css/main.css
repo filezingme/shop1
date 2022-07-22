@@ -3942,4 +3942,8 @@ input, select, textarea {
 		width: 50%; 
 	}
 
+	#wrapper section > header .h2buy {
+		margin-bottom: 1.5rem;
+	}
+
 }
