@@ -6,6 +6,7 @@ import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import $ from 'jquery';
 import ContactForm from './components/ContactForm';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
 
@@ -100,6 +101,11 @@ function App() {
 	const hideCategoryMenu = () => {
 		setShowMenu(false)
 	}
+	
+	const [showCopyright, setShowCopyright] = useState(true);
+	const handleShowCopyright = (showCopyright) => {
+		setShowCopyright(showCopyright)
+	}
 
 
 	return (
@@ -111,6 +117,8 @@ function App() {
 
 					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
 					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
+
+					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
 			    </Routes>
 
 				{/* Menu */}
@@ -120,9 +128,9 @@ function App() {
 				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />				 
 
 				{/* Copyright */}
-				<div className="copyright">&copy; All rights reserved.</div>
+				{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}				
 
-				<a href="#" className="menu-toggle menu-ontop" onClick={(e) => showCategoryMenu(e)}><span></span></a>
+				<a href="/#" className="menu-toggle menu-ontop" onClick={(e) => showCategoryMenu(e)}><span></span></a>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>

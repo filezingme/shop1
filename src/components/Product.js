@@ -65,7 +65,7 @@ function Product({ data, showContactForm }) {
                             
                             <p>{product.description}</p>
 
-                            <h2 className='h2buy'><a href="#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig, true)}>{data.siteInfo.buyBtnText}</a></h2>
+                            <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{data.siteInfo.buyBtnText}</a></h2>
                         </header>
                         <div className="content">
                             <div className={`gallery`}>
