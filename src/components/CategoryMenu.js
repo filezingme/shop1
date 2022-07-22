@@ -11,7 +11,7 @@ function CategoryMenu({categoryList, handleClose, isShow}) {
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <Nav className="flex-column">
-                    <Nav.Link href='/'>
+                    <Nav.Link href={process.env.PUBLIC_URL}>
                         <i className="fa fa-home" aria-hidden="true"></i> <b>Trang chủ</b>
                     </Nav.Link>
                     {categoryList.map((category, index) => (
