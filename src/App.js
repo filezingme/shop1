@@ -109,15 +109,11 @@ function App() {
 
 
 	return (
-		<Router basename="/xtcbanhang.com">
+		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
 				<Routes>
 					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
-					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
-
 					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
-					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
-
 					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
 			    </Routes>
 
