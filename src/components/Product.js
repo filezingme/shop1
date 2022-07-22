@@ -85,7 +85,12 @@ function Product({ data, showContactForm }) {
                 <div className="content">
                     <section>
                         <header>
-                            <h2>Giá: <span className="price">{getPrice(product, siteInfo)}</span></h2>
+                            <h2>
+                                Giá: <span className="price">{getPrice(product, siteInfo)}</span>
+                                <input type="hidden" id="price" value={currencyFormat(product.priceInfo.price)} />
+                                <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
+                                <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
+                            </h2>
                             <h3>
                                 Mã sp: <strong>{product.id}</strong><br/>
                                 Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a><br/><br/>
