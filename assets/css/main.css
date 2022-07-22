@@ -201,7 +201,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #000000;
-		letter-spacing: 0.175em;
+		letter-spacing: 0.05em;
 		line-height: 1.75;
 		margin: 0 0 1.5rem 0;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -216,7 +216,7 @@ input, select, textarea {
 		font-family: "Source Sans Pro", Helvetica, sans-serif !important;
 		font-size: 3.5rem !important;
 		font-weight: 700 !important;
-		letter-spacing: -0.05em !important;
+		letter-spacing: -0.03em !important;
 		line-height: 1.1 !important;
 		margin: 0 0 1.5rem 0 !important;
 		text-transform: none !important;
