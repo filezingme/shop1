@@ -109,7 +109,7 @@ function App() {
 
 
 	return (
-		<Router>
+		<Router basename="/xtcbanhang.com">
 			<div id="wrapper">
 				<Routes>
 					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
