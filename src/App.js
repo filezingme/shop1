@@ -4,16 +4,11 @@ import axios from 'axios';
 import Product from './components/Product';
 import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
-
 import $ from 'jquery';
 import ContactForm from './components/ContactForm';
 import PageNotFound from './components/PageNotFound';
 
-
 function App() {
-
-	const history = createBrowserHistory();
 
 	const [originalData, setOriginalData] = useState({})
 
@@ -116,7 +111,7 @@ function App() {
 	return (
 		<Router>
 			<div id="wrapper">
-				<Routes history={history}>
+				<Routes>
 					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
 					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
 
