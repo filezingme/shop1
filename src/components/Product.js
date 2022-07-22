@@ -25,6 +25,7 @@ PhotoItem.propTypes = {
 function Product({ data, showContactForm }) {
 
 	const [productList, setProductList] = useState([])
+	const [siteInfo, setSiteInfo] = useState({})
 
     const {categoryName} = useParams()
 
@@ -38,6 +39,7 @@ function Product({ data, showContactForm }) {
             }
             else {
                 setProductList(data.products)
+                setSiteInfo(data.siteInfo)
             }
         }
 	}, [categoryName, data])
@@ -45,6 +47,32 @@ function Product({ data, showContactForm }) {
 
     function currencyFormat(num) {
         return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
+    
+
+    function getPrice(product, siteInfo) {
+
+        const priceInfo = product.priceInfo
+
+        //tính giá & phần trăm tăng nếu tồn tại cột % trên sản phẩm
+        //cột % [percentagePriceIncrease] chấp nhận cả số âm và số 0
+        if (product.priceInfo.percentagePriceIncrease !== null && product.priceInfo.percentagePriceIncrease !== undefined)
+        {            
+            const priceResult = priceInfo.price + (priceInfo.percentagePriceIncrease/100*priceInfo.price)
+            return currencyFormat(priceResult)
+        }
+        //tính giá & phần trăm tăng nếu tồn tại cột % trên toàn cục 
+        //cột % [percentagePriceIncreaseAppliesToAllProducts] chấp nhận cả số âm và số 0
+        else if (siteInfo.percentagePriceIncreaseAppliesToAllProducts !== null && siteInfo.percentagePriceIncreaseAppliesToAllProducts !== undefined)
+        {
+            const priceResult = priceInfo.price + (siteInfo.percentagePriceIncreaseAppliesToAllProducts/100*priceInfo.price)
+            return currencyFormat(priceResult)
+        }
+        //trả về chỉ giá sản phẩm nếu không tồn tại cột % trên sản phẩm và cột % trên toàn cục
+        else
+        {
+            return currencyFormat(priceInfo.price)
+        }
     }
 
 
@@ -57,7 +85,7 @@ function Product({ data, showContactForm }) {
                 <div className="content">
                     <section>
                         <header>
-                            <h2>Giá: <span className="price">{currencyFormat(product.priceInfo.price)}</span></h2>
+                            <h2>Giá: <span className="price">{getPrice(product, siteInfo)}</span></h2>
                             <h3>
                                 Mã sp: <strong>{product.id}</strong><br/>
                                 Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a><br/><br/>
@@ -66,7 +94,7 @@ function Product({ data, showContactForm }) {
                             {product.description && (<>
                                 
                                 <div>
-                                    <i class="fas fa-quote-left fa-2x fa-pull-left"></i>
+                                    <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
                                     <i>{product.description}</i>
                                 </div>
                             </>)}
