@@ -63,7 +63,13 @@ function Product({ data, showContactForm }) {
                                 Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a><br/><br/>
                             </h3>
                             
-                            <p><i>{product.description}</i></p>
+                            {product.description && (<>
+                                
+                                <div>
+                                    <i class="fas fa-quote-left fa-2x fa-pull-left"></i>
+                                    <i>{product.description}</i>
+                                </div>
+                            </>)}
 
                             <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{data.siteInfo.buyBtnText}</a></h2>
                         </header>
