@@ -114,7 +114,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
 					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
-					<Route path="/*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
+					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
 			    </Routes>
 
 				{/* Menu */}

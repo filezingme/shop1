@@ -5,9 +5,15 @@ import React, {useEffect} from 'react'
 function PageNotFound({showCopyright}) {    
 
     useEffect(() => {
+
+        console.log('PageNotFound useEffect')
+        showCopyright(false)
+
         return (e) => { //unmounts
-            showCopyright(false)
+            console.log('PageNotFound unmounts')
+            //showCopyright(false)
         };
+
       }, []);
 
     return (<>
