@@ -22,7 +22,7 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, showContactForm, showCategoryMenu }) {
+function Product({ data, showContactForm }) {
 
 	const [productList, setProductList] = useState([])
 
@@ -64,12 +64,8 @@ function Product({ data, showContactForm, showCategoryMenu }) {
                             </h3>
                             
                             <p>{product.description}</p>
-                            
-                            <div className='menu-wrapper'>
-                                <a href="#" className="menu-toggle" onClick={(e) => showCategoryMenu(e)}><span></span></a>
-                            </div>
 
-                            <h2><a href="#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig, true)}>{data.siteInfo.buyBtnText}</a></h2>
+                            <h2 className='h2buy'><a href="#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig, true)}>{data.siteInfo.buyBtnText}</a></h2>
                         </header>
                         <div className="content">
                             <div className={`gallery`}>

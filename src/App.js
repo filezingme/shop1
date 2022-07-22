@@ -106,11 +106,11 @@ function App() {
 		<Router>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} showCategoryMenu={showCategoryMenu} /> } exact />
-					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} showCategoryMenu={showCategoryMenu} /> } exact />
+					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
+					<Route path="/xtcbanhang.com/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
 
 					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
-					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} showCategoryMenu={showCategoryMenu} /> } />
+					<Route path="/xtcbanhang.com/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
 			    </Routes>
 
 				{/* Menu */}
@@ -121,6 +121,8 @@ function App() {
 
 				{/* Copyright */}
 				<div className="copyright">&copy; All rights reserved.</div>
+
+				<a href="#" className="menu-toggle menu-ontop" onClick={(e) => showCategoryMenu(e)}><span></span></a>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>

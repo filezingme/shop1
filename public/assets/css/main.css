@@ -3255,10 +3255,6 @@ input, select, textarea {
 				text-align: right;
 			}
 
-			.menu-wrapper {
-				width: inherit;
-			}
-
 				#wrapper section > header h2 {
 					margin: 3rem 0 1rem 0;
 				}
@@ -3521,10 +3517,6 @@ input, select, textarea {
 						width: 100%;
 					}
 
-					.menu-wrapper {
-						width: fit-content;
-					}
-
 						#wrapper section > header ul.actions {
 							justify-content: flex-start;
 						}
@@ -3761,7 +3753,7 @@ input, select, textarea {
 	
 #toTop {
 	position: fixed;
-    bottom: 47px;
+    bottom: 65px;
     right: 5px;
     z-index: 99;
     cursor: pointer;
@@ -3800,7 +3792,7 @@ input, select, textarea {
 /* Menu */
 .menu-toggle {
 	display: block;
-	width: 28px;
+	width: 26px;
 	height: 30px;
 	margin: 45px auto 10px;
     border-bottom: none;
@@ -3851,49 +3843,13 @@ input, select, textarea {
 	opacity: 1;
 	visibility: visible;
   }
-  
-  /* menu appearance*/
-  #menu {
-    position: relative;
-    color: #999;
-    width: 200px;
-    padding: 10px;
-    margin: auto;
-    text-align: center;
-    border-radius: 4px;
-    background: white;
-    box-shadow: 0 1px 8px rgb(0 0 0 / 5%);
-    /* opacity: 0; */
-    /* visibility: hidden; */
-    transition: opacity .4s;
-	display: none;
-}
-  #menu:after {
-	position: absolute;
-	top: -15px;
-	left: 95px;
-	content: "";
-	display: block;
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	border-bottom: 20px solid white;
-  }
-  #menu ul, #menu li, #menu li a {
-	list-style: none;
-	display: block;
-	margin: 0;
-	padding: 0;
-  }
-  #menu li a {
-	padding: 5px;
-	color: #888;
-	text-decoration: none;
-	transition: all .2s;
-  }
-  #menu li a:hover,
-  #menu li a:focus {
-	background: #1ABC9C;
-	color: #fff;
+
+  .menu-ontop {
+	position: fixed;
+	top: -30px;
+	right: 5px;
+	z-index: 99;
+	color: #5a5a5a;
   }
 
 .gallery {
@@ -3928,6 +3884,10 @@ input, select, textarea {
 
 	.menu-toggle {
 		margin-bottom:30px;
+	}
+
+	#wrapper section > header .h2buy {
+		margin: 3rem 0;
 	}
 }
 
