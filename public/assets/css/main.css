@@ -3882,10 +3882,11 @@ input, select, textarea {
 .read-more {
 	font-weight: 500;
 	cursor: pointer;
+	text-decoration: underline;	
 }
   
 .read-more:hover {
-	text-decoration: underline;	
+	color: #11be99;
 }
 
 .excerpt {
@@ -3899,10 +3900,12 @@ input, select, textarea {
 
 .productReadMore img {
 	margin-top: 18px;
+	display: block;
 }
 
 .home-product-title {
-	cursor: pointer;
+	margin-top: 18px;
+    display: block;
 }
 
 .home-product-title:hover {
