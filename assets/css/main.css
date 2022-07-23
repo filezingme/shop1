@@ -3758,7 +3758,7 @@ input, select, textarea {
     z-index: 99;
     cursor: pointer;
     font-size:25px;
-	color: #5a5a5a;
+	color: #888888;
 	display: none;
 }
 	
@@ -3769,8 +3769,7 @@ input, select, textarea {
     z-index: 99;
     cursor: pointer;
     font-size:25px;
-	color: #5a5a5a;
-	/* display: none; */
+	color: #888888;
 }
 
 .buy {
@@ -3794,63 +3793,78 @@ input, select, textarea {
 	display: block;
 	width: 26px;
 	height: 30px;
-	margin: 45px auto 10px;
-    border-bottom: none;
-  }
+	border-bottom: none;
+}
 
-  .menu-toggle:hover {
+.menu-toggle:hover {
 	border-color: unset;
-    background-color: unset;
-  }
-  
-  .menu-toggle span:after,
-  .menu-toggle span:before {
+	background-color: unset;
+}
+
+.menu-toggle span:after,
+.menu-toggle span:before {
 	content: "";
 	position: absolute;
 	left: 0;
 	top: -9px;
-  }
-  .menu-toggle span:after{
+}
+.menu-toggle span:after{
 	top: 9px;
-  }
-  .menu-toggle span {
+}
+.menu-toggle span {
 	position: relative;
 	display: block;
-  }
-  
-  .menu-toggle span,
-  .menu-toggle span:after,
-  .menu-toggle span:before {
+}
+
+.menu-toggle span,
+.menu-toggle span:after,
+.menu-toggle span:before {
 	width: 100%;
 	height: 5px;
 	background-color: #888;
 	transition: all 0.3s;
 	backface-visibility: hidden;
 	border-radius: 2px;
-  }
+}
   
-  /* on activation */
-  .menu-toggle.on span {
+/* on activation */
+.menu-toggle.on span {
 	background-color: transparent;
-  }
-  .menu-toggle.on span:before {
+}
+.menu-toggle.on span:before {
 	transform: rotate(45deg) translate(5px, 5px);
-  }
-  .menu-toggle.on span:after {
+}
+.menu-toggle.on span:after {
 	transform: rotate(-45deg) translate(7px, -8px);
-  }
-  .menu-toggle.on + #menu {
+}
+.menu-toggle.on + #menu {
 	opacity: 1;
 	visibility: visible;
-  }
+}
 
-  .menu-ontop {
+.menu-ontop {
 	position: fixed;
-	top: -30px;
+	top: 60px;
 	right: 5px;
 	z-index: 99;
-	color: #5a5a5a;
-  }
+}
+
+.home-ontop {
+	position: fixed;
+	top: 10px;
+	right: 5px;
+	z-index: 99;
+	border: 0;
+}
+
+.home-ontop:hover {
+	background-color: inherit;
+}
+
+.home-ontop i {
+	font-size:23px;
+	color: #888888;
+}
 
 .gallery {
     padding-top: 2rem;
