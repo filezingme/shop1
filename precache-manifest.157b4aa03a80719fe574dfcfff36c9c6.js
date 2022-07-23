@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "124790141e899d592775",
+    "revision": "0b0e6d2cfb1337fac0c4",
     "url": "/xtcbanhang.com/static/css/main.523dcb03.chunk.css"
   },
   {
-    "revision": "124790141e899d592775",
-    "url": "/xtcbanhang.com/static/js/main.12479014.chunk.js"
+    "revision": "0b0e6d2cfb1337fac0c4",
+    "url": "/xtcbanhang.com/static/js/main.0b0e6d2c.chunk.js"
   },
   {
     "revision": "8fff69a20f34251f7898",
@@ -24,10 +24,6 @@ self.__precacheManifest = [
     "url": "/xtcbanhang.com/static/js/runtime~main.805ceabf.js"
   },
   {
-    "revision": "2ec2cb2199d4d881e6a6ad86690f6add",
-    "url": "/xtcbanhang.com/static/media/lg.2ec2cb21.svg"
-  },
-  {
     "revision": "f4292655f93dd12d9b8e4fc067ef2489",
     "url": "/xtcbanhang.com/static/media/lg.f4292655.ttf"
   },
@@ -36,7 +32,11 @@ self.__precacheManifest = [
     "url": "/xtcbanhang.com/static/media/lg.1fbfd4bc.woff"
   },
   {
-    "revision": "72417268c15439a46a7211207327cff4",
+    "revision": "2ec2cb2199d4d881e6a6ad86690f6add",
+    "url": "/xtcbanhang.com/static/media/lg.2ec2cb21.svg"
+  },
+  {
+    "revision": "2e9259e7a6dc83b9159d06ca53e00bf8",
     "url": "/xtcbanhang.com/index.html"
   }
 ];

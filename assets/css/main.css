@@ -193,6 +193,7 @@ input, select, textarea {
 
 	em, i {
 		font-style: italic;
+		line-height: 23px;
 	}
 
 	p {
@@ -3873,6 +3874,10 @@ input, select, textarea {
 
 .fa-pull-left {
 	color: #888888;
+}
+
+.offcanvas, .modal {
+    transition: 0.5s !important;
 }
   
 
