@@ -52,12 +52,12 @@ function App() {
 	}, [])
 
 	const goTop = () => {
-		$('html, body').animate({scrollTop : 0},100);
+		$('html, body').animate({scrollTop : 0},200);
 		return false;
 	}
 
 	const goBottom = () => {
-		$('html, body').animate({scrollTop : $(document).height()},100);
+		$('html, body').animate({scrollTop : $(document).height()},200);
 		return false;
 	}
 
@@ -147,13 +147,13 @@ function App() {
 				<a href={process.env.PUBLIC_URL} id="home-ontop"><i className="fa fa-home"></i></a>	
 
 				{/* Menu-ontop */}
-				<i class="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)}></i>
+				<i className="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)}></i>
 				
 				{/* Pages-ontop */}
-				<i class="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)}></i>
+				<i className="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)}></i>
 				
 				{/* Customers talk-ontop */}
-				<i class="far fa-id-card" id="customers-talk-ontop"></i>
+				<i className="far fa-id-card" id="customers-talk-ontop"></i>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>

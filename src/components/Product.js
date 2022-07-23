@@ -40,7 +40,7 @@ function Product({ data, showContactForm }) {
             else {
                 setProductList(data.products)
             }
-            
+
             setSiteInfo(data.siteInfo)
         }
 	}, [categoryName, data])
@@ -93,8 +93,8 @@ function Product({ data, showContactForm }) {
                                 <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
                             </h2>
                             <h3>
-                                Mã sp: <strong>{product.id}</strong><br/>
-                                Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a><br/><br/>
+                                <i>Mã: <strong>{product.id}</strong></i><br/>
+                                <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a></i><br/><br/>
                             </h3>
                             
                             {product.description && (<>                                
