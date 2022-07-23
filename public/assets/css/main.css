@@ -192,7 +192,6 @@ input, select, textarea {
 	}
 
 	em, i {
-		font-style: italic;
 		line-height: 23px;
 	}
 
@@ -3819,10 +3818,10 @@ input, select, textarea {
 
 #customers-talk-ontop {
 	position: fixed;
-	top: 140px;
+	top: 136px;
 	right: 5px;
 	z-index: 99;
-	font-size:22px;
+	font-size:26px;
 	color: #888888;
 	cursor: pointer;
 }
@@ -3880,6 +3879,35 @@ input, select, textarea {
     transition: 0.5s !important;
 }
   
+.read-more {
+	font-weight: 500;
+	cursor: pointer;
+}
+  
+.read-more:hover {
+	text-decoration: underline;	
+}
+
+.excerpt {
+	font-style: italic;
+}
+
+.productReadMore .galleryTitle {
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.productReadMore img {
+	margin-top: 18px;
+}
+
+.home-product-title {
+	cursor: pointer;
+}
+
+.home-product-title:hover {
+	color: #11be99;
+}
 
 @media screen and (max-width: 1024px) {
 	#wrapper section > header h2 {

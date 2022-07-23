@@ -18,26 +18,25 @@ function PagesTab({ handleClose, isShowPagesTab }) {
         size="lg"
         show={isShowPagesTab}
         onHide={handleClose}
-        backdrop="static"
+        // backdrop="static"
         keyboard={false}
         className="pagesTab"
       >
         <Modal.Header closeButton>
-          <Modal.Title>THÔNG TIN</Modal.Title>
-          
+          <Modal.Title>Thông tin</Modal.Title>          
         </Modal.Header>
         <Modal.Body>
-          <Accordion defaultActiveKey="0">
+          <Accordion defaultActiveKey={['0']} alwaysOpen>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Về chúng tôi</Accordion.Header>
               <Accordion.Body>
-                <p>Chúng tôi có xưởng trực tiếp sản xuất các sản phẩm đồ da cá sấu/da bò cao cấp.</p>
                 <ul>
+                  <li>Chúng tôi có xưởng trực tiếp sản xuất các sản phẩm đồ da cá sấu/da bò cao cấp.</li>
                   <li>Chúng tôi sản xuất nhiều loại sản phẩm về da.</li>
                   <li>Chúng tôi nhận gia công cho khách hàng có nhu cầu đặt hàng theo thương hiệu riêng, sản xuất mẫu mã theo yêu cầu.</li>
                   <li>Chúng tôi có đội ngũ công nhân tay nghề cao có nhiều năm kinh nghiệm.</li>
+                  <li>Hãy liên hệ với chúng tôi để được phục vụ!</li>
                 </ul>
-                <p>Hãy liên hệ với chúng tôi để được phục vụ!</p>
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
@@ -45,24 +44,26 @@ function PagesTab({ handleClose, isShowPagesTab }) {
               <Accordion.Body>
                 <ul>
                   <li>Sản phẩm da cá sấu/da bò cao cấp thật 100%.</li>
-                  <li>Cam kết đền gấp 10 lần giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật</li>
-                  <li>Bảo hành 2 năm cho tất cả các sản phẩm da</li>
+                  <li>Cam kết đền gấp 10 lần giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật.</li>
+                  <li>Bảo hành 2 năm cho tất cả các sản phẩm da.</li>
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2">
               <Accordion.Header>Liên hệ</Accordion.Header>
               <Accordion.Body>
-                <p><strong>Điện thoại</strong>: 0979116118</p>
-                <p><strong>Email</strong>: xtcbanhang@gmail.com</p>
-                <p><strong>Địa chỉ</strong>: CT1 Company - Showroom 7, Rice City Linh Đàm, Hoàng Liệt, Hoàng Mai, TP.Hà Nội.</p>
+                <ul>
+                  <li><strong>Điện thoại</strong>: 0979116118</li>
+                  <li><strong>Email</strong>: xtcbanhang@gmail.com</li>
+                  <li><strong>Địa chỉ</strong>: CT1 Company - Showroom 7, Rice City Linh Đàm, Hoàng Liệt, Hoàng Mai, TP.Hà Nội.</li>
+                </ul>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>Đóng</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>)
 }

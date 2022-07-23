@@ -8,6 +8,7 @@ import $ from 'jquery';
 import ContactForm from './components/ContactForm';
 import PagesTab from './components/PagesTab';
 import PageNotFound from './components/PageNotFound';
+import ProductReadMore from './components/ProductReadMore';
 
 function App() {
 
@@ -119,14 +120,25 @@ function App() {
 	const hidePagesTab = () => {
 		setShowPagesTab(false)
 	}
+	
+	//Product Read More
+	const [showProductReadMore, setShowProductReadMore] = useState(false);
+	const handleProductReadMore = (e, product) => {
+		e.preventDefault()
+		setShowProductReadMore(true)
+		setProduct(product)
+	}
+	const hideProductReadMore = () => {
+		setShowProductReadMore(false)
+	}
 
 
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} /> } exact />
-					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} /> } />
+					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } exact />
+					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } />
 					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
 			    </Routes>
 
@@ -139,7 +151,10 @@ function App() {
 				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />	
 
 				{/* Contact form */}
-				<PagesTab categoryList={categories} handleClose={hidePagesTab} isShowPagesTab={showPagesTab} />	
+				<PagesTab categoryList={categories} handleClose={hidePagesTab} isShowPagesTab={showPagesTab} />		
+
+				{/* Product Read More */}
+				<ProductReadMore handleClose={hideProductReadMore} isShow={showProductReadMore} product={product} />	
 
 
 				
@@ -153,7 +168,7 @@ function App() {
 				<i className="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)}></i>
 				
 				{/* Customers talk-ontop */}
-				<i className="far fa-id-card" id="customers-talk-ontop"></i>
+				<i className="far fa-comment-dots" id="customers-talk-ontop"></i>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>

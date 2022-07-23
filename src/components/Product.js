@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
-// import {Helmet} from "react-helmet";
 import PT from "prop-types";
 import {
   LightgalleryProvider,
@@ -22,12 +21,13 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, showContactForm }) {
+function Product({ data, showContactForm, handleProductReadMore }) {
 
 	const [productList, setProductList] = useState([])
 	const [siteInfo, setSiteInfo] = useState({})
 
     const {categoryName} = useParams()
+    const charNumLimitedInDesc = 100
 
 
     useEffect(() => {
@@ -76,12 +76,30 @@ function Product({ data, showContactForm }) {
         }
     }
 
+    const validShowReadMore = (input, limit) => 
+    {
+        if(input !== null && input !== undefined && input.length > limit)
+            return true  
+        return false;
+    }
+
+    const showReadMore = (input, limit, dots) => 
+    {
+        if(validShowReadMore(input, limit))
+        {
+            input = input.substring(0,limit)
+            var lastIndexOfSpace = input.lastIndexOf(" ")
+            input = input.substr(0, lastIndexOfSpace) + dots
+        }    
+        return input;
+    }
+
 
     return (<>{productList && (
         productList.map((product) => (
             <section key={product.id}>
                 <header>
-                    <h1>{product.title}</h1>
+                    <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
                 </header>
                 <div className="content">
                     <section>
@@ -97,12 +115,17 @@ function Product({ data, showContactForm }) {
                                 <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a></i><br/><br/>
                             </h3>
                             
-                            {product.description && (<>                                
-                                <div>
-                                    <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
-                                    <i>{product.description}</i>
-                                </div>
-                            </>)}
+                            {product.description && (<div>
+                                <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
+                                <p className='excerpt'>
+                                    {showReadMore(product.description, charNumLimitedInDesc, ' ...')}
+                                    
+                                    {validShowReadMore(product.description, charNumLimitedInDesc) && (
+                                        <i className='read-more' onClick={(e) => handleProductReadMore(e, product)}>Xem thêm</i>
+                                    )}                                    
+                                </p>
+                            </div>
+                            )}
 
                             <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{data.siteInfo.buyBtnText}</a></h2>
                         </header>
