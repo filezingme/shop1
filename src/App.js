@@ -121,16 +121,20 @@ function App() {
 				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} />
 
 				{/* Contact form */}
-				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />				 
+				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />		
 
-				{/* Copyright */}
-				{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}				
-
+				{/* Menu-ontop */}
 				<a href="/#" className="menu-toggle menu-ontop" onClick={(e) => showCategoryMenu(e)}><span></span></a>
+				
+				{/* Home-ontop */}
+				<a href={process.env.PUBLIC_URL} className="home-ontop"><i className="fa fa-home"></i></a>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
-				<i className="fa fa-arrow-down" id="toBottom" onClick={goBottom}></i>
+				<i className="fa fa-arrow-down" id="toBottom" onClick={goBottom}></i>				 
+
+				{/* Copyright */}
+				{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}		
 
 			</div>
 		</Router>

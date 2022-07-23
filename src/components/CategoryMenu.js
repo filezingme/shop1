@@ -11,9 +11,6 @@ function CategoryMenu({categoryList, handleClose, isShow}) {
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <Nav className="flex-column">
-                    <Nav.Link href={process.env.PUBLIC_URL}>
-                        <i className="fa fa-home" aria-hidden="true"></i> <b>Trang chủ</b>
-                    </Nav.Link>
                     {categoryList.map((category, index) => (
                         <React.Fragment key={index}>
                             <Nav.Link href={process.env.PUBLIC_URL + `/category/${category.name.toLowerCase()}`}>

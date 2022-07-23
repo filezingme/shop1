@@ -39,8 +39,9 @@ function Product({ data, showContactForm }) {
             }
             else {
                 setProductList(data.products)
-                setSiteInfo(data.siteInfo)
             }
+            
+            setSiteInfo(data.siteInfo)
         }
 	}, [categoryName, data])
     
@@ -96,8 +97,7 @@ function Product({ data, showContactForm }) {
                                 Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a><br/><br/>
                             </h3>
                             
-                            {product.description && (<>
-                                
+                            {product.description && (<>                                
                                 <div>
                                     <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
                                     <i>{product.description}</i>
