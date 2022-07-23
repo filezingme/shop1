@@ -6,6 +6,7 @@ import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import $ from 'jquery';
 import ContactForm from './components/ContactForm';
+import PagesTab from './components/PagesTab';
 import PageNotFound from './components/PageNotFound';
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
 	}
 
 	$(window).on('scroll', function(){
+
 		//show goTop button
 		if ($(this).scrollTop() > 100) {
 			$('#toTop').fadeIn();
@@ -77,6 +79,7 @@ function App() {
 	});
 
 	
+	//Contact form
 	const [show, setShow] = useState(false);
 	const [product, setProduct] = useState({});
 	const [contactFormConfig, setContactFormConfig] = useState({});
@@ -90,10 +93,9 @@ function App() {
 	const hideContactForm = () => {
 		setShow(false)
 	}
-
 	
+	//Category menu
 	const [showMenu, setShowMenu] = useState(false);
-
 	const showCategoryMenu = (e) => {
 		e.preventDefault()
 		setShowMenu(true)
@@ -102,9 +104,20 @@ function App() {
 		setShowMenu(false)
 	}
 	
+	//Copyright
 	const [showCopyright, setShowCopyright] = useState(true);
 	const handleShowCopyright = (showCopyright) => {
 		setShowCopyright(showCopyright)
+	}
+	
+	//Pages tab
+	const [showPagesTab, setShowPagesTab] = useState(false);
+	const handleShowPagesTab = (e) => {
+		e.preventDefault()
+		setShowPagesTab(true)
+	}
+	const hidePagesTab = () => {
+		setShowPagesTab(false)
 	}
 
 
@@ -117,20 +130,35 @@ function App() {
 					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
 			    </Routes>
 
+
+
 				{/* Menu */}
 				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} />
 
 				{/* Contact form */}
-				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />		
+				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />	
 
-				{/* Menu-ontop */}
-				<a href="/#" className="menu-toggle menu-ontop" onClick={(e) => showCategoryMenu(e)}><span></span></a>
+				{/* Contact form */}
+				<PagesTab categoryList={categories} handleClose={hidePagesTab} isShowPagesTab={showPagesTab} />	
+
+
 				
 				{/* Home-ontop */}
-				<a href={process.env.PUBLIC_URL} className="home-ontop"><i className="fa fa-home"></i></a>
+				<a href={process.env.PUBLIC_URL} id="home-ontop"><i className="fa fa-home"></i></a>	
+
+				{/* Menu-ontop */}
+				<i class="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)}></i>
+				
+				{/* Pages-ontop */}
+				<i class="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)}></i>
+				
+				{/* Customers talk-ontop */}
+				<i class="far fa-id-card" id="customers-talk-ontop"></i>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
+				
+				{/* Goto bottom button */}
 				<i className="fa fa-arrow-down" id="toBottom" onClick={goBottom}></i>				 
 
 				{/* Copyright */}
