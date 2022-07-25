@@ -6,6 +6,7 @@ import {
   LightgalleryItem
 } from "react-lightgallery";
 import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/examples/package/react-lightgallery > https://codesandbox.io/s/mo45kpo92j
+import parser from 'react-html-parser';
 
 
 const PhotoItem = ({ image, thumb, title, group }) => (
@@ -51,28 +52,28 @@ function Product({ data, showContactForm, handleProductReadMore }) {
     }
     
 
-    function getPrice(product, siteInfo) {
-
-        const priceInfo = product.priceInfo
+    function getPrice(price, percentagePriceIncrease, percentagePriceIncreaseAppliesToAllProducts) {
 
         //tính giá & phần trăm tăng nếu tồn tại cột % trên sản phẩm
         //cột % [percentagePriceIncrease] chấp nhận cả số âm và số 0
-        if (product.priceInfo.percentagePriceIncrease !== null && product.priceInfo.percentagePriceIncrease !== undefined)
+        if (percentagePriceIncrease !== null && percentagePriceIncrease !== undefined)
         {            
-            const priceResult = priceInfo.price + (priceInfo.percentagePriceIncrease/100*priceInfo.price)
+            const priceResult = price + (percentagePriceIncrease/100*price)
             return currencyFormat(priceResult)
         }
+
         //tính giá & phần trăm tăng nếu tồn tại cột % trên toàn cục 
         //cột % [percentagePriceIncreaseAppliesToAllProducts] chấp nhận cả số âm và số 0
-        else if (siteInfo.percentagePriceIncreaseAppliesToAllProducts !== null && siteInfo.percentagePriceIncreaseAppliesToAllProducts !== undefined)
+        else if (percentagePriceIncreaseAppliesToAllProducts !== null && percentagePriceIncreaseAppliesToAllProducts !== undefined)
         {
-            const priceResult = priceInfo.price + (siteInfo.percentagePriceIncreaseAppliesToAllProducts/100*priceInfo.price)
+            const priceResult = price + (percentagePriceIncreaseAppliesToAllProducts/100*price)
             return currencyFormat(priceResult)
         }
+
         //trả về chỉ giá sản phẩm nếu không tồn tại cột % trên sản phẩm và cột % trên toàn cục
         else
         {
-            return currencyFormat(priceInfo.price)
+            return currencyFormat(price)
         }
     }
 
@@ -83,28 +84,43 @@ function Product({ data, showContactForm, handleProductReadMore }) {
         return false;
     }
 
-    const showReadMore = (input, limit, dots) => 
+    const showReadMore = (product, limit, dots, percentagePriceIncreaseAppliesToAllProducts) => 
     {
-        input = getOtherPriceInDesc(input)
+        //format the Desc
+        let description = updateDescByOtherPriceInPercentage(product, percentagePriceIncreaseAppliesToAllProducts)
         
-        if(validShowReadMore(input, limit))
+        if(validShowReadMore(description, limit))
         {
-            input = input.substring(0,limit)
-            var lastIndexOfSpace = input.lastIndexOf(" ")
-            input = input.substr(0, lastIndexOfSpace) + dots
+            description = description.substring(0,limit)
+            var lastIndexOfSpace = description.lastIndexOf(" ")
+            description = description.substr(0, lastIndexOfSpace) + dots
         }    
-        return input;
+        return parser(description);
     }
 
-    const getOtherPriceInDesc = (input) => 
+    const updateDescByOtherPriceInPercentage = (product, percentagePriceIncreaseAppliesToAllProducts) => 
     {
-       if(input !== null && input !== undefined && input.includes('{')) 
-       {
-            let prices = input.match(/\d+(?:\.\d+)?/g)
-            console.log(prices)
-       }
+        let description = product.description
+        if(description !== null && description !== undefined) 
+        {
+                let prices = description.match(/\d+(?:\.\d+)?/g)
+                if(prices)
+                {
+                    prices.forEach(function(price) 
+                    {
+                        //get price
+                        if(price > 10000){                        
+                            let percentagePriceIncrease = getPrice(Number(price), product.priceInfo.percentagePriceIncrease, percentagePriceIncreaseAppliesToAllProducts)
+                            description = description.replace(price, percentagePriceIncrease)
 
-       return input
+                            //add more property 'DescByOtherPriceInPercentage' to object
+                            product.DescByOtherPriceInPercentage = description
+                        }
+                    });
+                }
+        }
+
+        return description
     }
 
 
@@ -118,7 +134,7 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                     <section>
                         <header>
                             <h2>
-                                Giá: <span className="price">{getPrice(product, siteInfo)}</span>
+                                Giá: <span className="price">{getPrice(product.priceInfo.price, product.priceInfo.percentagePriceIncrease, siteInfo.percentagePriceIncreaseAppliesToAllProducts)}</span>
                                 <input type="hidden" id="price" value={currencyFormat(product.priceInfo.price)} />
                                 <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
                                 <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
@@ -131,7 +147,7 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                             {product.description && (<div>
                                 <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
                                 <p className='excerpt' onClick={(e) => handleProductReadMore(e, product)}>
-                                    {showReadMore(product.description, charNumLimitedInDesc, ' ...')}                                    
+                                    {showReadMore(product, charNumLimitedInDesc, ' ...', siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
                                     {validShowReadMore(product.description, charNumLimitedInDesc) && (
                                         <i className='read-more'>Xem thêm</i>
                                     )}                                    

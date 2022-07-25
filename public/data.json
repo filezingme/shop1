@@ -80,7 +80,7 @@
 		{
 			"id": 1307005,
 			"title": "Clutch cầm tay 1 khóa",
-			"description": "Loại có gù giá 1 triệu",
+			"description": "Loại có gù giá 1000000",
 			"priceInfo": {
 				"price": 900000
 			},
@@ -96,7 +96,7 @@
 		{
 			"id": 1307006,
 			"title": "Clutch cầm tay 2 khóa",
-			"description": "Có gù giá 1050000 và Có vân giá 1100000 vnd",
+			"description": "Có gù giá 1050000",
 			"priceInfo": {
 				"price": 950000
 			},
@@ -110,7 +110,7 @@
 		{
 			"id": 1307007,
 			"title": "Giày cá sấu",
-			"description": "Sỉ từng đôi 1tr700. Sỉ theo ri 4 đôi( size 39-42) giá 1tr500",
+			"description": "Sỉ từng đôi 1700000. Sỉ theo ri 4 đôi(size 39-42) giá 1500000",
 			"priceInfo": {
 				"price": 1700000
 			},

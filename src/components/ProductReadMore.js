@@ -26,7 +26,7 @@ function ProductReadMore({ handleClose, isShow, product }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {parser(product.description)}
+        {product.DescByOtherPriceInPercentage !== null && product.DescByOtherPriceInPercentage !== undefined ? parser(product.DescByOtherPriceInPercentage) : parser(product.description)}
 
         <p className='galleryTitle'><strong>Hình ảnh sản phẩm</strong></p>
 
