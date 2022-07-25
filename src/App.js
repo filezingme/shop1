@@ -50,6 +50,8 @@ function App() {
 
 		fetchData();
 
+		//$('html, body').animate({scrollTop : 0},1000);
+
 	}, [])
 
 	const goTop = () => {
