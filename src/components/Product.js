@@ -98,9 +98,13 @@ function Product({ data, showContactForm, handleProductReadMore }) {
 
     const getOtherPriceInDesc = (input) => 
     {
-       if(input !== null && input !== undefined) {
-            return input
+       if(input !== null && input !== undefined && input.includes('{')) 
+       {
+            let prices = input.match(/\d+(?:\.\d+)?/g)
+            console.log(prices)
        }
+
+       return input
     }
 
 

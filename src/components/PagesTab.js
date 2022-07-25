@@ -26,7 +26,8 @@ function PagesTab({ handleClose, isShowPagesTab }) {
           <Modal.Title>Thông tin</Modal.Title>          
         </Modal.Header>
         <Modal.Body>
-          <Accordion defaultActiveKey={['0']} alwaysOpen>
+          {/* <Accordion defaultActiveKey={['0']} alwaysOpen> */}
+          <Accordion alwaysOpen>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Về chúng tôi</Accordion.Header>
               <Accordion.Body>
@@ -45,7 +46,7 @@ function PagesTab({ handleClose, isShowPagesTab }) {
                 <ul>
                   <li>Sản phẩm da cá sấu/da bò cao cấp thật 100%.</li>
                   <li>Cam kết đền gấp 10 lần giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật.</li>
-                  <li>Bảo hành 2 năm cho tất cả các sản phẩm da.</li>
+                  <li>Bảo hành 5 năm cho sản phẩm da cá sấu và 2 năm da bò.</li>
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
