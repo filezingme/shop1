@@ -4029,6 +4029,7 @@ input, select, textarea {
 
 	#wrapper > section:first-child > header {
 		padding-left:2rem;
+		padding-right: 1rem;
 	}
 
 	#wrapper > section:first-child > .content > section > header {
