@@ -13,6 +13,20 @@
 		"cc": "",
 		"bcc": ""
 	},
+	"pagesTab": {
+		"aboutUs":  {
+			"title": "Về chúng tôi",
+			"content": "<ul><li>Chúng tôi có xưởng trực tiếp sản xuất các sản phẩm đồ da cá sấu/da bò cao cấp.</li><li>Chúng tôi sản xuất nhiều loại sản phẩm về da.</li><li>Chúng tôi nhận gia công cho khách hàng có nhu cầu đặt hàng theo thương hiệu riêng, sản xuất mẫu mã theo yêu cầu.</li><li>Chúng tôi có đội ngũ công nhân tay nghề cao có nhiều năm kinh nghiệm.</li><li>Hãy liên hệ với chúng tôi để được phục vụ!</li></ul>"
+		},
+		"servicesAndOthers": {
+			"title": "Dịch vụ & Cam kết chất lượng",
+			"content": "<ul><li>Sản phẩm da cá sấu/da bò cao cấp thật 100%.</li>  <li>Cam kết đền gấp 10 lần giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật.</li>  <li>Bảo hành 5 năm cho sản phẩm da cá sấu và 2 năm da bò.</li></ul>"
+		},
+		"contact": {
+			"title": "Liên hệ",
+			"content": "<ul><li><strong>Điện thoại</strong>: 0979116118</li><li><strong>Email</strong>: xtcbanhang@gmail.com</li><li><strong>Địa chỉ</strong>: CT1 - Showroom 7, Rice City Linh Đàm, Hoàng Liệt, Hoàng Mai, TP.Hà Nội.</li></ul>"
+		}
+	},
 	"products": [
 		{
 			"id": 1307001,
