@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import Button from "react-bootstrap/Button";
+import React, {useEffect} from 'react'
 import Modal from "react-bootstrap/Modal";
 import Accordion from 'react-bootstrap/Accordion';
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 
 function PagesTab({ handleClose, isShowPagesTab }) {
 
