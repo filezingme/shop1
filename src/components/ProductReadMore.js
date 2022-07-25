@@ -31,7 +31,7 @@ function ProductReadMore({ handleClose, isShow, product }) {
 
         {product.images && (
           product.images.map((image, index) => (							
-              <img key={index} src={process.env.PUBLIC_URL + `/assets/images/product/${image}`} style={{ width: "100%" }} /*loading="lazy"*/ alt={product.title} title={product.title} />
+              <img key={index} src={process.env.PUBLIC_URL + `/assets/images/product/${image}`} style={{ width: "100%" }} loading="lazy" alt={product.title} title={product.title} />
           ))
         )}
       </Modal.Body>

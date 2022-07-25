@@ -13,7 +13,7 @@ import parser from 'react-html-parser';
 
 const PhotoItem = ({ image, thumb, title, group }) => (
     <LightgalleryItem group={group} src={image} thumb={thumb}>
-        <img src={thumb} style={{ width: "100%" }} /*loading="lazy"*/ alt={title} title={title} />
+        <img src={thumb} style={{ width: "100%" }} loading="lazy" alt={title} title={title} />
     </LightgalleryItem>
 );
 
