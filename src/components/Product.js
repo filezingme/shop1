@@ -85,6 +85,8 @@ function Product({ data, showContactForm, handleProductReadMore }) {
 
     const showReadMore = (input, limit, dots) => 
     {
+        input = getOtherPriceInDesc(input)
+        
         if(validShowReadMore(input, limit))
         {
             input = input.substring(0,limit)
@@ -92,6 +94,13 @@ function Product({ data, showContactForm, handleProductReadMore }) {
             input = input.substr(0, lastIndexOfSpace) + dots
         }    
         return input;
+    }
+
+    const getOtherPriceInDesc = (input) => 
+    {
+       if(input !== null && input !== undefined) {
+            return input
+       }
     }
 
 
@@ -117,11 +126,10 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                             
                             {product.description && (<div>
                                 <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
-                                <p className='excerpt'>
-                                    {showReadMore(product.description, charNumLimitedInDesc, ' ...')}
-                                    
+                                <p className='excerpt' onClick={(e) => handleProductReadMore(e, product)}>
+                                    {showReadMore(product.description, charNumLimitedInDesc, ' ...')}                                    
                                     {validShowReadMore(product.description, charNumLimitedInDesc) && (
-                                        <i className='read-more' onClick={(e) => handleProductReadMore(e, product)}>Xem thêm</i>
+                                        <i className='read-more'>Xem thêm</i>
                                     )}                                    
                                 </p>
                             </div>
