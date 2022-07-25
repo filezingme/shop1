@@ -3336,6 +3336,7 @@ input, select, textarea {
 
 			#wrapper > section > header h1 {
 				margin-top: 0rem;
+				cursor: pointer;
 			}
 
 				#wrapper > section > header h1:before {
@@ -3891,6 +3892,7 @@ input, select, textarea {
 
 .excerpt {
 	font-style: italic;
+	cursor: pointer;
 }
 
 .productReadMore .galleryTitle {
@@ -3910,6 +3912,7 @@ input, select, textarea {
 
 .home-product-title:hover {
 	color: #11be99;
+	text-decoration: underline;	
 }
 
 @media screen and (max-width: 1024px) {
