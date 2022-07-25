@@ -3479,6 +3479,7 @@ input, select, textarea {
 
 					#wrapper > section > .content > section > header {
 						width: 30rem;
+						padding-right: 6rem;
 					}
 
 		}
@@ -3584,6 +3585,7 @@ input, select, textarea {
 
 						#wrapper > section > .content > section > header {
 							width: 100%;
+							padding-right: 0rem;
 						}
 
 						#wrapper > section > .content > section:last-child {
@@ -3612,8 +3614,13 @@ input, select, textarea {
 				}
 
 					#wrapper > section > header {
+						padding: 2rem 4rem;
+						padding-bottom: 1.5rem;
+					}
+
+					#wrapper > section:first-child > header {
 						padding: 4rem 4rem;
-						padding-bottom: 2rem;
+						padding-bottom: 1.5rem;
 					}
 
 					#wrapper > section > .content {
@@ -3916,6 +3923,28 @@ input, select, textarea {
 	text-decoration: underline;	
 }
 
+/* 
+@media screen and (min-width: 1024px) {
+
+	#wrapper > section > .content > section > header {
+		padding-right: 6rem;
+	}
+} */
+
+@media screen and (max-width: 1200px) {
+
+	#wrapper > section {
+		padding-top: 0rem;
+	}
+}
+
+@media screen and (min-width: 1201px) {
+
+	#wrapper > section > .content > section > header {
+		padding-right: 7rem;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	#wrapper section > header h2 {
 		margin-top: 0rem;
@@ -3924,15 +3953,6 @@ input, select, textarea {
 	#wrapper section > header .h2buy {
 		margin: 3rem 0;
 	}
-}
-
-
-@media screen and (max-width: 1200px) {
-
-	#wrapper > section {
-		padding-top: 0rem;
-	}
-
 }
 
 
@@ -3948,6 +3968,10 @@ input, select, textarea {
 
 	#wrapper > section > header {
 		padding-bottom: 1rem;
+	}
+
+	#wrapper > section:first-child > header {
+		padding-top: 4rem;
 	}
 
 }
@@ -3966,10 +3990,28 @@ input, select, textarea {
 }
 
 
+@media screen and (max-width: 667px) {
+
+	#wrapper > section > header {
+		padding-left: 2rem;
+	}
+
+	#wrapper > section:first-child > header {
+		padding-left: 2rem;
+	}
+
+	#wrapper > section > .content > section > header {
+		padding-right: 1rem;
+	}
+
+}
+
+
 @media screen and (max-width: 576px) {
 
 	#wrapper > section > header {
 		padding: 2rem 2rem;
+		padding-bottom: 0rem;
 	}
 
 	.react_lightgallery_item {
@@ -3979,6 +4021,45 @@ input, select, textarea {
 
 	#wrapper section > header .h2buy {
 		margin-bottom: 1.5rem;
+	}
+
+}
+
+@media screen and (max-width: 390px) {
+
+	#wrapper > section:first-child > header {
+		padding-left:2rem;
+	}
+
+	#wrapper > section:first-child > .content > section > header {
+		padding-right: 1rem;
+	}
+
+}
+
+
+@media screen and (max-width: 360px) {
+
+	#wrapper > section:first-child > header {
+		padding: 4rem 2rem;
+		padding-bottom: 0rem;
+	}
+
+	#wrapper > section > .content {
+		padding-top: 0rem;
+	}
+
+	#wrapper > section:first-child > .content {
+		padding-top: 1rem;
+	}
+
+	#wrapper > section > .content {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+
+	#wrapper > section > .content > section > header {
+		 padding-right: 0;
 	}
 
 }
