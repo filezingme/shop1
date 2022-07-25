@@ -2,8 +2,9 @@ import React, {useEffect} from 'react'
 import Modal from "react-bootstrap/Modal";
 import Accordion from 'react-bootstrap/Accordion';
 import "bootstrap/dist/css/bootstrap.min.css";
+import parser from 'react-html-parser';
 
-function PagesTab({ handleClose, isShowPagesTab }) {
+function PagesTab({ handleClose, isShowPagesTab, pagesTab }) {
 
   useEffect(() => {
 
@@ -11,7 +12,7 @@ function PagesTab({ handleClose, isShowPagesTab }) {
 
   }, [isShowPagesTab])
 
-  return (<>
+  return (pagesTab && (
       <Modal
         size="lg"
         show={isShowPagesTab}
@@ -26,45 +27,34 @@ function PagesTab({ handleClose, isShowPagesTab }) {
         <Modal.Body>
           {/* <Accordion defaultActiveKey={['0']} alwaysOpen> */}
           <Accordion alwaysOpen>
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Về chúng tôi</Accordion.Header>
-              <Accordion.Body>
-                <ul>
-                  <li>Chúng tôi có xưởng trực tiếp sản xuất các sản phẩm đồ da cá sấu/da bò cao cấp.</li>
-                  <li>Chúng tôi sản xuất nhiều loại sản phẩm về da.</li>
-                  <li>Chúng tôi nhận gia công cho khách hàng có nhu cầu đặt hàng theo thương hiệu riêng, sản xuất mẫu mã theo yêu cầu.</li>
-                  <li>Chúng tôi có đội ngũ công nhân tay nghề cao có nhiều năm kinh nghiệm.</li>
-                  <li>Hãy liên hệ với chúng tôi để được phục vụ!</li>
-                </ul>
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Dịch vụ & Cam kết chất lượng</Accordion.Header>
-              <Accordion.Body>
-                <ul>
-                  <li>Sản phẩm da cá sấu/da bò cao cấp thật 100%.</li>
-                  <li>Cam kết đền gấp 10 lần giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật.</li>
-                  <li>Bảo hành 5 năm cho sản phẩm da cá sấu và 2 năm da bò.</li>
-                </ul>
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-              <Accordion.Header>Liên hệ</Accordion.Header>
-              <Accordion.Body>
-                <ul>
-                  <li><strong>Điện thoại</strong>: 0979116118</li>
-                  <li><strong>Email</strong>: xtcbanhang@gmail.com</li>
-                  <li><strong>Địa chỉ</strong>: CT1 Company - Showroom 7, Rice City Linh Đàm, Hoàng Liệt, Hoàng Mai, TP.Hà Nội.</li>
-                </ul>
-              </Accordion.Body>
-            </Accordion.Item>
+            {pagesTab.aboutUs && (
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>{pagesTab.aboutUs.title}</Accordion.Header>
+                <Accordion.Body>
+                  {parser(pagesTab.aboutUs.content)}
+                </Accordion.Body>
+              </Accordion.Item>
+            )}
+            {pagesTab.servicesAndOthers && (
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>{pagesTab.servicesAndOthers.title}</Accordion.Header>
+                <Accordion.Body>
+                  {parser(pagesTab.servicesAndOthers.content)}
+                </Accordion.Body>
+              </Accordion.Item>
+            )}            
+            {pagesTab.contact && (
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>{pagesTab.contact.title}</Accordion.Header>
+                <Accordion.Body>
+                  {parser(pagesTab.contact.content)}
+                </Accordion.Body>
+              </Accordion.Item>
+            )}
           </Accordion>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>Đóng</Button>
-        </Modal.Footer> */}
       </Modal>
-    </>)
+    ))
 }
 
 export default PagesTab;
