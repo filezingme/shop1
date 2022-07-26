@@ -18,6 +18,7 @@ function ProductReadMore({ handleClose, isShow, product }) {
       onHide={() => handleClose(false)}
       aria-labelledby="example-modal-sizes-title-lg"
       className='productReadMore'
+      scrollable={true}
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">
@@ -25,7 +26,13 @@ function ProductReadMore({ handleClose, isShow, product }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {product.DescByOtherPriceInPercentage !== null && product.DescByOtherPriceInPercentage !== undefined ? parser(product.DescByOtherPriceInPercentage) : parser(product.description)}
+        { product.DescByOtherPriceInPercentage ? (
+            <div className='product-read-more-desc'>{parser(product.DescByOtherPriceInPercentage)}</div>
+          ) 
+          : product.description && (
+            <div className='product-read-more-desc'>{parser(product.description)}</div>
+          )
+        }
 
         <p className='galleryTitle'><strong>Hình ảnh sản phẩm</strong></p>
 

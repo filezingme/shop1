@@ -3904,8 +3904,11 @@ input, select, textarea {
 }
 
 .productReadMore .galleryTitle {
-	margin-top: 30px;
 	margin-bottom: 0px;
+}
+
+.product-read-more-desc {
+	margin-bottom: 30px;
 }
 
 .productReadMore img {
