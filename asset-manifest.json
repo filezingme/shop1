@@ -1,7 +1,7 @@
 {
   "main.css": "/xtcbanhang.com/static/css/main.6fb5e6a1.chunk.css",
-  "main.js": "/xtcbanhang.com/static/js/main.5cdf9612.chunk.js",
-  "main.js.map": "/xtcbanhang.com/static/js/main.5cdf9612.chunk.js.map",
+  "main.js": "/xtcbanhang.com/static/js/main.4add6c94.chunk.js",
+  "main.js.map": "/xtcbanhang.com/static/js/main.4add6c94.chunk.js.map",
   "static/js/1.dc4dc002.chunk.js": "/xtcbanhang.com/static/js/1.dc4dc002.chunk.js",
   "static/js/1.dc4dc002.chunk.js.map": "/xtcbanhang.com/static/js/1.dc4dc002.chunk.js.map",
   "static/css/2.1a97cbf7.chunk.css": "/xtcbanhang.com/static/css/2.1a97cbf7.chunk.css",
@@ -13,6 +13,6 @@
   "static/css/main.6fb5e6a1.chunk.css.map": "/xtcbanhang.com/static/css/main.6fb5e6a1.chunk.css.map",
   "static/css/2.1a97cbf7.chunk.css.map": "/xtcbanhang.com/static/css/2.1a97cbf7.chunk.css.map",
   "index.html": "/xtcbanhang.com/index.html",
-  "precache-manifest.c29b3806e7960e96280c95b4b7571e93.js": "/xtcbanhang.com/precache-manifest.c29b3806e7960e96280c95b4b7571e93.js",
+  "precache-manifest.925329e89e567b03c431dd50bc4c49f2.js": "/xtcbanhang.com/precache-manifest.925329e89e567b03c431dd50bc4c49f2.js",
   "service-worker.js": "/xtcbanhang.com/service-worker.js"
 }
