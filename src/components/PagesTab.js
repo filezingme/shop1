@@ -44,7 +44,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
             }
         };
 
-        console.log('postData:',postData)
+        //console.log('postData:',postData)
 
         setLoading(true)
 

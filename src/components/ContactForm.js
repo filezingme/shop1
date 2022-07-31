@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import Loading from './Loading';
 
 function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig }) {
   const [validated, setValidated] = useState(false);
@@ -101,7 +102,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
           <Modal.Header closeButton>
             <Modal.Title>Liên hệ mua "{product.title} ({product.id})"</Modal.Title>
 
-            {loading && (<img id="imgloading" src={process.env.PUBLIC_URL + `/assets/images/loading.gif`} title="loading" alt="loading" />)}
+            {loading && <Loading />}
             {showSentMsg && ( <p id="ploading"><span role="img" aria-label="success">&#10004;</span> Đã gửi.</p>)}
             {showErrorMsg && ( <p id="ploading-error"><span role="img" aria-label="error">&#10060;</span> Lỗi.</p>)}
            

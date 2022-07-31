@@ -9,6 +9,7 @@ import ContactForm from './components/ContactForm';
 import PagesTab from './components/PagesTab';
 import PageNotFound from './components/PageNotFound';
 import ProductReadMore from './components/ProductReadMore';
+import CustomersTalk from './components/CustomersTalk';
 
 function App() {
 
@@ -126,6 +127,16 @@ function App() {
 		setShowPagesTab(false)
 	}
 	
+	//Customers Talk
+	const [showCustomersTalk, setShowCustomersTalk] = useState(false);
+	const handleShowCustomersTalk = (e) => {
+		e.preventDefault()
+		setShowCustomersTalk(true)
+	}
+	const hideCustomersTalk = () => {
+		setShowCustomersTalk(false)
+	}
+	
 	//Product Read More
 	const [showProductReadMore, setShowProductReadMore] = useState(false);
 	const handleProductReadMore = (e, product) => {
@@ -161,8 +172,11 @@ function App() {
 				{/* Contact form */}
 				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />	
 
-				{/* Contact form */}
-				<PagesTab categoryList={categories} handleClose={hidePagesTab} isShowPagesTab={showPagesTab} pagesTab={originalData.pagesTab} contactFormConfig={originalData.contactFormConfig} />		
+				{/* Pages tab */}
+				<PagesTab handleClose={hidePagesTab} isShowPagesTab={showPagesTab} pagesTab={originalData.pagesTab} contactFormConfig={originalData.contactFormConfig} />	
+
+				{/* Customers talk */}
+				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={hideCustomersTalk} isShow={showCustomersTalk}  />	
 
 				{/* Product Read More */}
 				<ProductReadMore handleClose={hideProductReadMore} isShow={showProductReadMore} product={product} />	
@@ -179,7 +193,7 @@ function App() {
 				<i className="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)}></i>
 				
 				{/* Customers talk-ontop */}
-				<i className="far fa-comment-dots" id="customers-talk-ontop"></i>
+				<i className="far fa-comment-dots" id="customers-talk-ontop" onClick={(e) => handleShowCustomersTalk(e)}></i>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
