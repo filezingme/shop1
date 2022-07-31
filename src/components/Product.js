@@ -25,7 +25,7 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, showContactForm, handleProductReadMore }) {
+function Product({ data, showContactForm, handleProductReadMore, callbackActivedMenuItem }) {
     
 	const [dataObj, setDataObj] = useState(null)
 
@@ -49,6 +49,9 @@ function Product({ data, showContactForm, handleProductReadMore }) {
             let list = data.products
             if(categoryName) {
                 list = list.filter(product => product.category.toLowerCase() === categoryName.toLowerCase())
+
+                //auto callback CategoryName
+                ;(() => callbackActivedMenuItem(categoryName))()
             }
 
             //productList with paging

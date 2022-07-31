@@ -105,6 +105,10 @@ function App() {
 	const hideCategoryMenu = () => {
 		setShowMenu(false)
 	}
+	const [activedMenuItem, setActivedMenuItem] = useState('');
+	const handleActivedMenuItem = (categoryName) => {
+		setActivedMenuItem(categoryName)
+	}
 	
 	//Copyright
 	const [showCopyright, setShowCopyright] = useState(true);
@@ -138,12 +142,12 @@ function App() {
 		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } exact > 
-						<Route path="/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } />
+					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} /> } exact > 
+						<Route path="/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} /> } />
 					</Route>
 
-					<Route path="/category/:categoryName/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} exact /> } >
-						<Route path="/category/:categoryName/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } />
+					<Route path="/category/:categoryName/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} exact /> } >
+						<Route path="/category/:categoryName/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} /> } />
 					</Route>
 
 					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
@@ -152,7 +156,7 @@ function App() {
 
 
 				{/* Menu */}
-				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} />
+				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} activedItem={activedMenuItem} />
 
 				{/* Contact form */}
 				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />	

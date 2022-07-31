@@ -3988,6 +3988,11 @@ input, select, textarea {
     color: #cececf !important;
 }
 
+.flex-column .actived {
+	border-color: #11be99;
+    background-color: #5cefce3d;
+}
+
 @media screen and (max-width: 1200px) {
 
 	#wrapper > section {
@@ -4002,7 +4007,7 @@ input, select, textarea {
 	}
 }
 
-@media screen and (max-width: 1152px) and (min-width: 769px) {
+@media screen and (max-width: 1152px) and (min-width: 768px) {
 	.page-link {
 		padding: 0rem 0.2rem !important;
 		text-align: center;
