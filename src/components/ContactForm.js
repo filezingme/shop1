@@ -102,7 +102,6 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
             <Modal.Title>Liên hệ mua "{product.title} ({product.id})"</Modal.Title>
 
             {loading && (<img id="imgloading" src={process.env.PUBLIC_URL + `/assets/images/loading.gif`} title="loading" alt="loading" />)}
-
             {showSentMsg && ( <p id="ploading"><span role="img" aria-label="success">&#10004;</span> Đã gửi.</p>)}
             {showErrorMsg && ( <p id="ploading-error"><span role="img" aria-label="error">&#10060;</span> Lỗi.</p>)}
            

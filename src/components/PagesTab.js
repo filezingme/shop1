@@ -97,7 +97,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
         size="lg"
         show={isShowPagesTab}
         onHide={handleClose}
-        // backdrop="static"
+        backdrop="static" //static='không đóng modal khi click ra ngoài, chỉ đóng modal khi click nút close'
         keyboard={false}
         className="pagesTab"
         // scrollable={true}
@@ -135,7 +135,6 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
                       <Modal.Title>Gửi liên hệ</Modal.Title>
 
                       {loading && (<img id="imgloading" src={process.env.PUBLIC_URL + `/assets/images/loading.gif`} title="loading" alt="loading" />)}
-
                       {showSentMsg && ( <p id="ploading"><span role="img" aria-label="success">&#10004;</span> Đã gửi.</p>)}
                       {showErrorMsg && ( <p id="ploading-error"><span role="img" aria-label="error">&#10060;</span> Lỗi.</p>)}
                     
