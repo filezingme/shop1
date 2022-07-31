@@ -26,19 +26,24 @@ PhotoItem.propTypes = {
 
 
 function Product({ data, showContactForm, handleProductReadMore }) {
-
-	const [productList, setProductList] = useState([])
-	const [siteInfo, setSiteInfo] = useState({})
-
-    const itemsPerPage = 10
-	const [totalPages, setTotalPages] = useState(0)
+    
+	const [dataObj, setDataObj] = useState(null)
 
     const {categoryName, page=1} = useParams()
+
     const charNumLimitedInDesc = 100
 
 
     useEffect(() => {
-        if(productList.length === 0) {
+        if(!dataObj) {
+
+            const obj = {}
+
+            //paginateConfig
+            if(data.paginateConfig){
+                obj.itemsPerPage = data.paginateConfig.itemsPerPage
+                obj.maxPageDisplay = data.paginateConfig.maxPageDisplay
+            }
             
             //product list
             let list = data.products
@@ -47,15 +52,16 @@ function Product({ data, showContactForm, handleProductReadMore }) {
             }
 
             //productList with paging
-            const listPaging = list.slice((parseInt(page) - 1) * itemsPerPage, parseInt(page) * itemsPerPage)
-            setProductList(listPaging);
+            const listPaging = list.slice((parseInt(page) - 1) * obj.itemsPerPage, parseInt(page) * obj.itemsPerPage)
+            obj.productList = listPaging
 
             //total pages
-            const x = Math.ceil(list.length/itemsPerPage)
-            setTotalPages(x)
+            obj.totalPages = Math.ceil(list.length/obj.itemsPerPage)
 
             //site info
-            setSiteInfo(data.siteInfo)
+            obj.siteInfo = data.siteInfo
+
+            setDataObj(obj)
         }
 	}, [categoryName, page])
     
@@ -136,9 +142,9 @@ function Product({ data, showContactForm, handleProductReadMore }) {
     }
 
 
-    return (productList && (<>
+    return (dataObj && (<>
         {/* product list */}
-        {productList.map((product) => (
+        {dataObj.productList.map((product) => (
             <section key={product.id}>
                 <header>
                     <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
@@ -147,10 +153,10 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                     <section>
                         <header>
                             <h2>
-                                Giá: <span className="price">{getPrice(product.priceInfo.price, product.priceInfo.percentagePriceIncrease, siteInfo.percentagePriceIncreaseAppliesToAllProducts)}</span>
+                                Giá: <span className="price">{getPrice(product.priceInfo.price, product.priceInfo.percentagePriceIncrease, dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}</span>
                                 <input type="hidden" id="price" value={currencyFormat(product.priceInfo.price)} />
                                 <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
-                                <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
+                                <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
                             </h2>
                             <h3>
                                 <i>Mã: <strong>{product.id}</strong></i><br/>
@@ -160,7 +166,7 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                             {product.description && (<div>
                                 <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
                                 <p className='excerpt' onClick={(e) => handleProductReadMore(e, product)}>
-                                    {showReadMore(product, charNumLimitedInDesc, ' ...', siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
+                                    {showReadMore(product, charNumLimitedInDesc, ' ...', dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
                                     {validShowReadMore(product.description, charNumLimitedInDesc) && (
                                         <i className='read-more'>Xem thêm</i>
                                     )}                                    
@@ -168,7 +174,7 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                             </div>
                             )}
 
-                            <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{data.siteInfo.buyBtnText}</a></h2>
+                            <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{dataObj.siteInfo.buyBtnText}</a></h2>
                         </header>
                         <div className="content">
                             <div className={`gallery`}>
@@ -190,7 +196,7 @@ function Product({ data, showContactForm, handleProductReadMore }) {
         ))}
 
         {/* paginate */}
-        <Paginate page={parseInt(page)} pages={totalPages} maxPageDisplay={3} category={categoryName} />
+        <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} />
     </>))
 }
 

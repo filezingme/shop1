@@ -14,6 +14,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false)
   const [showSentMsg, setShowSentMsg] = useState(false)
+  const [showErrorMsg, setShowErrorMsg] = useState(false)
 
   
   const handleSubmit = (event) => {
@@ -53,16 +54,22 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
             data: postData
         })
         .then(function (response) {
-            //console.log(response.data);
-            setLoading(false)
+          setLoading(false)
+          
+          //if error
+          if (response.data.result && response.data.result === 'error'){
+            setShowErrorMsg(true)
+          }
+          else {         
             setShowSentMsg(true)
-            
+               
             //reset form
             setName('')
             setEmail('')
             setContent('')
+          }
 
-            setValidated(false);
+          setValidated(false)
         })
         .catch(function(error) {
             console.log(error);
@@ -96,7 +103,8 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
 
             {loading && (<img id="imgloading" src={process.env.PUBLIC_URL + `/assets/images/loading.gif`} title="loading" alt="loading" />)}
 
-            {showSentMsg && ( <p id="ploading">&#10004; Đã gửi.</p>)}
+            {showSentMsg && ( <p id="ploading"><span role="img" aria-label="success">&#10004;</span> Đã gửi.</p>)}
+            {showErrorMsg && ( <p id="ploading-error"><span role="img" aria-label="error">&#10060;</span> Lỗi.</p>)}
            
           </Modal.Header>
           <Modal.Body>

@@ -158,7 +158,7 @@ function App() {
 				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />	
 
 				{/* Contact form */}
-				<PagesTab categoryList={categories} handleClose={hidePagesTab} isShowPagesTab={showPagesTab} pagesTab={originalData.pagesTab} />		
+				<PagesTab categoryList={categories} handleClose={hidePagesTab} isShowPagesTab={showPagesTab} pagesTab={originalData.pagesTab} contactFormConfig={originalData.contactFormConfig} />		
 
 				{/* Product Read More */}
 				<ProductReadMore handleClose={hideProductReadMore} isShow={showProductReadMore} product={product} />	

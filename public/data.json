@@ -13,6 +13,10 @@
 		"cc": "",
 		"bcc": ""
 	},
+	"paginateConfig": {
+		"itemsPerPage": 10,
+		"maxPageDisplay": 2
+	},
 	"pagesTab": {
 		"aboutUs":  {
 			"title": "Về chúng tôi",
