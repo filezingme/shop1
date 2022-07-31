@@ -100,7 +100,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
         backdrop="static" //static='không đóng modal khi click ra ngoài, chỉ đóng modal khi click nút close'
         keyboard={false}
         className="pagesTab"
-        // scrollable={true}
+        scrollable={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>Thông tin</Modal.Title>          
