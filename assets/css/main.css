@@ -3867,6 +3867,12 @@ input, select, textarea {
     color: green;
 }
 
+#ploading-error {
+	width: 180px;
+    margin: 0 1rem;
+    color: red;
+}
+
 .pagesTab {
 	font-size: 16px;
 }
@@ -3928,7 +3934,7 @@ input, select, textarea {
 
 .pagination {
     position: fixed;
-    top: 200px;
+    top: 12.2rem;
     right: 4px;
 	display: unset !important;
 
@@ -3937,6 +3943,10 @@ input, select, textarea {
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
+}
+
+.pagination .page-item {
+	width: 2.25rem;
 }
 
 .page-item:first-child .page-link {
@@ -3959,8 +3969,9 @@ input, select, textarea {
 
 .page-link {
     color: #888888 !important;
-	padding: 0.15rem 0.55rem !important;
-    margin: 3px 0 !important;
+	padding: 0.15rem 0.2rem !important;
+    margin: 2px 0 !important;
+	text-align: center;
 }
 
 .page-link:hover {
@@ -3993,7 +4004,11 @@ input, select, textarea {
 
 @media screen and (max-width: 1152px) and (min-width: 769px) {
 	.page-link {
-		padding: 0rem 0.45rem !important;
+		padding: 0rem 0.2rem !important;
+		text-align: center;
+	}
+	.pagination .page-item {
+		width: 1.8rem;
 	}
 }
 
