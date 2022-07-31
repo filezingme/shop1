@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "3e2d3d75c0b24f8c68b1",
+    "revision": "728fcb2d35089a54984d",
     "url": "/xtcbanhang.com/static/css/main.6fb5e6a1.chunk.css"
   },
   {
-    "revision": "3e2d3d75c0b24f8c68b1",
-    "url": "/xtcbanhang.com/static/js/main.3e2d3d75.chunk.js"
+    "revision": "728fcb2d35089a54984d",
+    "url": "/xtcbanhang.com/static/js/main.728fcb2d.chunk.js"
   },
   {
     "revision": "dc4dc0021066ace78671",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/xtcbanhang.com/static/media/lg.2ec2cb21.svg"
   },
   {
-    "revision": "99681fd07d57e96e639cb46a883b7a65",
+    "revision": "af796ead3db74ace9d1372d96b71a2e9",
     "url": "/xtcbanhang.com/index.html"
   }
 ];
