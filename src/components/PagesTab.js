@@ -20,7 +20,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab }) {
         // backdrop="static"
         keyboard={false}
         className="pagesTab"
-        scrollable={true}
+        // scrollable={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>Thông tin</Modal.Title>          

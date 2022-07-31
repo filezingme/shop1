@@ -3926,13 +3926,56 @@ input, select, textarea {
 	text-decoration: underline;	
 }
 
-/* 
-@media screen and (min-width: 1024px) {
+.pagination {
+    position: fixed;
+    top: 200px;
+    right: 4px;
+	display: unset !important;
 
-	#wrapper > section > .content > section > header {
-		padding-right: 6rem;
-	}
-} */
+	-webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.page-item:not(:first-child) .page-link {
+    margin-left: 0 !important;
+}
+
+.page-item:last-child .page-link {
+	border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+
+.page-link {
+    color: #888888 !important;
+	padding: 0.15rem 0.55rem !important;
+    margin: 3px 0 !important;
+}
+
+.page-link:hover {
+    background-color: #efefef !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+    background-color: #888888 !important;
+    border-color: #888888 !important;
+}
+
+.page-item.disabled .page-link {
+    color: #cececf !important;
+}
 
 @media screen and (max-width: 1200px) {
 
@@ -3945,6 +3988,12 @@ input, select, textarea {
 
 	#wrapper > section > .content > section > header {
 		padding-right: 7rem;
+	}
+}
+
+@media screen and (max-width: 1152px) and (min-width: 769px) {
+	.page-link {
+		padding: 0rem 0.45rem !important;
 	}
 }
 

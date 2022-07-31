@@ -12,47 +12,46 @@ import ProductReadMore from './components/ProductReadMore';
 
 function App() {
 
-	const [originalData, setOriginalData] = useState({})
+	const [originalData, setOriginalData] = useState(null)
 
 	const [categories, setCategories] = useState([])
 
 
 	useEffect(() => {
-		
-		async function fetchData() {
-			const { data } = await axios.get(process.env.PUBLIC_URL+'/data.json')
-
-			//set page title
-			document.title = data.siteInfo.pageTitle
-			
-			//set data
-			setOriginalData(data)
-
-			//set category list
-			if(data.products) {
-				//get list of unique categories
-				const uniqueCategories = Array.from(new Set(data.products.map(a => a.category)));
-
-				if(uniqueCategories) {
-					let array = []
-					uniqueCategories.forEach((category) => {
-						var obj = {
-							name: category, 
-							count: data.products.filter(x => x.category === category).length
-						};
-						array.push(obj);
-					});
-
-					setCategories(array)
-				}
-			}
-		}
 
 		fetchData();
 
 		//$('html, body').animate({scrollTop : 0},1000);
 
 	}, [])
+	
+		
+	async function fetchData() {
+		const { data } = await axios.get(process.env.PUBLIC_URL+'/data.json')
+		//set page title
+		document.title = data.siteInfo.pageTitle
+		
+		//set data
+		setOriginalData(data)
+
+		//set category list
+		if(data.products) {
+			//get list of unique categories
+			const uniqueCategories = Array.from(new Set(data.products.map(a => a.category)));
+
+			if(uniqueCategories) {
+				let array = []
+				uniqueCategories.forEach((category) => {
+					array.push({
+						name: category, 
+						count: data.products.filter(x => x.category === category).length
+					});
+				});
+
+				setCategories(array)
+			}
+		}
+	}
 
 	const goTop = () => {
 		$('html, body').animate({scrollTop : 0},200);
@@ -135,12 +134,18 @@ function App() {
 	}
 
 
-	return (
+	return (originalData && (
 		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } exact />
-					<Route path="/category/:categoryName" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } />
+					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } exact > 
+						<Route path="/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } />
+					</Route>
+
+					<Route path="/category/:categoryName/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} exact /> } >
+						<Route path="/category/:categoryName/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} /> } />
+					</Route>
+
 					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
 			    </Routes>
 
@@ -161,7 +166,7 @@ function App() {
 
 				
 				{/* Home-ontop */}
-				<a href={process.env.PUBLIC_URL} id="home-ontop"><i className="fa fa-home"></i></a>	
+				<a href={`${process.env.PUBLIC_URL}/`} id="home-ontop"><i className="fa fa-home"></i></a>	
 
 				{/* Menu-ontop */}
 				<i className="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)}></i>
@@ -183,7 +188,7 @@ function App() {
 
 			</div>
 		</Router>
-	);
+	));
 }
 
 export default App;

@@ -7,6 +7,7 @@ import {
 } from "react-lightgallery";
 import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/examples/package/react-lightgallery > https://codesandbox.io/s/mo45kpo92j
 import parser from 'react-html-parser';
+import Paginate from './Paginate';
 // import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
 
@@ -29,30 +30,39 @@ function Product({ data, showContactForm, handleProductReadMore }) {
 	const [productList, setProductList] = useState([])
 	const [siteInfo, setSiteInfo] = useState({})
 
-    const {categoryName} = useParams()
+    const itemsPerPage = 10
+	const [totalPages, setTotalPages] = useState(0)
+
+    const {categoryName, page=1} = useParams()
     const charNumLimitedInDesc = 100
 
 
     useEffect(() => {
-        if(data.products) {
-
+        if(productList.length === 0) {
+            
+            //product list
+            let list = data.products
             if(categoryName) {
-                const filteredProductList = data.products.filter(product => product.category.toLowerCase() === categoryName.toLowerCase())
-                setProductList(filteredProductList)
-            }
-            else {
-                setProductList(data.products)
+                list = list.filter(product => product.category.toLowerCase() === categoryName.toLowerCase())
             }
 
+            //productList with paging
+            const listPaging = list.slice((parseInt(page) - 1) * itemsPerPage, parseInt(page) * itemsPerPage)
+            setProductList(listPaging);
+
+            //total pages
+            const x = Math.ceil(list.length/itemsPerPage)
+            setTotalPages(x)
+
+            //site info
             setSiteInfo(data.siteInfo)
         }
-	}, [categoryName, data])
+	}, [categoryName, page])
     
 
     function currencyFormat(num) {
         return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    }
-    
+    }    
 
     function getPrice(price, percentagePriceIncrease, percentagePriceIncreaseAppliesToAllProducts) {
 
@@ -126,8 +136,9 @@ function Product({ data, showContactForm, handleProductReadMore }) {
     }
 
 
-    return (<>{productList && (
-        productList.map((product) => (
+    return (productList && (<>
+        {/* product list */}
+        {productList.map((product) => (
             <section key={product.id}>
                 <header>
                     <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
@@ -143,7 +154,7 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                             </h2>
                             <h3>
                                 <i>Mã: <strong>{product.id}</strong></i><br/>
-                                <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}`}>{product.category}</a></i><br/><br/>
+                                <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}/`}>{product.category}</a></i><br/><br/>
                             </h3>
                             
                             {product.description && (<div>
@@ -176,10 +187,11 @@ function Product({ data, showContactForm, handleProductReadMore }) {
                     </section>
                 </div>
             </section>
-        ))
-        )//productList &&
-    }
-    </>)//return
+        ))}
+
+        {/* paginate */}
+        <Paginate page={parseInt(page)} pages={totalPages} maxPageDisplay={3} category={categoryName} />
+    </>))
 }
 
 export default Product

@@ -18,7 +18,7 @@ function ProductReadMore({ handleClose, isShow, product }) {
       onHide={() => handleClose(false)}
       aria-labelledby="example-modal-sizes-title-lg"
       className='productReadMore'
-      scrollable={true}
+      // scrollable={true}
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">
