@@ -31,6 +31,39 @@
 			"content": "<ul><li><strong>Điện thoại</strong>: 0979116118</li><li><strong>Email</strong>: xtcbanhang@gmail.com</li><li><strong>Địa chỉ</strong>: CT1 - Showroom 7, Rice City Linh Đàm, Hoàng Liệt, Hoàng Mai, TP.Hà Nội.</li></ul>"
 		}
 	},
+	"customersTalk": [
+		{
+			"id": 3107001,
+			"author": "Nguyễn Văn A",
+			"title": "Ví cá sấu A mặt",
+			"images": [
+				"1616562928468555899683.jpg", 
+				"1616562928201234021868.jpg", 
+				"1616562928247103791970.jpg"
+			],
+			"content": "Cụ thể, kích thước dài x rộng x cao của ôtô 4 chỗ là từ 3.300 x 1.450 x 1.400 đến 3.700 x 1.500 x 1.450 mm. Trong khi đó, các xe ôtô 5 chỗ hạng A sẽ có kích thước từ 3.900 x 1.650 x 1.550 tới 4.100 x 1.670 x 1.550 mm."
+		},
+		{
+			"id": 3107002,
+			"author": "Nguyễn Văn B",
+			"title": "Ví cá sấu B mặt",
+			"images": [
+				"1-1024x683.jpg", 
+				"2-1024x683.jpg", 
+				"3-1024x683.jpg"
+			],
+			"content": "Cụ thể, kích thước dài x rộng x cao của ôtô 4 chỗ là từ 3.300 x 1.450 x 1.400 đến 3.700 x 1.500 x 1.450 mm. Trong khi đó, các xe ôtô 5 chỗ hạng A sẽ có kích thước từ 3.900 x 1.650 x 1.550 tới 4.100 x 1.670 x 1.550 mm."
+		},
+		{
+			"id": 3107003,
+			"author": "Nguyễn Văn C",
+			"title": "Ví cá sấu C mặt",
+			"images": [
+				"1365856856.jpg"
+			],
+			"content": "Ôtô hạng A, hay còn gọi là dòng xe mini, xe gia đình cỡ nhỏ, là ôtô sử dụng hệ thống động cơ dung tích từ 1.0L đến 1.2L, được các chuyên gia phân loại theo kích thước tổng thể.<br>Cụ thể, kích thước dài x rộng x cao của ôtô 4 chỗ là từ 3.300 x 1.450 x 1.400 đến 3.700 x 1.500 x 1.450 mm. Trong khi đó, các xe ôtô 5 chỗ hạng A sẽ có kích thước từ 3.900 x 1.650 x 1.550 tới 4.100 x 1.670 x 1.550 mm."
+		}
+	],
 	"products": [
 		{
 			"id": 1307001,

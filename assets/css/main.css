@@ -3993,6 +3993,55 @@ input, select, textarea {
     background-color: #5cefce3d;
 }
 
+.customer-title {
+	font-size: 1.8rem !important;
+	letter-spacing: 0.0375em;
+	font-weight: unset !important;
+}
+
+.customer-content {
+	font-style: italic;
+	font-size: 0.875rem;
+	letter-spacing: 0.0375em;
+}
+
+.customer-photo {
+    position:relative;
+    margin-top: 1.2rem;
+	margin-left: 1.2rem;
+	font-size: 1.6rem;
+}
+.customer-photo img {
+    cursor: pointer;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    width:100%;
+}
+.customer-photo:after {
+    content: attr(data-content);
+    color:#fff;
+    position:absolute;
+    width:100%; height:100%;
+    top:0; left:0;
+    background:rgba(0,0,0,0.6);
+    opacity:0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+	text-align: center;
+	line-height: 4.5;
+	cursor: pointer;
+}
+.customer-photo:hover:after {
+    opacity:1;
+}
+
+.customer-author {
+    margin-bottom: 0;
+    text-align: end;
+    margin-top: 1rem;
+}
+
 @media screen and (max-width: 1200px) {
 
 	#wrapper > section {
@@ -4093,6 +4142,10 @@ input, select, textarea {
 
 	#wrapper section > header .h2buy {
 		margin-bottom: 1.5rem;
+	}
+
+	.customer-photo {
+		margin-right: 1.2rem;
 	}
 
 }
