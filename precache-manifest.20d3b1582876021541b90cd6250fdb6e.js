@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.041a57f9.js"
   },
   {
-    "revision": "f4292655f93dd12d9b8e4fc067ef2489",
-    "url": "/static/media/lg.f4292655.ttf"
-  },
-  {
     "revision": "1fbfd4bcffccb94e8e8a5ea70616b296",
     "url": "/static/media/lg.1fbfd4bc.woff"
+  },
+  {
+    "revision": "f4292655f93dd12d9b8e4fc067ef2489",
+    "url": "/static/media/lg.f4292655.ttf"
   },
   {
     "revision": "2ec2cb2199d4d881e6a6ad86690f6add",
