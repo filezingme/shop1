@@ -196,10 +196,10 @@ function App() {
 				<i className="far fa-comment-dots" id="customers-talk-ontop" onClick={(e) => handleShowCustomersTalk(e)} title='Danh sách khách hàng đã mua' alt='Danh sách khách hàng đã mua'></i>
 				
 				{/* Goto top button */}
-				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
+				<i className="fa fa-arrow-up" id="toTop" onClick={goTop} title='Lên đầu trang' alt='Lên đầu trang'></i>
 				
 				{/* Goto bottom button */}
-				<i className="fa fa-arrow-down" id="toBottom" onClick={goBottom}></i>				 
+				<i className="fa fa-arrow-down" id="toBottom" title='Xuống cuối trang' alt='Xuống cuối trang' onClick={goBottom}></i>				 
 
 				{/* Copyright */}
 				{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}		
