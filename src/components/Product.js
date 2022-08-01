@@ -198,8 +198,19 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
             </section>
         ))}
 
-        {/* paginate */}
-        <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} />
+        {/* pagination-box1 */}
+        <div className="pagination-box1">
+            <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} />
+        </div>
+
+        {/* pagination-box2 */}
+        <section>
+            <div className='content'>
+                <div className="pagination-box2">
+                    <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} />
+                </div>
+            </div>
+        </section>
     </>))
 }
 

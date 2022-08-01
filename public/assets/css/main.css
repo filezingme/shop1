@@ -3932,7 +3932,8 @@ input, select, textarea {
 	text-decoration: underline;	
 }
 
-.pagination {
+/* start: pagination-box1  */
+.pagination-box1 .pagination {
     position: fixed;
     top: 12.2rem;
     right: 4px;
@@ -3945,48 +3946,76 @@ input, select, textarea {
     transform: rotate(0deg);
 }
 
-.pagination .page-item {
+.pagination-box1 .pagination .page-item {
 	width: 2.25rem;
 }
 
-.page-item:first-child .page-link {
+.pagination-box1 .page-item:first-child .page-link {
     border-top-left-radius: 0.25rem !important;
     border-top-right-radius: 0.25rem !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 }
 
-.page-item:not(:first-child) .page-link {
+.pagination-box1 .page-item:not(:first-child) .page-link {
     margin-left: 0 !important;
 }
 
-.page-item:last-child .page-link {
+.pagination-box1 .page-item:last-child .page-link {
 	border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
     border-bottom-left-radius: 0.25rem !important;
     border-bottom-right-radius: 0.25rem !important;
 }
 
-.page-link {
-    color: #888888 !important;
+.pagination-box1 .page-link {
 	padding: 0.15rem 0.2rem !important;
     margin: 2px 0 !important;
 	text-align: center;
 }
 
-.page-link:hover {
-    background-color: #efefef !important;
+.pagination-box1 .fa-angle-double-left:before {
+    content: "\f102";
 }
 
-.page-item.active .page-link {
+.pagination-box1 .fa-angle-left:before {
+    content: "\f106";
+}
+
+.pagination-box1 .fa-angle-right:before {
+    content: "\f107";
+}
+
+.pagination-box1 .fa-angle-double-right:before {
+    content: "\f103";
+}
+/* end: pagination-box1  */
+
+
+/* start: common pagination  */
+.pagination .page-item.active .page-link {
     color: #fff !important;
     background-color: #888888 !important;
     border-color: #888888 !important;
 }
 
-.page-item.disabled .page-link {
+.pagination .page-item.disabled .page-link {
     color: #cececf !important;
 }
+
+.pagination .page-link {
+    color: #888888 !important;
+}
+
+.pagination .page-link:hover {
+    background-color: #efefef !important;
+}
+
+.pagination .page-link:focus {
+    box-shadow: unset !important;
+}
+/* end: commonpagination  */
+
 
 .flex-column .actived {
 	border-color: #11be99;
@@ -4055,11 +4084,11 @@ input, select, textarea {
 }
 
 @media screen and (max-width: 1152px) and (min-width: 768px) {
-	.page-link {
+	.pagination-box1 .page-link {
 		padding: 0rem 0.2rem !important;
 		text-align: center;
 	}
-	.pagination .page-item {
+	.pagination-box1 .pagination .page-item {
 		width: 1.8rem;
 	}
 }

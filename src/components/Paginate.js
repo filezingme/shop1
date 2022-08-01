@@ -11,17 +11,17 @@ function Paginate({page, pages, maxPageDisplay=5, category=null}) {
 
             {/* First */}
             {pages !== 1 && page !== 1 ? (
-                <Pagination.First href={`${url}1/`} title='Trang đầu' alt='Trang đầu'><i className="fas fa-angle-double-up"></i></Pagination.First>
+                <Pagination.First href={`${url}1/`} title='Trang đầu' alt='Trang đầu'><i className="fas fa-angle-double-left"></i></Pagination.First>
             ) : (
-                <Pagination.First disabled><i className="fas fa-angle-double-up"></i></Pagination.First>
+                <Pagination.First disabled><i className="fas fa-angle-double-left"></i></Pagination.First>
             )}
 
 
             {/* Prev */}
             {page > 1 ? (
-                <Pagination.Prev href={`${url}${page-1}/`} title='Trang trước' alt='Trang trước'><i className="fas fa-angle-up"></i></Pagination.Prev>
+                <Pagination.Prev href={`${url}${page-1}/`} title='Trang trước' alt='Trang trước'><i className="fas fa-angle-left"></i></Pagination.Prev>
             ) : (
-                <Pagination.Prev disabled><i className="fas fa-angle-up"></i></Pagination.Prev>
+                <Pagination.Prev disabled><i className="fas fa-angle-left"></i></Pagination.Prev>
             )}
             
             
@@ -60,17 +60,17 @@ function Paginate({page, pages, maxPageDisplay=5, category=null}) {
 
             {/* Next */}
             {page < pages ? (
-                <Pagination.Next href={`${url}${page+1}/`} title='Trang sau' alt='Trang sau'><i className="fas fa-angle-down"></i></Pagination.Next>
+                <Pagination.Next href={`${url}${page+1}/`} title='Trang sau' alt='Trang sau'><i className="fas fa-angle-right"></i></Pagination.Next>
             ) : (
-                <Pagination.Next disabled><i className="fas fa-angle-down"></i></Pagination.Next>
+                <Pagination.Next disabled><i className="fas fa-angle-right"></i></Pagination.Next>
             )}
 
 
             {/* Last */}
             {pages !== page ? (
-                <Pagination.Last href={`${url}${pages}/`} title='Trang cuối' alt='Trang cuối'><i className="fas fa-angle-double-down"></i></Pagination.Last>
+                <Pagination.Last href={`${url}${pages}/`} title='Trang cuối' alt='Trang cuối'><i className="fas fa-angle-double-right"></i></Pagination.Last>
             ) : (
-                <Pagination.Last disabled><i className="fas fa-angle-double-down"></i></Pagination.Last>
+                <Pagination.Last disabled><i className="fas fa-angle-double-right"></i></Pagination.Last>
             )}
 
         </Pagination>
