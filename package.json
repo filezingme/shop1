@@ -24,10 +24,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && copy CNAME build/CNAME",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && COPY \"CNAME\" \"./build/CNAME\"",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
