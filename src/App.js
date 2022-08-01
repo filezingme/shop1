@@ -184,16 +184,16 @@ function App() {
 
 				
 				{/* Home-ontop */}
-				<a href={`${process.env.PUBLIC_URL}/`} id="home-ontop"><i className="fa fa-home"></i></a>	
+				<a href={`${process.env.PUBLIC_URL}/`} id="home-ontop" title='Trang chủ' alt='Trang chủ'><i className="fa fa-home"></i></a>	
 
 				{/* Menu-ontop */}
-				<i className="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)}></i>
+				<i className="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)} title='Nhóm sản phẩm' alt='Nhóm sản phẩm'></i>
 				
 				{/* Pages-ontop */}
-				<i className="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)}></i>
+				<i className="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)} title='Về chúng tôi/ Dịch vụ/ Liên hệ/...' alt='Về chúng tôi/ Dịch vụ/ Liên hệ/...'></i>
 				
 				{/* Customers talk-ontop */}
-				<i className="far fa-comment-dots" id="customers-talk-ontop" onClick={(e) => handleShowCustomersTalk(e)}></i>
+				<i className="far fa-comment-dots" id="customers-talk-ontop" onClick={(e) => handleShowCustomersTalk(e)} title='Danh sách khách hàng đã mua' alt='Danh sách khách hàng đã mua'></i>
 				
 				{/* Goto top button */}
 				<i className="fa fa-arrow-up" id="toTop" onClick={goTop}></i>
