@@ -3994,14 +3994,14 @@ input, select, textarea {
 }
 
 .customer-title {
-	font-size: 1.8rem !important;
-	letter-spacing: 0.0375em;
-	font-weight: unset !important;
+	font-size: 1.3rem !important;
+    letter-spacing: 0em;
+    font-weight: 501 !important;
 }
 
 .customer-content {
 	font-style: italic;
-	letter-spacing: 0.0375em;
+	letter-spacing: 0em;
 }
 
 .customer-photo {
@@ -4091,7 +4091,7 @@ input, select, textarea {
 	}
 
 	#wrapper > section:first-child > header {
-		padding-top: 4rem;
+		padding-top: 2rem;
 	}
 
 }
