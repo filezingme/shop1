@@ -13,7 +13,11 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Build
-        run: npm run build && COPY \"CNAME\" \"./build/CNAME\"
+        #run: npm run build && COPY \"CNAME\" \"./build/CNAME\"
+        run: |
+          npm ci
+          npm run build
+          COPY \"CNAME\" \"./build/CNAME\"
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
