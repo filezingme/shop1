@@ -14,7 +14,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
 
-  //orderId = current Timestamp
+  //orderId = current Timestamp, convert timestamp to date time: https://timestamp.online/
   const [orderId, setOrderId] = useState(() => { 
     return Date.now()
   })
