@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Deploy
-        uses: filezingme/github-pages-deploy-action@v4
+        uses: filezingme/shop1@v4
         with:
           branch: gh-pages #The branch the action should deploy to.
-          folder: #The folder the action should deploy.
+          folder: '' #The folder the action should deploy.
