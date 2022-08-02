@@ -14,8 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build
+      - name: Build React
         run: npm i react@16.13.1
+
+      - name: Build React-dom
         run: npm i react-dom@16.13.1
 
       # - name: Build
