@@ -152,56 +152,62 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
 
     return (dataObj && (<>
         {/* product list */}
-        {dataObj.productList.map((product) => (
-            <section key={product.id}>
-                <header>
-                    <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
-                </header>
-                <div className="content">
-                    <section>
-                        <header>
-                            <h2>
-                                Giá: <span className="price">{getPrice(product.priceInfo.price, product.priceInfo.percentagePriceIncrease, dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}</span>
-                                <input type="hidden" id="price" value={currencyFormat(product.priceInfo.price)} />
-                                <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
-                                <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
-                            </h2>
-                            <h3>
-                                <i>Mã: <strong>{product.id}</strong></i><br/>
-                                <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}/`}>{product.category}</a></i><br/><br/>
-                            </h3>
-                            
-                            {product.description && (<div>
-                                <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
-                                <p className='excerpt' onClick={(e) => handleProductReadMore(e, product)}>
-                                    {showReadMore(product, charNumLimitedInDesc, ' ...', dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
-                                    {validShowReadMore(product.description, charNumLimitedInDesc) && (
-                                        <i className='read-more'>Xem thêm</i>
-                                    )}                                    
-                                </p>
-                            </div>
-                            )}
+        {dataObj.productList.map((product) => {
+            
+            //create new field of product object
+            product.priceToUser = getPrice(product.priceInfo.price, product.priceInfo.percentagePriceIncrease, dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)
 
-                            <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{dataObj.siteInfo.buyBtnText}</a></h2>
-                        </header>
-                        <div className="content">
-                            <div className={`gallery`}>
-                                <LightgalleryProvider>
-                                    {product.images.map((image, index) => (
-                                        <PhotoItem key={index} 
-                                            image={process.env.PUBLIC_URL + `/assets/images/product/${image}`}
-                                            thumb={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} 
-                                            title={product.title}
-                                            group={product.id.toString()} 
-                                        />									
-                                    ))}		                                    
-                                </LightgalleryProvider>								
+            return (
+                <section key={product.id}>
+                    <header>
+                        <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
+                    </header>
+                    <div className="content">
+                        <section>
+                            <header>
+                                <h2>
+                                    Giá: <span className="price">{product.priceToUser}</span>
+                                    <input type="hidden" id="price" value={currencyFormat(product.priceInfo.price)} />
+                                    <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
+                                    <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
+                                </h2>
+                                <h3>
+                                    <i>Mã: <strong>{product.id}</strong></i><br/>
+                                    <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}/`}>{product.category}</a></i><br/><br/>
+                                </h3>
+                                
+                                {product.description && (<div>
+                                    <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
+                                    <p className='excerpt' onClick={(e) => handleProductReadMore(e, product)}>
+                                        {showReadMore(product, charNumLimitedInDesc, ' ...', dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
+                                        {validShowReadMore(product.description, charNumLimitedInDesc) && (
+                                            <i className='read-more'>Xem thêm</i>
+                                        )}                                    
+                                    </p>
+                                </div>
+                                )}
+
+                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{dataObj.siteInfo.buyBtnText}</a></h2>
+                            </header>
+                            <div className="content">
+                                <div className={`gallery`}>
+                                    <LightgalleryProvider>
+                                        {product.images.map((image, index) => (
+                                            <PhotoItem key={index} 
+                                                image={process.env.PUBLIC_URL + `/assets/images/product/${image}`}
+                                                thumb={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} 
+                                                title={product.title}
+                                                group={product.id.toString()} 
+                                            />									
+                                        ))}		                                    
+                                    </LightgalleryProvider>								
+                                </div>
                             </div>
-                        </div>
-                    </section>
-                </div>
-            </section>
-        ))}
+                        </section>
+                    </div>
+                </section>
+            )
+        })}
 
         {/* pagination-box1 */}
         <div className="pagination-box1">

@@ -13,6 +13,12 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
+
+  //orderId = current Timestamp
+  const [orderId, setOrderId] = useState(() => { 
+    return Date.now()
+  })
+
   const [loading, setLoading] = useState(false)
   const [showSentMsg, setShowSentMsg] = useState(false)
   const [showErrorMsg, setShowErrorMsg] = useState(false)
@@ -31,10 +37,14 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
         event.preventDefault();
 
         const postData = {
-            title: `[xtcbanhang.com] - Liên hệ mua "${product.title} (${product.id})"`,
+            mailType: 'Order',
+            productTitle: product.title,
+            productId: product.id,
+            priceToUser: product.priceToUser, //this field created new at Product.js component
             name: name,
             email: email,
             content: content,
+            orderId: orderId,
             contactFormConfig: {
                 receiverEmail: contactFormConfig.receiverEmail,
                 receiverName: contactFormConfig.receiverName,
@@ -47,7 +57,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
 
         //Send mail
         axios({
-            url: "https://script.google.com/macros/s/AKfycbws3IRyhVC5QjuWWkDYzN4zy3-K3U4udXB3rvckZwJb8ZomgXMtJJD_plSUYqVdZZx8tw/exec",
+            url: "https://script.google.com/macros/s/AKfycby4oXT52lKvHuGV_w16j9EYrij13-TRtSE5QkzAlkRDRtYqvOWuRFKx_xRb1MHq60dOHQ/exec",
             method: 'post',
             headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -61,7 +71,12 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
           if (response.data.result && response.data.result === 'error'){
             setShowErrorMsg(true)
           }
-          else {         
+          else {        
+            
+            //reset orderId to new value
+            setOrderId(Date.now())      
+            
+            //show sent msg
             setShowSentMsg(true)
                
             //reset form
@@ -89,6 +104,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
 
   }, [isShow])
 
+
   return (siteInfo && product && contactFormConfig && (
     <>
       <Modal
@@ -100,7 +116,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
       >
         <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title>Liên hệ mua "{product.title} ({product.id})"</Modal.Title>
+            <Modal.Title>Đặt mua "{product.title} ({product.id})"</Modal.Title>
 
             {loading && <Loading />}
             {showSentMsg && ( <p id="ploading"><span role="img" aria-label="success">&#10004;</span> Đã gửi.</p>)}
@@ -108,6 +124,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
            
           </Modal.Header>
           <Modal.Body>
+
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Row>
                 <Col xs={6} md={6}>
@@ -130,8 +147,10 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
                 required
                 value={content} 
                 onChange={(e) => setContent(e.target.value)}
-              />
+              />              
+              <Form.Control type='hidden' value={orderId} />
             </Form.Group>
+
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>Đóng</Button>

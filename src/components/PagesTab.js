@@ -32,7 +32,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
         event.preventDefault();
 
         const postData = {
-            title: 'Contact from [xtcbanhang.com]',
+            mailType: 'Contact',
             name: name,
             email: email,
             content: content,
@@ -50,7 +50,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
 
         //Send mail
         axios({
-            url: "https://script.google.com/macros/s/AKfycbws3IRyhVC5QjuWWkDYzN4zy3-K3U4udXB3rvckZwJb8ZomgXMtJJD_plSUYqVdZZx8tw/exec",
+            url: "https://script.google.com/macros/s/AKfycby9g6lO8xPYzN8REIDJmSMds8sR1TFfIf8nP7rlHu4f5snBZ7_6Z9AFFGO7tekyehx_lw/exec",
             method: 'post',
             headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
