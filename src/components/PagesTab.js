@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import parser from 'react-html-parser';
+import parser from 'html-react-parser';
 import axios from "axios";
 
 function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) {

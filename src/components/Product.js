@@ -6,7 +6,7 @@ import {
   LightgalleryItem
 } from "react-lightgallery";
 import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/examples/package/react-lightgallery > https://codesandbox.io/s/mo45kpo92j
-import parser from 'react-html-parser';
+import parser from 'html-react-parser';
 import Paginate from './Paginate';
 // import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
@@ -150,7 +150,7 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
         {dataObj.productList.map((product) => (
             <section key={product.id}>
                 <header>
-                    <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>X{product.title}</h1>
+                    <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>X2-{product.title}</h1>
                 </header>
                 <div className="content">
                     <section>

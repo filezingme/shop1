@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
-import parser from 'react-html-parser';
+import parser from 'html-react-parser';
 
 function ProductReadMore({ handleClose, isShow, product }) {
 
