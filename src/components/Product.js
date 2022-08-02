@@ -150,7 +150,7 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
         {dataObj.productList.map((product) => (
             <section key={product.id}>
                 <header>
-                    <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>X2-{product.title}</h1>
+                    <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
                 </header>
                 <div className="content">
                     <section>
