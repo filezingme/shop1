@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
 import PT from "prop-types";
+
 import {
   LightgalleryProvider,
   LightgalleryItem
 } from "react-lightgallery";
+
 import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/examples/package/react-lightgallery > https://codesandbox.io/s/mo45kpo92j
+
 import parser from 'html-react-parser';
 import Paginate from './Paginate';
+
 // import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
+
 
 
 const PhotoItem = ({ image, thumb, title, group }) => (
