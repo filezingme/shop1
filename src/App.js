@@ -55,12 +55,12 @@ function App() {
 	}
 
 	const goTop = () => {
-		$('html, body').animate({scrollTop : 0},200);
+		$('html, body').animate({scrollTop : 0},50);
 		return false;
 	}
 
 	const goBottom = () => {
-		$('html, body').animate({scrollTop : $(document).height()},200);
+		$('html, body').animate({scrollTop : $(document).height()},50);
 		return false;
 	}
 

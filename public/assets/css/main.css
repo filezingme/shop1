@@ -3894,10 +3894,9 @@ input, select, textarea {
 }
   
 .read-more {
-	font-weight: 500;
 	cursor: pointer;
-	text-decoration: underline;	
 	white-space: nowrap;
+	border-bottom: dotted 1px;
 }
   
 .read-more:hover {
