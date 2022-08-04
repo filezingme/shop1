@@ -24,7 +24,7 @@ console.log(product.category)
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">
-          Mô tả "{product.title} ({product.id})"
+          {product.title} ({product.id})
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
