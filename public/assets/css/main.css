@@ -3367,14 +3367,6 @@ input, select, textarea {
 			z-index: 1;
 		}
 
-		#wrapper .copyright {
-			color: rgba(0, 0, 0, 0.25);
-			font-size: 1rem;
-			left: 50vw;
-			position: relative;
-			width: 50vw;
-		}
-
 			#wrapper .copyright a {
 				color: inherit;
 			}
@@ -3424,12 +3416,6 @@ input, select, textarea {
 
 		#wrapper > section:last-of-type > header:after {
 			left: calc(50vw - 5rem - 0.25rem + 1px);
-		}
-
-		#wrapper .copyright {
-			padding: 0 5rem;
-			margin-top: 6rem;
-    		padding-left: 0px;
 		}
 
 		@media screen and (max-width: 1280px) {
@@ -3753,6 +3739,10 @@ input, select, textarea {
 			padding: 4rem;
 		}
 
+		.copyright {
+			margin-top: 0rem !important;
+		}
+
 	}
 	
 #toTop {
@@ -4063,6 +4053,24 @@ input, select, textarea {
     text-align: end;
     margin-top: 1rem;
 }
+
+.PageNotFound {
+	text-align: center;
+	margin-top: 100px;
+}
+
+.PageNotFound h1 {
+	font-size: 35px !important;
+}
+
+.copyright {
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    color: rgba(0, 0, 0, 0.25);
+    position: relative;
+    text-align: center;
+}
+
 
 @media screen and (max-width: 1200px) {
 

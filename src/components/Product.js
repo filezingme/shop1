@@ -30,13 +30,13 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, showContactForm, handleProductReadMore, callbackActivedMenuItem }) {
+function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleActivedMenuItem,  handleConvertToUrlFriendly }) {
     
 	const [dataObj, setDataObj] = useState(null)
-
-    const {categoryName, page=1} = useParams()
-
     const charNumLimitedInDesc = 100
+    const {categoryName, productName, productId, page=1} = useParams()
+
+    console.log('Product component', {categoryName: categoryName, productName: productName, productId: productId, page: page})
 
 
     useEffect(() => {
@@ -53,11 +53,20 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
             //product list
             let list = data.products
             if(categoryName) {
-                list = list.filter(product => product.category.toLowerCase() === categoryName.toLowerCase())
+                list = list.filter(product => handleConvertToUrlFriendly(product.category) === handleConvertToUrlFriendly(categoryName))
 
                 //auto callback CategoryName
-                ;(() => callbackActivedMenuItem(categoryName))()
+                ;(() => handleActivedMenuItem(categoryName))()
             }
+
+            //product detail > callback
+            if(productName && productId) {
+                let productDetails = data.products.filter(product => handleConvertToUrlFriendly(product.title) === handleConvertToUrlFriendly(productName) && product.id === parseInt(productId))
+                
+                //auto callback product details
+                handleShowProductReadMore(null, productDetails[0], false)
+            }
+
 
             //productList with paging
             const listPaging = list.slice((parseInt(page) - 1) * obj.itemsPerPage, parseInt(page) * obj.itemsPerPage)
@@ -147,20 +156,27 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
         }
 
         return description
-    }
+    } 
 
 
     return (dataObj && (<>
         {/* product list */}
         {dataObj.productList.map((product) => {
             
-            //create new field of product object
+            //create new fields of product object
             product.priceToUser = getPrice(product.priceInfo.price, product.priceInfo.percentagePriceIncrease, dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)
+            product.productFirstThumbnailUrl = process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${(product.images[0])}`
 
             return (
                 <section key={product.id}>
                     <header>
-                        <h1 className='home-product-title' onClick={(e) => handleProductReadMore(e, product)}>{product.title}</h1>
+                        <h1 className='home-product-title' 
+                            onClick={(e) => {
+                                handleShowProductReadMore(e, product)
+                            }}
+                        >
+                            {product.title}
+                        </h1>
                     </header>
                     <div className="content">
                         <section>
@@ -173,12 +189,12 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
                                 </h2>
                                 <h3>
                                     <i>Mã: <strong>{product.id}</strong></i><br/>
-                                    <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${product.category.toLowerCase()}/`}>{product.category}</a></i><br/><br/>
+                                    <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${handleConvertToUrlFriendly(product.category)}/`}>{product.category}</a></i><br/><br/>
                                 </h3>
                                 
                                 {product.description && (<div>
                                     <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
-                                    <p className='excerpt' onClick={(e) => handleProductReadMore(e, product)}>
+                                    <p className='excerpt' onClick={(e) => handleShowProductReadMore(e, product)}>
                                         {showReadMore(product, charNumLimitedInDesc, ' ...', dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
                                         {validShowReadMore(product.description, charNumLimitedInDesc) && (
                                             <i className='read-more'>Xem thêm</i>
@@ -187,7 +203,7 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
                                 </div>
                                 )}
 
-                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => showContactForm(e, product, data.contactFormConfig)}>{dataObj.siteInfo.buyBtnText}</a></h2>
+                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => handleShowOrderForm(e, product)}>{dataObj.siteInfo.buyBtnText}</a></h2>
                             </header>
                             <div className="content">
                                 <div className={`gallery`}>
@@ -195,7 +211,7 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
                                         {product.images.map((image, index) => (
                                             <PhotoItem key={index} 
                                                 image={process.env.PUBLIC_URL + `/assets/images/product/${image}`}
-                                                thumb={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`} 
+                                                thumb={process.env.PUBLIC_URL + `/assets/images/product/thumbnail/${image}`}
                                                 title={product.title}
                                                 group={product.id.toString()} 
                                             />									
@@ -211,14 +227,14 @@ function Product({ data, showContactForm, handleProductReadMore, callbackActived
 
         {/* pagination-box1 */}
         <div className="pagination-box1">
-            <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} />
+            <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
         </div>
 
         {/* pagination-box2 */}
         <section>
             <div className='content'>
                 <div className="pagination-box2">
-                    <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} />
+                    <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
                 </div>
             </div>
         </section>

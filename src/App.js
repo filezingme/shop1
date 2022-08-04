@@ -5,7 +5,7 @@ import Product from './components/Product';
 import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import $ from 'jquery';
-import ContactForm from './components/ContactForm';
+import OrderForm from './components/OrderForm';
 import PagesTab from './components/PagesTab';
 import PageNotFound from './components/PageNotFound';
 import ProductReadMore from './components/ProductReadMore';
@@ -54,12 +54,12 @@ function App() {
 		}
 	}
 
-	const goTop = () => {
+	const handleGoTop = () => {
 		$('html, body').animate({scrollTop : 0},50);
 		return false;
 	}
 
-	const goBottom = () => {
+	const handleGoBottom = () => {
 		$('html, body').animate({scrollTop : $(document).height()},50);
 		return false;
 	}
@@ -83,28 +83,25 @@ function App() {
 
 	
 	//Contact form
-	const [show, setShow] = useState(false);
+	const [showOrderForm, setShowOrderForm] = useState(false);
 	const [product, setProduct] = useState({});
-	const [contactFormConfig, setContactFormConfig] = useState({});
-
-	const showContactForm = (e, product, contactFormConfig) => {
+	const handleShowOrderForm = (e, product) => {
 		e.preventDefault()
-		setShow(true)
+		setShowOrderForm(true)
 		setProduct(product)
-		setContactFormConfig(contactFormConfig)
 	}
-	const hideContactForm = () => {
-		setShow(false)
+	const handleCloseOrderForm = () => {
+		setShowOrderForm(false)
 	}
 	
 	//Category menu
-	const [showMenu, setShowMenu] = useState(false);
-	const showCategoryMenu = (e) => {
+	const [showCategoryMenu, setShowCategoryMenu] = useState(false);
+	const handleShowCategoryMenu = (e) => {
 		e.preventDefault()
-		setShowMenu(true)
+		setShowCategoryMenu(true)
 	}
-	const hideCategoryMenu = () => {
-		setShowMenu(false)
+	const handleCloseCategoryMenu = () => {
+		setShowCategoryMenu(false)
 	}
 	const [activedMenuItem, setActivedMenuItem] = useState('');
 	const handleActivedMenuItem = (categoryName) => {
@@ -123,7 +120,7 @@ function App() {
 		e.preventDefault()
 		setShowPagesTab(true)
 	}
-	const hidePagesTab = () => {
+	const handleClosePagesTab = () => {
 		setShowPagesTab(false)
 	}
 	
@@ -133,53 +130,110 @@ function App() {
 		e.preventDefault()
 		setShowCustomersTalk(true)
 	}
-	const hideCustomersTalk = () => {
+	const handleCloseCustomersTalk = () => {
 		setShowCustomersTalk(false)
 	}
 	
 	//Product Read More
 	const [showProductReadMore, setShowProductReadMore] = useState(false);
-	const handleProductReadMore = (e, product) => {
-		e.preventDefault()
+	const handleShowProductReadMore = (e, product, isClicked = true) => {		
 		setShowProductReadMore(true)
 		setProduct(product)
+
+		console.log(product, isClicked)
+		if (isClicked) {
+			if (window.history.replaceState) {
+				let url = `/product/${handleConvertToUrlFriendly(product.title)}-${product.id}/`
+				
+				//ngăn không cho trình duyệt lưu trữ lịch sử với mỗi thay đổi
+				window.history.replaceState(null, product.title, url)
+
+				//cho trình duyệt lưu trữ lịch sử với mỗi thay đổi
+				//window.history.pushState({}, null, url);
+			}
+		}
 	}
-	const hideProductReadMore = () => {
+	const handleCloseProductReadMore = () => {
 		setShowProductReadMore(false)
 	}
+
+	//Convert string to Url Friendly
+    const handleConvertToUrlFriendly = (strInput) => {
+        return strInput.normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D")
+            .replace(/[^a-z0-9_]+/gi, '-')
+            .replace(/^-|-$/g, '')
+            .toLowerCase();
+    }   
 
 
 	return (originalData && (
 		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
 				<Routes>
-					<Route path="/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} /> } exact > 
-						<Route path="/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} /> } />
+					<Route path="/" element={ <Product 
+						data={originalData} 
+						handleShowOrderForm={handleShowOrderForm} 
+						handleShowProductReadMore={handleShowProductReadMore} 
+						handleActivedMenuItem={handleActivedMenuItem} 
+						handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
+						} exact > 
+							<Route path=":page/" element={ <Product 
+								data={originalData} 
+								handleShowOrderForm={handleShowOrderForm} 
+								handleShowProductReadMore={handleShowProductReadMore} 
+								handleActivedMenuItem={handleActivedMenuItem} 
+								handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
+							} />
 					</Route>
 
-					<Route path="/category/:categoryName/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} exact /> } >
-						<Route path="/category/:categoryName/:page/" element={ <Product data={originalData} showContactForm={showContactForm} handleProductReadMore={handleProductReadMore} callbackActivedMenuItem={handleActivedMenuItem} /> } />
+					<Route path="/:categoryName/" element={ <Product 
+						data={originalData} 
+						handleShowOrderForm={handleShowOrderForm} 
+						handleShowProductReadMore={handleShowProductReadMore} 
+						handleActivedMenuItem={handleActivedMenuItem} 
+						handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
+						} exact >
+							<Route path=":page/" element={ <Product 
+								data={originalData} 
+								handleShowOrderForm={handleShowOrderForm} 
+								handleShowProductReadMore={handleShowProductReadMore} 
+								handleActivedMenuItem={handleActivedMenuItem} 
+								handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
+							} />
 					</Route>
 
-					<Route path="*" element={ <PageNotFound showCopyright={handleShowCopyright} /> } />
+					<Route path="/product/:productName-:productId/" element={ <Product 
+						data={originalData} 
+						handleShowOrderForm={handleShowOrderForm} 
+						handleShowProductReadMore={handleShowProductReadMore} 
+						handleActivedMenuItem={handleActivedMenuItem} 
+						handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
+						} exact />
+
+					<Route path="*" element={ <PageNotFound 
+						handleShowCopyright={handleShowCopyright} /> 
+					} />
 			    </Routes>
 
 
 
 				{/* Menu */}
-				<CategoryMenu categoryList={categories} handleClose={hideCategoryMenu} isShow={showMenu} activedItem={activedMenuItem} />
+				<CategoryMenu categoryList={categories} handleClose={handleCloseCategoryMenu} isShow={showCategoryMenu} activedItem={activedMenuItem} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
 
 				{/* Contact form */}
-				<ContactForm siteInfo={originalData.siteInfo} handleClose={hideContactForm} isShow={show} product={product} contactFormConfig={contactFormConfig} />	
+				<OrderForm siteInfo={originalData.siteInfo} handleClose={handleCloseOrderForm} isShow={showOrderForm} product={product} mailConfig={originalData.mailConfig} />	
 
 				{/* Pages tab */}
-				<PagesTab handleClose={hidePagesTab} isShowPagesTab={showPagesTab} pagesTab={originalData.pagesTab} contactFormConfig={originalData.contactFormConfig} />	
+				<PagesTab handleClose={handleClosePagesTab} isShow={showPagesTab} pagesTab={originalData.pagesTab} mailConfig={originalData.mailConfig} />	
 
 				{/* Customers talk */}
-				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={hideCustomersTalk} isShow={showCustomersTalk}  />	
+				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  />	
 
 				{/* Product Read More */}
-				<ProductReadMore handleClose={hideProductReadMore} isShow={showProductReadMore} product={product} />	
+				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} />	
 
 
 				
@@ -187,7 +241,7 @@ function App() {
 				<a href={`${process.env.PUBLIC_URL}/`} id="home-ontop" title='Trang chủ' alt='Trang chủ'><i className="fa fa-home"></i></a>	
 
 				{/* Menu-ontop */}
-				<i className="fas fa-bars" id="menu-ontop" onClick={(e) => showCategoryMenu(e)} title='Nhóm sản phẩm' alt='Nhóm sản phẩm'></i>
+				<i className="fas fa-bars" id="menu-ontop" onClick={(e) => handleShowCategoryMenu(e)} title='Nhóm sản phẩm' alt='Nhóm sản phẩm'></i>
 				
 				{/* Pages-ontop */}
 				<i className="far fa-window-restore" id="pages-ontop" onClick={(e) => handleShowPagesTab(e)} title='Về chúng tôi/ Dịch vụ/ Liên hệ/...' alt='Về chúng tôi/ Dịch vụ/ Liên hệ/...'></i>
@@ -196,15 +250,16 @@ function App() {
 				<i className="far fa-comment-dots" id="customers-talk-ontop" onClick={(e) => handleShowCustomersTalk(e)} title='Danh sách khách hàng đã mua' alt='Danh sách khách hàng đã mua'></i>
 				
 				{/* Goto top button */}
-				<i className="fa fa-arrow-up" id="toTop" onClick={goTop} title='Lên đầu trang' alt='Lên đầu trang'></i>
+				<i className="fa fa-arrow-up" id="toTop" onClick={handleGoTop} title='Lên đầu trang' alt='Lên đầu trang'></i>
 				
 				{/* Goto bottom button */}
-				<i className="fa fa-arrow-down" id="toBottom" title='Xuống cuối trang' alt='Xuống cuối trang' onClick={goBottom}></i>				 
+				<i className="fa fa-arrow-down" id="toBottom" title='Xuống cuối trang' alt='Xuống cuối trang' onClick={handleGoBottom}></i>	
 
-				{/* Copyright */}
-				{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}		
+			</div>			 
 
-			</div>
+			{/* Copyright */}
+			{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}		
+			
 		</Router>
 	));
 }

@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loading from './Loading';
 
-function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig }) {
+function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -45,11 +45,11 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
             email: email,
             content: content,
             orderId: orderId,
-            contactFormConfig: {
-                receiverEmail: contactFormConfig.receiverEmail,
-                receiverName: contactFormConfig.receiverName,
-                cc: contactFormConfig.cc,
-                bcc: contactFormConfig.bcc
+            productFirstThumbnailUrl: product.productFirstThumbnailUrl,
+            mailConfig: {
+                toEmailAddress: mailConfig.toEmailAddress,
+                cc: mailConfig.cc,
+                bcc: mailConfig.bcc
             }
         };
 
@@ -57,7 +57,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
 
         //Send mail
         axios({
-            url: "https://script.google.com/macros/s/AKfycby4oXT52lKvHuGV_w16j9EYrij13-TRtSE5QkzAlkRDRtYqvOWuRFKx_xRb1MHq60dOHQ/exec",
+            url: mailConfig.mailServiceUrl,
             method: 'post',
             headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -69,6 +69,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
           
           //if error
           if (response.data.result && response.data.result === 'error'){
+            console.log(response);
             setShowErrorMsg(true)
           }
           else {        
@@ -105,7 +106,7 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
   }, [isShow])
 
 
-  return (siteInfo && product && contactFormConfig && (
+  return (siteInfo && product && mailConfig && (
     <>
       <Modal
         size="lg"
@@ -162,4 +163,4 @@ function ContactForm({ siteInfo, handleClose, isShow, product, contactFormConfig
   );
 }
 
-export default ContactForm;
+export default OrderForm;

@@ -2,11 +2,13 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 
 
-function Paginate({page, pages, maxPageDisplay=5, category=null}) {
+function Paginate({page, pages, maxPageDisplay=5, category=null, handleConvertToUrlFriendly}) { 
 
-    let url = category ?  `${process.env.PUBLIC_URL}/category/${category.toLowerCase()}/` : `${process.env.PUBLIC_URL}/`
 
-    return (pages > 1 && (
+    let url = category ?  `${process.env.PUBLIC_URL}/${handleConvertToUrlFriendly(category)}/` : `${process.env.PUBLIC_URL}/`
+
+
+    return (!isNaN(page) && pages && (
         <Pagination>
 
             {/* First */}

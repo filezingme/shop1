@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
 import axios from "axios";
 
-function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) {
+function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -36,11 +36,10 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
             name: name,
             email: email,
             content: content,
-            contactFormConfig: {
-                receiverEmail: contactFormConfig.receiverEmail,
-                receiverName: contactFormConfig.receiverName,
-                cc: contactFormConfig.cc,
-                bcc: contactFormConfig.bcc
+            mailConfig: {
+                toEmailAddress: mailConfig.toEmailAddress,
+                cc: mailConfig.cc,
+                bcc: mailConfig.bcc
             }
         };
 
@@ -50,7 +49,7 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
 
         //Send mail
         axios({
-            url: "https://script.google.com/macros/s/AKfycby9g6lO8xPYzN8REIDJmSMds8sR1TFfIf8nP7rlHu4f5snBZ7_6Z9AFFGO7tekyehx_lw/exec",
+            url: mailConfig.mailServiceUrl,
             method: 'post',
             headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -90,12 +89,12 @@ function PagesTab({ handleClose, isShowPagesTab, pagesTab, contactFormConfig }) 
     setShowSentMsg(false)
     setValidated(false)
 
-  }, [isShowPagesTab])
+  }, [isShow])
 
   return (pagesTab && (
       <Modal
         size="lg"
-        show={isShowPagesTab}
+        show={isShow}
         onHide={handleClose}
         backdrop="static" //static='không đóng modal khi click ra ngoài, chỉ đóng modal khi click nút close'
         keyboard={false}

@@ -2,7 +2,7 @@ import React from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Nav from 'react-bootstrap/Nav';
 
-function CategoryMenu({categoryList, handleClose, isShow, activedItem}) {
+function CategoryMenu({categoryList, handleClose, isShow, activedItem, handleConvertToUrlFriendly}) {
 
     return (categoryList && (
         <Offcanvas show={isShow} onHide={handleClose}>
@@ -14,8 +14,8 @@ function CategoryMenu({categoryList, handleClose, isShow, activedItem}) {
                     {categoryList.map((category, index) => (
                         <React.Fragment key={index}>
                             <Nav.Link 
-                                href={process.env.PUBLIC_URL + `/category/${category.name.toLowerCase()}/`} 
-                                className={activedItem.toLowerCase() === category.name.toLowerCase() ? "actived" : ""} 
+                                href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(category.name)}/1/`} 
+                                className={handleConvertToUrlFriendly(activedItem) === handleConvertToUrlFriendly(category.name) ? "actived" : ""} 
                             >
                                 <i className='fas fa-angle-right'></i> {category.name} ({category.count})
                             </Nav.Link>

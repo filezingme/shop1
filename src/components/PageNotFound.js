@@ -2,12 +2,14 @@ import React, {useEffect} from 'react'
 
 // return (render) > useEffect > return (unmounts)
 
-function PageNotFound({showCopyright}) {    
+function PageNotFound({handleShowCopyright}) {    
+
+    console.log('PageNotFound component')
 
     useEffect(() => {
 
         console.log('PageNotFound useEffect')
-        showCopyright(false)
+        handleShowCopyright(false)
 
         return (e) => { //unmounts
             console.log('PageNotFound unmounts')
@@ -17,9 +19,9 @@ function PageNotFound({showCopyright}) {
       }, []);
 
     return (<>
-        <div style={{textAlign: 'center'}}>
-            <h1>:(</h1>
-            <h1>There's nothing here!</h1>
+        <div className='PageNotFound'>
+            <h1>Page Not Found</h1>
+            <h5>There's nothing here :(</h5>
         </div></>
     )
 }
