@@ -185,25 +185,17 @@ function App() {
 								handleShowOrderForm={handleShowOrderForm} 
 								handleShowProductReadMore={handleShowProductReadMore} 
 								handleActivedMenuItem={handleActivedMenuItem} 
-								handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
-							} />
+								handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
+							} exact />
 					</Route>
 
-					<Route path="/:categoryName/" element={ <Product 
+					<Route path="/:categoryName/:page/" element={ <Product 
 						data={originalData} 
 						handleShowOrderForm={handleShowOrderForm} 
 						handleShowProductReadMore={handleShowProductReadMore} 
 						handleActivedMenuItem={handleActivedMenuItem} 
 						handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
-						} exact >
-							<Route path=":page/" element={ <Product 
-								data={originalData} 
-								handleShowOrderForm={handleShowOrderForm} 
-								handleShowProductReadMore={handleShowProductReadMore} 
-								handleActivedMenuItem={handleActivedMenuItem} 
-								handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
-							} />
-					</Route>
+					} exact />
 
 					<Route path="/product/:productName-:productId/" element={ <Product 
 						data={originalData} 
@@ -211,7 +203,7 @@ function App() {
 						handleShowProductReadMore={handleShowProductReadMore} 
 						handleActivedMenuItem={handleActivedMenuItem} 
 						handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
-						} exact />
+					} exact />
 
 					<Route path="*" element={ <PageNotFound 
 						handleShowCopyright={handleShowCopyright} /> 

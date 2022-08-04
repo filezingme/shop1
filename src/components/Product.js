@@ -189,7 +189,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                                 </h2>
                                 <h3>
                                     <i>Mã: <strong>{product.id}</strong></i><br/>
-                                    <i>Nhóm: <a href={process.env.PUBLIC_URL + `/category/${handleConvertToUrlFriendly(product.category)}/`}>{product.category}</a></i><br/><br/>
+                                    <i>Nhóm: <a href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>{product.category}</a></i><br/><br/>
                                 </h3>
                                 
                                 {product.description && (<div>
