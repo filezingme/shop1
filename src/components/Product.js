@@ -36,11 +36,11 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
     const charNumLimitedInDesc = 100
     const {categoryName, productName, productId, page=1} = useParams()
 
-    console.log('Product component', {categoryName: categoryName, productName: productName, productId: productId, page: page})
-
 
     useEffect(() => {
         if(!dataObj) {
+
+            console.log('Product component', {categoryName: categoryName, productName: productName, productId: productId, page: page})
 
             const obj = {}
 

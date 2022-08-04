@@ -5,15 +5,13 @@ import parser from 'html-react-parser';
 
 function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly }) {
 
-console.log(product.category)
-
   useEffect(() => {
 
     //
 
   }, [isShow])
 
-  return (product && product.category && (
+  return (product && (
     <Modal
       size="lg"
       show={isShow}
