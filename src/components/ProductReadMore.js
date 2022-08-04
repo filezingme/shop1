@@ -3,7 +3,9 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
 
-function ProductReadMore({ handleClose, isShow, product }) {
+function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly }) {
+
+console.log(product.category)
 
   useEffect(() => {
 
@@ -11,7 +13,7 @@ function ProductReadMore({ handleClose, isShow, product }) {
 
   }, [isShow])
 
-  return (product && (
+  return (product && product.category && (
     <Modal
       size="lg"
       show={isShow}
@@ -26,6 +28,15 @@ function ProductReadMore({ handleClose, isShow, product }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+
+        <h2>Giá: <span className="price">{product.priceToUser}</span></h2>
+        <h3>
+            <i>Mã: <strong>{product.id}</strong></i><br/>
+            {product.category && (<>
+              <i>Nhóm: <a href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>{product.category}</a></i><br/><br/>
+            </>)}            
+        </h3>
+
         { product.DescByOtherPriceInPercentage ? (
             <div className='product-read-more-desc'>{parser(product.DescByOtherPriceInPercentage)}</div>
           ) 

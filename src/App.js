@@ -225,7 +225,7 @@ function App() {
 				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  />	
 
 				{/* Product Read More */}
-				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} />	
+				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />	
 
 
 				
