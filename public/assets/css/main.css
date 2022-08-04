@@ -4011,52 +4011,65 @@ input, select, textarea {
     background-color: #5cefce3d;
 }
 
-.customer-title {
-	font-size: 1.3rem !important;
+/* Start: CustomersTalk */
+.customer_title {
+	font-size: 20px !important;
     letter-spacing: 0em;
     font-weight: 501 !important;
 }
 
-.customer-content {
+.customer_content {
 	letter-spacing: 0em;
 }
 
-.customer-photo {
-    position:relative;
-    margin-top: 1.2rem;
-	margin-left: 1.2rem;
-	font-size: 1.6rem;
+.customer_photos {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
 }
-.customer-photo img {
+.customer_photos img {
     cursor: pointer;
     width: 100%;
-    object-fit: contain;
-    display: block;
-    width:100%;
-}
-.customer-photo:after {
-    content: attr(data-content);
-    color:#fff;
-    position:absolute;
-    width:100%; height:100%;
-    top:0; left:0;
-    background:rgba(0,0,0,0.6);
-    opacity:0;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-	text-align: center;
-	line-height: 4.5;
-	cursor: pointer;
-}
-.customer-photo:hover:after {
-    opacity:1;
 }
 
-.customer-author {
+.customer_photos .item {
+    width: 50%;
+    padding: 3px;
+}
+
+.customer_photos .item1 {
+    width: 100%;
+}
+
+.customer_photos .react_lightgallery_item {
+    max-width: none;
+    width: unset;
+    padding: 1px;
+}
+
+.customer_body {
+	font-size: 16px;
+    padding: 14px 10px;
+}
+
+.customer_author {
     margin-bottom: 0;
     text-align: end;
     margin-top: 1rem;
 }
+
+.customers_talk_modal {
+	opacity: 0;
+}
+/* End: CustomersTalk */
+
+.lg-outer {
+	z-index: 1055 !important;
+}
+
+/* .modal-dialog-scrollable .modal-content {
+    opacity: 0.2;
+} */
 
 .PageNotFound {
 	text-align: center;

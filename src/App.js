@@ -133,6 +133,10 @@ function App() {
 	const handleCloseCustomersTalk = () => {
 		setShowCustomersTalk(false)
 	}
+	const [showLightGalleryAboveModal, setShowLightGalleryAboveModal] = useState(false);
+	const handleShowLightGalleryAboveModal = (value) => {
+		setShowLightGalleryAboveModal(value)
+	}
 	
 	//Product Read More
 	const [showProductReadMore, setShowProductReadMore] = useState(false);
@@ -222,7 +226,7 @@ function App() {
 				<PagesTab handleClose={handleClosePagesTab} isShow={showPagesTab} pagesTab={originalData.pagesTab} mailConfig={originalData.mailConfig} />	
 
 				{/* Customers talk */}
-				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  />	
+				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  handleShowLightGalleryAboveModal={handleShowLightGalleryAboveModal} showLightGalleryAboveModal={showLightGalleryAboveModal} />	
 
 				{/* Product Read More */}
 				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />	
