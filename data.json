@@ -7,9 +7,9 @@
 		"email": "xuongvitruongchinh@gmail.com",
 		"percentagePriceIncreaseAppliesToAllProducts": 20
 	},
-	"contactFormConfig": {
-		"receiverEmail": "filezingme@gmail.com",
-		"receiverName": "Contact from [IHAYWA.COM]",
+	"mailConfig": {
+		"mailServiceUrl": "https://script.google.com/macros/s/AKfycbxscWE-4NMPTKs_uukWQw0t1vKJMGc83xA93_X-x1t5O8RC4qYRODE_7C5lnT7RsGDDrw/exec",
+		"toEmailAddress": "filezingme@gmail.com",
 		"cc": "",
 		"bcc": ""
 	},
