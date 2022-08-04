@@ -3898,6 +3898,10 @@ input, select, textarea {
 	margin-bottom: 0px;
 }
 
+.productReadMore h2 .price {
+    color: red;
+}
+
 .product-read-more-desc {
 	margin-bottom: 30px;
 }
