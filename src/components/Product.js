@@ -59,12 +59,17 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                 ;(() => handleActivedMenuItem(categoryName))()
             }
 
-            //product detail > callback
+            //product detail > callback > show ProductReadMore
             if(productName && productId) {
-                let productDetails = data.products.filter(product => handleConvertToUrlFriendly(product.title) === handleConvertToUrlFriendly(productName) && product.id === parseInt(productId))
+                let productDetails = data.products.filter(product => 
+                    handleConvertToUrlFriendly(product.title) === handleConvertToUrlFriendly(productName) && 
+                    product.id === parseInt(productId)
+                )[0]
+
+                productDetails.priceToUser = getPrice(productDetails.priceInfo.price, productDetails.priceInfo.percentagePriceIncrease, data.siteInfo.percentagePriceIncreaseAppliesToAllProducts)
                 
                 //auto callback product details
-                handleShowProductReadMore(null, productDetails[0], false)
+                handleShowProductReadMore(null, productDetails, false)
             }
 
 
