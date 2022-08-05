@@ -3376,7 +3376,7 @@ input, select, textarea {
 		}
 
 		#wrapper > section {
-			padding-top: 5rem;
+			padding-top: 2rem;
 		}
 
 			#wrapper section > header {
@@ -3425,7 +3425,7 @@ input, select, textarea {
 			}
 
 				#wrapper section {
-					margin: 6rem 0 0 0;
+					margin: 2rem 0 0 0;
 				}
 
 					#wrapper section > header {
@@ -3831,6 +3831,8 @@ input, select, textarea {
 
 .gallery {
     padding-top: 2rem;
+	background: linear-gradient(0deg, #e8e8e9 2px, transparent 2px) 0 0em;
+    padding-bottom: 4rem;
 }
 
 .react_lightgallery_item {
@@ -4131,7 +4133,7 @@ input, select, textarea {
 	}
 
 	#wrapper > section > header {
-		padding: 2rem 4rem;
+		padding: 0rem 4rem;
 	}
 
 	#wrapper > section > header {
@@ -4152,7 +4154,7 @@ input, select, textarea {
 	}
 
 	#wrapper > section > header {
-		padding: 2rem 4rem;
+		padding: 0rem 4rem;
 	}
 
 }
@@ -4178,7 +4180,7 @@ input, select, textarea {
 @media screen and (max-width: 576px) {
 
 	#wrapper > section > header {
-		padding: 2rem 2rem;
+		padding: 0rem 2rem;
 		padding-bottom: 0rem;
 	}
 

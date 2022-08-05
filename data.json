@@ -13,6 +13,10 @@
 		"cc": "",
 		"bcc": ""
 	},
+	"promoCodeConfig": {
+		"promoCodes": [1659672128881, 1659672128882],
+		"percentDiscount": 20
+	},
 	"paginateConfig": {
 		"itemsPerPage": 10,
 		"maxPageDisplay": 2
@@ -77,12 +81,12 @@
 			},
 			"category": "Ví cá sấu",
 			"images": [
-				"z3558303688902_dc22306e950a45e8a467f63938be0c5c.jpg", 
-				"z3558303696525_8834ed31a743d50aa729119347f66f92.jpg", 
-				"z3558303696691_79007583a3edcf30572dda0ad31e002c.jpg", 
 				"z3558303696765_01fbcd8b71a1b87a9c607f42c1dbdca0.jpg", 
 				"z3558303696903_f32776726295d1772e69b48e29782a91.jpg", 
-				"z3558303697034_ad03d895db8d2016849005843501e294.jpg"
+				"z3558303697034_ad03d895db8d2016849005843501e294.jpg",
+				"z3558303688902_dc22306e950a45e8a467f63938be0c5c.jpg", 
+				"z3558303696525_8834ed31a743d50aa729119347f66f92.jpg", 
+				"z3558303696691_79007583a3edcf30572dda0ad31e002c.jpg"
 			]
 		},
 		{
