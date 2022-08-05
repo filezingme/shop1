@@ -13,6 +13,7 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
+  const [promoCode, setPromoCode] = useState(0)
 
   //orderId = current Timestamp, convert timestamp to date time: https://timestamp.online/
   const [orderId, setOrderId] = useState(() => { 
@@ -150,6 +151,17 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
                 onChange={(e) => setContent(e.target.value)}
               />              
               <Form.Control type='hidden' value={orderId} />
+            </Form.Group>
+
+            <Form.Group controlId="exampleForm.ControlInput2">
+              <Row>
+                <Col xs={12} sm={12}>
+                  <Form.Control type="text" placeholder="Nhập mã khuyến mại (nếu có)" width={'50px'} value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <Form.Text className="text-muted">
+                    Giá đã áp dụng khuyến mại <span>1,400,000</span> (giảm 20%)
+                  </Form.Text>
+                </Col>
+              </Row>
             </Form.Group>
 
           </Modal.Body>

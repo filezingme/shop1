@@ -28,7 +28,7 @@ function CustomersTalk({customersTalkList, handleClose, isShow, handleShowLightG
                 {customersTalkList.map((item, index) => (
                     <div key={index} className="card mb-4">
                         <div className="row no-gutters">
-                            <div className="col-lg-5 col-md-5 col-xs-6">
+                            <div className="col-lg-5 col-md-5 col-xs-6 ps-0">
                                 <div className="customer_photos">
 
                                     <LightgalleryProvider 
