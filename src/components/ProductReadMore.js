@@ -43,7 +43,7 @@ function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFrien
           )
         }
 
-        <p className='galleryTitle'><strong>Hình ảnh sản phẩm</strong></p>
+        <p className='galleryTitle'><strong>Ảnh sản phẩm</strong></p>
 
         {product.images && (
           product.images.map((image, index) => (							

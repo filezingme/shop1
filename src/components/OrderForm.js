@@ -8,12 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loading from './Loading';
 
-function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
+function OrderForm({ originalData, handleClose, isShow, product }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
-  const [promoCode, setPromoCode] = useState(0)
+  const [promoCode, setPromoCode] = useState('')
 
   //orderId = current Timestamp, convert timestamp to date time: https://timestamp.online/
   const [orderId, setOrderId] = useState(() => { 
@@ -48,9 +48,9 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
             orderId: orderId,
             productFirstThumbnailUrl: product.productFirstThumbnailUrl,
             mailConfig: {
-                toEmailAddress: mailConfig.toEmailAddress,
-                cc: mailConfig.cc,
-                bcc: mailConfig.bcc
+                toEmailAddress: originalData.mailConfig.toEmailAddress,
+                cc: originalData.mailConfig.cc,
+                bcc: originalData.mailConfig.bcc
             }
         };
 
@@ -58,7 +58,7 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
 
         //Send mail
         axios({
-            url: mailConfig.mailServiceUrl,
+            url: originalData.mailConfig.mailServiceUrl,
             method: 'post',
             headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -104,10 +104,20 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
     setShowSentMsg(false)
     setValidated(false)
 
-  }, [isShow])
+    //check promoCode exists    
+    let iPromoCode = parseInt(promoCode)
+    if(promoCode && !isNaN(iPromoCode) && originalData.promoCodeConfig) {
+        const promoCodeConfig = originalData.promoCodeConfig.promoCodes.filter(promoCode => promoCode === iPromoCode)[0]
+
+        if(promoCodeConfig){
+          console.log(iPromoCode, originalData.promoCodeConfig, promoCodeConfig, promoCodeConfig)
+        }
+    }
+
+  }, [isShow, promoCode])
 
 
-  return (siteInfo && product && mailConfig && (
+  return (originalData.siteInfo && product && originalData.mailConfig && (
     <>
       <Modal
         size="lg"
@@ -156,7 +166,7 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
             <Form.Group controlId="exampleForm.ControlInput2">
               <Row>
                 <Col xs={12} sm={12}>
-                  <Form.Control type="text" placeholder="Nhập mã khuyến mại (nếu có)" width={'50px'} value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <Form.Control type="text" placeholder="Nhập mã khuyến mại (nếu có)" width={'50px'} value={promoCode} onChange={(e) => setPromoCode(e.target.value)} />
                   <Form.Text className="text-muted">
                     Giá đã áp dụng khuyến mại <span>1,400,000</span> (giảm 20% trên giá ban đầu {product.priceToUser})
                   </Form.Text>

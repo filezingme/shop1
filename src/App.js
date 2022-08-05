@@ -220,7 +220,7 @@ function App() {
 				<CategoryMenu categoryList={categories} handleClose={handleCloseCategoryMenu} isShow={showCategoryMenu} activedItem={activedMenuItem} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
 
 				{/* Contact form */}
-				<OrderForm siteInfo={originalData.siteInfo} handleClose={handleCloseOrderForm} isShow={showOrderForm} product={product} mailConfig={originalData.mailConfig} />	
+				<OrderForm originalData={originalData} handleClose={handleCloseOrderForm} isShow={showOrderForm} product={product} />	
 
 				{/* Pages tab */}
 				<PagesTab handleClose={handleClosePagesTab} isShow={showPagesTab} pagesTab={originalData.pagesTab} mailConfig={originalData.mailConfig} />	
