@@ -158,7 +158,7 @@ function OrderForm({ siteInfo, handleClose, isShow, product, mailConfig }) {
                 <Col xs={12} sm={12}>
                   <Form.Control type="text" placeholder="Nhập mã khuyến mại (nếu có)" width={'50px'} value={email} onChange={(e) => setEmail(e.target.value)} />
                   <Form.Text className="text-muted">
-                    Giá đã áp dụng khuyến mại <span>1,400,000</span> (giảm 20%)
+                    Giá đã áp dụng khuyến mại <span>1,400,000</span> (giảm 20% trên giá ban đầu {product.priceToUser})
                   </Form.Text>
                 </Col>
               </Row>
