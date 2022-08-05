@@ -4090,6 +4090,17 @@ input, select, textarea {
     text-align: center;
 }
 
+.text-muted {
+    color: #6c757d87 !important;
+    font-style: italic;
+    font-size: 80% !important;
+}
+
+.text-muted span {
+    color: red;
+	font-weight: bold;
+}
+
 
 @media screen and (max-width: 1200px) {
 
