@@ -144,7 +144,6 @@ function App() {
 		setShowProductReadMore(true)
 		setProduct(product)
 
-		console.log(product, isClicked)
 		if (isClicked) {
 			if (window.history.replaceState) {
 				let url = `/product/${handleConvertToUrlFriendly(product.title)}-${product.id}/`
@@ -171,6 +170,11 @@ function App() {
             .replace(/^-|-$/g, '')
             .toLowerCase();
     }   
+    
+	//Currency Format, ex: 450000 > 450,000
+    function handleCurrencyFormat(num) {
+        return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }    
 
 
 	return (originalData && (
@@ -182,14 +186,16 @@ function App() {
 						handleShowOrderForm={handleShowOrderForm} 
 						handleShowProductReadMore={handleShowProductReadMore} 
 						handleActivedMenuItem={handleActivedMenuItem} 
-						handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
+						handleConvertToUrlFriendly={handleConvertToUrlFriendly}
+						handleCurrencyFormat={handleCurrencyFormat} /> 
 						} exact > 
 							<Route path=":page/" element={ <Product 
 								data={originalData} 
 								handleShowOrderForm={handleShowOrderForm} 
 								handleShowProductReadMore={handleShowProductReadMore} 
 								handleActivedMenuItem={handleActivedMenuItem} 
-								handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
+								handleConvertToUrlFriendly={handleConvertToUrlFriendly}
+								handleCurrencyFormat={handleCurrencyFormat} /> 
 							} exact />
 					</Route>
 
@@ -198,7 +204,8 @@ function App() {
 						handleShowOrderForm={handleShowOrderForm} 
 						handleShowProductReadMore={handleShowProductReadMore} 
 						handleActivedMenuItem={handleActivedMenuItem} 
-						handleConvertToUrlFriendly={handleConvertToUrlFriendly} /> 
+						handleConvertToUrlFriendly={handleConvertToUrlFriendly}
+						handleCurrencyFormat={handleCurrencyFormat} /> 
 					} exact />
 
 					<Route path="/product/:productName-:productId/" element={ <Product 
@@ -206,7 +213,8 @@ function App() {
 						handleShowOrderForm={handleShowOrderForm} 
 						handleShowProductReadMore={handleShowProductReadMore} 
 						handleActivedMenuItem={handleActivedMenuItem} 
-						handleConvertToUrlFriendly={handleConvertToUrlFriendly} exact /> 
+						handleConvertToUrlFriendly={handleConvertToUrlFriendly}
+						handleCurrencyFormat={handleCurrencyFormat} /> 
 					} exact />
 
 					<Route path="*" element={ <PageNotFound 
@@ -220,7 +228,7 @@ function App() {
 				<CategoryMenu categoryList={categories} handleClose={handleCloseCategoryMenu} isShow={showCategoryMenu} activedItem={activedMenuItem} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
 
 				{/* Contact form */}
-				<OrderForm originalData={originalData} handleClose={handleCloseOrderForm} isShow={showOrderForm} product={product} />	
+				<OrderForm originalData={originalData} handleClose={handleCloseOrderForm} isShow={showOrderForm} product={product} handleCurrencyFormat={handleCurrencyFormat} />	
 
 				{/* Pages tab */}
 				<PagesTab handleClose={handleClosePagesTab} isShow={showPagesTab} pagesTab={originalData.pagesTab} mailConfig={originalData.mailConfig} />	
@@ -229,7 +237,7 @@ function App() {
 				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  handleShowLightGalleryAboveModal={handleShowLightGalleryAboveModal} showLightGalleryAboveModal={showLightGalleryAboveModal} />	
 
 				{/* Product Read More */}
-				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />	
+				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} handleCurrencyFormat={handleCurrencyFormat} />	
 
 
 				

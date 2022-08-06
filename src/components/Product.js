@@ -30,7 +30,7 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleActivedMenuItem,  handleConvertToUrlFriendly }) {
+function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleActivedMenuItem,  handleConvertToUrlFriendly, handleCurrencyFormat }) {
     
 	const [dataObj, setDataObj] = useState(null)
     const charNumLimitedInDesc = 100
@@ -86,11 +86,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
             setDataObj(obj)
         }
 	}, [categoryName, page])
-    
 
-    function currencyFormat(num) {
-        return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    }    
 
     function getPrice(price, percentagePriceIncrease, percentagePriceIncreaseAppliesToAllProducts) {
 
@@ -99,7 +95,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
         if (percentagePriceIncrease !== null && percentagePriceIncrease !== undefined)
         {            
             const priceResult = price + (percentagePriceIncrease/100*price)
-            return currencyFormat(priceResult)
+            return priceResult
         }
 
         //tính giá & phần trăm tăng nếu tồn tại cột % trên toàn cục 
@@ -107,13 +103,13 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
         else if (percentagePriceIncreaseAppliesToAllProducts !== null && percentagePriceIncreaseAppliesToAllProducts !== undefined)
         {
             const priceResult = price + (percentagePriceIncreaseAppliesToAllProducts/100*price)
-            return currencyFormat(priceResult)
+            return priceResult
         }
 
         //trả về chỉ giá sản phẩm nếu không tồn tại cột % trên sản phẩm và cột % trên toàn cục
         else
         {
-            return currencyFormat(price)
+            return price
         }
     }
 
@@ -187,8 +183,8 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                         <section>
                             <header>
                                 <h2>
-                                    Giá: <span className="price">{product.priceToUser}</span>
-                                    <input type="hidden" id="price" value={currencyFormat(product.priceInfo.price)} />
+                                    Giá: <span className="price">{handleCurrencyFormat(product.priceToUser)}</span>
+                                    <input type="hidden" id="price" value={handleCurrencyFormat(product.priceInfo.price)} />
                                     <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
                                     <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
                                 </h2>

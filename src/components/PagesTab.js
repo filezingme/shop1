@@ -43,8 +43,6 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
             }
         };
 
-        //console.log('postData:',postData)
-
         setLoading(true)
 
         //Send mail

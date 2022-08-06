@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
 
-function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly }) {
+function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly, handleCurrencyFormat }) {
 
   useEffect(() => {
 
@@ -11,7 +11,7 @@ function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFrien
 
   }, [isShow])
 
-  return (product && (
+  return (product && product.priceToUser && (
     <Modal
       size="lg"
       show={isShow}
@@ -27,7 +27,7 @@ function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFrien
       </Modal.Header>
       <Modal.Body>
 
-        <h2>Giá: <span className="price">{product.priceToUser}</span></h2>
+        <h2>Giá: <span className="price">{handleCurrencyFormat(product.priceToUser)}</span></h2>
         <h3>
             <i>Mã: <strong>{product.id}</strong></i><br/>
             {product.category && (<>

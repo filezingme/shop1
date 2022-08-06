@@ -7,8 +7,10 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loading from './Loading';
+import Alert from 'react-bootstrap/Alert';
+import parser from 'html-react-parser';
 
-function OrderForm({ originalData, handleClose, isShow, product }) {
+function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyFormat }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -23,6 +25,7 @@ function OrderForm({ originalData, handleClose, isShow, product }) {
   const [loading, setLoading] = useState(false)
   const [showSentMsg, setShowSentMsg] = useState(false)
   const [showErrorMsg, setShowErrorMsg] = useState(false)
+  const [validPromoCode, setValidPromoCode] = useState(false)
 
   
   const handleSubmit = (event) => {
@@ -41,7 +44,10 @@ function OrderForm({ originalData, handleClose, isShow, product }) {
             mailType: 'Order',
             productTitle: product.title,
             productId: product.id,
-            priceToUser: product.priceToUser, //this field created new at Product.js component
+            priceToUser: handleCurrencyFormat(product.priceToUser), //this field created new at Product.js component
+            promoCode: promoCode,
+            priceAfterDiscount: handleCurrencyFormat(product.priceAfterDiscount),
+            percentDiscount: originalData.promoCodeConfig.percentDiscount,
             name: name,
             email: email,
             content: content,
@@ -82,9 +88,7 @@ function OrderForm({ originalData, handleClose, isShow, product }) {
             setShowSentMsg(true)
                
             //reset form
-            setName('')
-            setEmail('')
-            setContent('')
+            resetForm()
           }
 
           setValidated(false)
@@ -98,21 +102,48 @@ function OrderForm({ originalData, handleClose, isShow, product }) {
     
   };
 
+  const resetForm = () => {   
+    setName('')
+    setEmail('')
+    setContent('')
+    setPromoCode('')
+  }
+
+  const verifyPromoCode = (promoCode) => {      
+    
+    let iPromoCode = parseInt(promoCode)
+
+    if (iPromoCode.toString() === promoCode) {
+      if (promoCode && !isNaN(iPromoCode) && originalData.promoCodeConfig) {
+          const promoCodeConfig = originalData.promoCodeConfig.promoCodes.filter(promoCode => promoCode === iPromoCode)[0]
+
+          if (promoCodeConfig){
+            setValidPromoCode(true)            
+            product.priceAfterDiscount = product.priceToUser - (originalData.promoCodeConfig.percentDiscount/100) * product.priceToUser
+          }
+          else {
+            setValidPromoCode(false)
+          }
+      }
+    }
+    else {
+      setValidPromoCode(false)
+    }
+  }
+
 
   useEffect(() => {
 
     setShowSentMsg(false)
-    setValidated(false)
+    setValidated(false)    
+    
+    //verify promoCode
+    verifyPromoCode(promoCode)
 
-    //check promoCode exists    
-    let iPromoCode = parseInt(promoCode)
-    if(promoCode && !isNaN(iPromoCode) && originalData.promoCodeConfig) {
-        const promoCodeConfig = originalData.promoCodeConfig.promoCodes.filter(promoCode => promoCode === iPromoCode)[0]
-
-        if(promoCodeConfig){
-          console.log(iPromoCode, originalData.promoCodeConfig, promoCodeConfig, promoCodeConfig)
-        }
+    if(!isShow) {
+      resetForm()
     }
+
 
   }, [isShow, promoCode])
 
@@ -140,7 +171,12 @@ function OrderForm({ originalData, handleClose, isShow, product }) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Row>
                 <Col xs={6} md={6}>
-                  <Form.Control type="text" placeholder="Tên" required value={name} onChange={(e) => setName(e.target.value)} />
+                  <Form.Control 
+                    type="text" 
+                    placeholder="Tên" 
+                    required value={name} 
+                    onChange={(e) => setName(e.target.value)} 
+                  />
                 </Col>
 
                 <Col xs={6} md={6}>
@@ -166,10 +202,20 @@ function OrderForm({ originalData, handleClose, isShow, product }) {
             <Form.Group controlId="exampleForm.ControlInput2">
               <Row>
                 <Col xs={12} sm={12}>
-                  <Form.Control type="text" placeholder="Nhập mã khuyến mại (nếu có)" width={'50px'} value={promoCode} onChange={(e) => setPromoCode(e.target.value)} />
-                  <Form.Text className="text-muted">
-                    Giá đã áp dụng khuyến mại <span>1,400,000</span> (giảm 20% trên giá ban đầu {product.priceToUser})
-                  </Form.Text>
+                  <Form.Control type="text" className='prevent-validation' placeholder="Nhập mã khuyến mại (nếu có)" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} />
+
+                  {promoCode && (
+                    <Form.Text className="text-muted">
+                      <Alert variant={validPromoCode ? 'success' : 'warning'} className='mt-1 mb-0'>
+                        {validPromoCode ? (
+                            parser(`Giá đã áp dụng khuyến mại là <span>${handleCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${originalData.promoCodeConfig.percentDiscount}% trên giá ban đầu ${handleCurrencyFormat(product.priceToUser)})`)
+                        ) : (
+                            parser(`Mã khuyến mại không hợp lệ`)
+                        )}
+                      </Alert>
+                    </Form.Text>
+                  )}
+
                 </Col>
               </Row>
             </Form.Group>
