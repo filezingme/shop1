@@ -173,7 +173,10 @@ function App() {
     
 	//Currency Format, ex: 450000 > 450,000
     function handleCurrencyFormat(num) {
-        return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+		if (!isNaN(num))
+        	return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+		else
+			return ''
     }    
 
 

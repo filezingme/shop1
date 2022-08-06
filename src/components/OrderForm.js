@@ -79,16 +79,16 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
             console.log(response);
             setShowErrorMsg(true)
           }
-          else {        
+          else {//success
             
             //reset orderId to new value
-            setOrderId(Date.now())      
+            setOrderId(Date.now())   
             
             //show sent msg
             setShowSentMsg(true)
                
             //reset form
-            resetForm()
+            resetForm()   
           }
 
           setValidated(false)
@@ -102,6 +102,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     
   };
 
+
   const resetForm = () => {   
     setName('')
     setEmail('')
@@ -109,6 +110,8 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     setPromoCode('')
   }
 
+
+    //verify promoCode
   const verifyPromoCode = (promoCode) => {      
     
     let iPromoCode = parseInt(promoCode)
@@ -136,16 +139,13 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
 
     setShowSentMsg(false)
     setValidated(false)    
-    
-    //verify promoCode
-    verifyPromoCode(promoCode)
 
+    //reset form
     if(!isShow) {
       resetForm()
     }
 
-
-  }, [isShow, promoCode])
+  }, [isShow])
 
 
   return (originalData.siteInfo && product && originalData.mailConfig && (
@@ -173,7 +173,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
                 <Col xs={6} md={6}>
                   <Form.Control 
                     type="text" 
-                    placeholder="Tên" 
+                    placeholder="Họ tên" 
                     required value={name} 
                     onChange={(e) => setName(e.target.value)} 
                   />
@@ -202,15 +202,19 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
             <Form.Group controlId="exampleForm.ControlInput2">
               <Row>
                 <Col xs={12} sm={12}>
-                  <Form.Control type="text" className='prevent-validation' placeholder="Nhập mã khuyến mại (nếu có)" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} />
+                  <Form.Control type="text" className='prevent-validation' placeholder="Nhập mã khuyến mại (nếu có)" value={promoCode} 
+                    onChange={(e) => {
+                      setPromoCode(e.target.value)
+                      verifyPromoCode(e.target.value)
+                    }} />
 
                   {promoCode && (
                     <Form.Text className="text-muted">
                       <Alert variant={validPromoCode ? 'success' : 'warning'} className='mt-1 mb-0'>
                         {validPromoCode ? (
-                            parser(`Giá đã áp dụng khuyến mại là <span>${handleCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${originalData.promoCodeConfig.percentDiscount}% trên giá ban đầu ${handleCurrencyFormat(product.priceToUser)})`)
+                            parser(`Giá đã áp dụng khuyến mại là <span>${handleCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${originalData.promoCodeConfig.percentDiscount}% trên giá gốc ${handleCurrencyFormat(product.priceToUser)})`)
                         ) : (
-                            parser(`Mã khuyến mại không hợp lệ`)
+                            parser(`Mã khuyến mại không tồn tại`)
                         )}
                       </Alert>
                     </Form.Text>
