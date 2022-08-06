@@ -204,7 +204,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                                 </div>
                                 )}
 
-                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => handleShowOrderForm(e, product)}>{dataObj.siteInfo.buyBtnText}</a></h2>
+                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => handleShowOrderForm(e, product)}>Đặt mua</a></h2>
                             </header>
                             <div className="content">
                                 <div className={`gallery`}>

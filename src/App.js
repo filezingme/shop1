@@ -240,7 +240,7 @@ function App() {
 				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  handleShowLightGalleryAboveModal={handleShowLightGalleryAboveModal} showLightGalleryAboveModal={showLightGalleryAboveModal} />	
 
 				{/* Product Read More */}
-				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} handleCurrencyFormat={handleCurrencyFormat} />	
+				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} handleCurrencyFormat={handleCurrencyFormat} handleShowOrderForm={handleShowOrderForm} />	
 
 
 				

@@ -156,6 +156,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        className="OrderForm"
       >
         <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
           <Modal.Header closeButton>

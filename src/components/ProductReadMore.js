@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
 
-function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly, handleCurrencyFormat }) {
+function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly, handleCurrencyFormat, handleShowOrderForm }) {
 
   useEffect(() => {
 
@@ -34,6 +34,8 @@ function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFrien
               <i>Nhóm: <a href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>{product.category}</a></i><br/><br/>
             </>)}            
         </h3>
+
+        <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => handleShowOrderForm(e, product)}>Đặt mua</a></h2>
 
         { product.DescByOtherPriceInPercentage ? (
             <div className='product-read-more-desc'>{parser(product.DescByOtherPriceInPercentage)}</div>

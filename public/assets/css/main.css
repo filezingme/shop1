@@ -3887,6 +3887,22 @@ input, select, textarea {
 	cursor: pointer;
 }
 
+.productReadMore {
+	z-index: 1050 !important;
+}
+
+.productReadMore .h2buy {
+	margin: 1rem 0rem 3rem 0rem;
+	border-radius: 5px;
+}
+
+.productReadMore .h2buy a {
+	border-radius: 5px;
+}
+.productReadMore .h2buy a:hover {
+    color: black;
+}
+
 .productReadMore .galleryTitle {
 	margin-bottom: 0px;
 }
