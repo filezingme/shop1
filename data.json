@@ -7,7 +7,7 @@
 		"percentagePriceIncreaseAppliesToAllProducts": 20
 	},
 	"mailConfig": {
-		"mailServiceUrl": "https://script.google.com/macros/s/AKfycbxl57iyh7tU81-l9L3squ-9YaivthsTIZfi1Ht3wm4j1CzZo2v7VpneRpeDZppmxXzb5Q/exec",
+		"mailServiceUrl": "https://script.google.com/macros/s/AKfycbx4V8HTpcextJhtIgLcJ1l6JEpTls2tIPF6ao4jXilESdTbB-f0-AYKngPeOseCfAMFjg/exec",
 		"toEmailAddress": "filezingme@gmail.com",
 		"cc": "",
 		"bcc": ""
