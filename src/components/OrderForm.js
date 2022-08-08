@@ -15,7 +15,8 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
-  const [promoCode, setPromoCode] = useState('')
+  const [promoCode, setPromoCode] = useState('')  
+  const [promoObject, setPromoObject] = useState(null)
 
   //orderId = current Timestamp, convert timestamp to date time: https://timestamp.online/
   const [orderId, setOrderId] = useState(() => { 
@@ -44,10 +45,9 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
             mailType: 'Order',
             productTitle: product.title,
             productId: product.id,
-            priceToUser: handleCurrencyFormat(product.priceToUser), //this field created new at Product.js component
-            promoCode: promoCode,
-            priceAfterDiscount: handleCurrencyFormat(product.priceAfterDiscount),
-            percentDiscount: originalData.promoCodeConfig.percentDiscount,
+            priceToUser: product.priceToUser, //this field created new at Product.js component
+            priceAfterDiscount: product.priceAfterDiscount,
+            promoObject: promoObject,
             name: name,
             email: email,
             content: content,
@@ -108,6 +108,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     setEmail('')
     setContent('')
     setPromoCode('')
+    setPromoObject(null)
   }
 
 
@@ -117,12 +118,15 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     let iPromoCode = parseInt(promoCode)
 
     if (iPromoCode.toString() === promoCode) {
-      if (promoCode && !isNaN(iPromoCode) && originalData.promoCodeConfig) {
-          const promoCodeConfig = originalData.promoCodeConfig.promoCodes.filter(promoCode => promoCode === iPromoCode)[0]
+      if (promoCode && !isNaN(iPromoCode) && originalData.promoInfoConfig) {
+          const promoCodeFound = originalData.promoInfoConfig.filter(item => item.referCode === iPromoCode)[0]
 
-          if (promoCodeConfig){
-            setValidPromoCode(true)            
-            product.priceAfterDiscount = product.priceToUser - (originalData.promoCodeConfig.percentDiscount/100) * product.priceToUser
+          if (promoCodeFound){
+            setValidPromoCode(true)    
+
+            product.priceAfterDiscount = product.priceToUser - (promoCodeFound.percentDiscountForBuyer/100) * product.priceToUser
+
+            setPromoObject(promoCodeFound)
           }
           else {
             setValidPromoCode(false)
@@ -209,17 +213,17 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
                       verifyPromoCode(e.target.value)
                     }} />
 
-                  {promoCode && (
-                    <Form.Text className="text-muted">
-                      <Alert variant={validPromoCode ? 'success' : 'warning'} className='mt-1 mb-0'>
-                        {validPromoCode ? (
-                            parser(`Giá đã áp dụng khuyến mại là <span>${handleCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${originalData.promoCodeConfig.percentDiscount}% trên giá gốc ${handleCurrencyFormat(product.priceToUser)})`)
-                        ) : (
-                            parser(`Mã khuyến mại không tồn tại`)
-                        )}
-                      </Alert>
-                    </Form.Text>
-                  )}
+                    {promoObject !== 'null' && promoObject !== 'undefined' && promoCode.length > 0 && (
+                      <Form.Text className="text-muted">
+                        <Alert variant={validPromoCode ? 'success' : 'warning'} className='mt-1 mb-0'>
+                          {validPromoCode ? (
+                              parser(`Giá đã áp dụng khuyến mại là <span>${handleCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${promoObject.percentDiscountForBuyer}% trên giá gốc ${handleCurrencyFormat(product.priceToUser)})`)
+                          ) : (
+                              parser(`Mã khuyến mại không tồn tại`)
+                          )}
+                        </Alert>
+                      </Form.Text>
+                    )}
 
                 </Col>
               </Row>
