@@ -7,15 +7,25 @@
 		"percentagePriceIncreaseAppliesToAllProducts": 20
 	},
 	"mailConfig": {
-		"mailServiceUrl": "https://script.google.com/macros/s/AKfycbzjDF1-d0EVgLeX0BfI_bWJnzR6ToTJlC3UOBxoUMWxig7djchhUlenyq6S5d836RldcQ/exec",
+		"mailServiceUrl": "https://script.google.com/macros/s/AKfycbxl57iyh7tU81-l9L3squ-9YaivthsTIZfi1Ht3wm4j1CzZo2v7VpneRpeDZppmxXzb5Q/exec",
 		"toEmailAddress": "filezingme@gmail.com",
 		"cc": "",
 		"bcc": ""
 	},
-	"promoCodeConfig": {
-		"promoCodes": [1659672128881, 1659672128882],
-		"percentDiscount": 20
-	},
+	"promoInfoConfig": [
+		{
+			"referCode": 1659672128881,
+			"referAccount": "thomasbros68@gmail.com",
+			"referCommission": 20,
+			"percentDiscountForBuyer": 5
+		},
+		{
+			"referCode": 1659672128882,
+			"referAccount": "minhkhoiads.com@gmail.com",
+			"referCommission": 15,
+			"percentDiscountForBuyer": 10
+		}
+	],
 	"paginateConfig": {
 		"itemsPerPage": 10,
 		"maxPageDisplay": 2
