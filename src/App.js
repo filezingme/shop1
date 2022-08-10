@@ -271,23 +271,6 @@ function App() {
 	return (originalData && (
 		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
-				<Joyride
-					continuous
-					run={showTour}
-					steps={JOYRIDE_STEPS}
-					scrollToFirstStep
-					showProgress
-					showSkipButton
-					//hideBackButton
-					//hideCloseButton
-					callback={handleTourCallback}
-					styles={{
-						options: {
-							zIndex: 10000,
-						},
-					}}
-					locale={{ back: 'Trước', close: 'Đóng', last: 'Kết thúc', next: 'Tiếp', open: 'Mở hộp thoại', skip: 'Bỏ qua' }}
-				/>
 				<Routes>
 					<Route path="/" element={ <Product 
 						data={originalData} 
@@ -371,6 +354,33 @@ function App() {
 
 			{/* Copyright */}
 			{showCopyright && (<div className="copyright">&copy; All rights reserved.</div>)}		
+
+
+			{/* Joyride */}
+			<Joyride
+				continuous
+				run={showTour}
+				steps={JOYRIDE_STEPS}
+				scrollToFirstStep
+				showProgress
+				showSkipButton
+				//hideBackButton
+				//hideCloseButton
+				callback={handleTourCallback}
+				styles={{
+					options: {
+						zIndex: 10000,
+					},
+				}}
+				locale={{ 
+					back: 'Trước', 
+					close: 'Đóng', 
+					last: 'Kết thúc', 
+					next: 'Tiếp', 
+					open: 'Mở hộp thoại', 
+					skip: 'Bỏ qua' 
+				}}
+			/>
 			
 		</Router>
 	));

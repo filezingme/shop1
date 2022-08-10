@@ -4118,12 +4118,25 @@ input, select, textarea {
 	font-size: 22px !important;
 }
 
+.react-joyride__beacon {
+	height: 32px !important;
+    width: 32px !important;
+}
+
 #react-joyride-step-0 .__floater__open {
 	top: 22px !important;
 }
 
 #react-joyride-step-0 > span {
-	right: 0 !important;
+	top: 30rem !important;
+    left: 9px !important;
+	position: fixed;
+}
+
+#react-joyride-step-0 span:focus-visible,
+#react-joyride-step-0 div:focus-visible,
+#react-joyride-step-0 button:focus-visible {
+	outline: none !important;
 }
 
 
@@ -4191,6 +4204,10 @@ input, select, textarea {
 
 	#wrapper > section > header {
 		padding: 0rem 4rem;
+	}
+
+	#react-joyride-step-0 > span {
+		left: 11px !important;
 	}
 
 }
