@@ -19,7 +19,7 @@ import Paginate from './Paginate';
 
 const PhotoItem = ({ image, thumb, title, group }) => (
     <LightgalleryItem group={group} src={image} thumb={thumb}>
-        <img src={thumb} style={{ width: "100%" }} loading="lazy" alt={title} title={title} />
+        <img className='p-d-photo' src={thumb} style={{ width: "100%" }} loading="lazy" alt={title} title={title} />
     </LightgalleryItem>
 );
 
@@ -176,7 +176,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                                 handleShowProductReadMore(e, product)
                             }}
                         >
-                            {product.title}
+                            <span className='p-d-title'>{product.title}</span>
                         </h1>
                     </header>
                     <div className="content">
@@ -190,7 +190,9 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                                 </h2>
                                 <h3>
                                     <i>Mã: <strong>{product.id}</strong></i><br/>
-                                    <i>Nhóm: <a href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>{product.category}</a></i><br/><br/>
+                                    <i>Nhóm: <a className='p-d-category' href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>
+                                            {product.category}
+                                    </a></i><br/><br/>
                                 </h3>
                                 
                                 {product.description && (<div>

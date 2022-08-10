@@ -5,17 +5,105 @@ import Product from './components/Product';
 import CategoryMenu from './components/CategoryMenu';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import $ from 'jquery';
+import Joyride, { STATUS } from "react-joyride";
 import OrderForm from './components/OrderForm';
 import PagesTab from './components/PagesTab';
 import PageNotFound from './components/PageNotFound';
 import ProductReadMore from './components/ProductReadMore';
 import CustomersTalk from './components/CustomersTalk';
 
+const JOYRIDE_STEPS = [
+  {
+    target: "#home-ontop",
+	placement: 'left-start',
+	title: 'Trang chủ',
+    content: "Click để về trang chủ!",
+	// styles: {
+	//   options: {
+	// 	width: 300,
+	//   }
+	// },
+    // content: (
+	// 	<div>
+	// 		You can render anything here.
+	// 	</div>
+	// )
+  },
+  {
+    target: "#menu-ontop",
+	placement: 'left-start',
+	title: 'Menu',
+    content: "Xem sản phẩm lọc theo nhóm!"
+  },
+  {
+    target: "#pages-ontop",
+	title: 'Trang thông tin',
+	placement: 'left-start',
+    content: "Về chúng tôi, Dịch vụ & Cam kết chất lượng, Liên hệ,...!"
+  },
+  {
+    target: "#customers-talk-ontop",
+	placement: 'left-start',
+	title: 'Khách hàng',
+    content: "Video/hình ảnh khách hàng đã mua sản phẩm!"
+  },
+  {
+    target: ".pagination",
+	placement: 'left-start',
+	title: 'Trang sản phẩm',
+    content: "Click các trang để xem nhiều sản phẩm hơn!"
+  },
+  {
+    target: "#toTop",
+	placement: 'left-end',
+	title: 'Lên trên',
+    content: "Trở về đầu trang!"
+  },
+  {
+    target: "#toBottom",
+	placement: 'left-end',
+	title: 'Xuống dưới',
+    content: "Xuống cuối trang!"
+  },
+  {
+    target: ".p-d-title",
+	placement: 'right-start',
+	title: 'Xem chi tiết',
+    content: "Click để mở trang chi tiết về sản phẩm!"
+  },
+  {
+    target: ".p-d-category",
+	placement: 'right-start',
+	title: 'Cùng nhóm',
+    content: "Xem các sản phẩm khác cùng nhóm với sản phẩm này!"
+  },
+  {
+    target: ".p-d-photo",
+	placement: 'right-start',
+	title: 'Ảnh sản phẩm',
+    content: "Click để phóng lớn ảnh sản phẩm!"
+  },
+  {
+    target: ".buy",
+	placement: 'right-start',
+	title: 'Đặt mua',
+    content: "Click để đặt mua sản phẩm!"
+  }
+];
+
 function App() {
 
 	const [originalData, setOriginalData] = useState(null)
 
 	const [categories, setCategories] = useState([])
+
+	const [showTour, setShowTour] = useState(true);
+
+	const handleTourCallback = ({ status }) => {
+	  if ([STATUS.SKIPPED, STATUS.FINISHED].includes(status)) {
+		//setShowTour(false);
+	  }
+	};
 
 
 	useEffect(() => {
@@ -183,6 +271,23 @@ function App() {
 	return (originalData && (
 		<Router basename={process.env.PUBLIC_URL}>
 			<div id="wrapper">
+				<Joyride
+					continuous
+					run={showTour}
+					steps={JOYRIDE_STEPS}
+					scrollToFirstStep
+					showProgress
+					showSkipButton
+					//hideBackButton
+					//hideCloseButton
+					callback={handleTourCallback}
+					styles={{
+						options: {
+							zIndex: 10000,
+						},
+					}}
+					locale={{ back: 'Trước', close: 'Đóng', last: 'Kết thúc', next: 'Tiếp', open: 'Mở hộp thoại', skip: 'Bỏ qua' }}
+				/>
 				<Routes>
 					<Route path="/" element={ <Product 
 						data={originalData} 
