@@ -1,0 +1,69 @@
+[
+    {
+      "target": "#home-ontop",
+      "placement": "left-start",
+      "title": "Trang chủ",
+      "content": "Click để về trang chủ!",
+      "disableBeacon": true
+    },
+    {
+      "target": "#menu-ontop",
+      "placement": "left-start",
+      "title": "Menu",
+      "content": "Xem sản phẩm lọc theo nhóm!"
+    },
+    {
+      "target": "#pages-ontop",
+      "title": "Trang thông tin",
+      "placement": "left-start",
+      "content": "Về chúng tôi, Dịch vụ & Cam kết chất lượng, Liên hệ,...!"
+    },
+    {
+      "target": "#customers-talk-ontop",
+      "placement": "left-start",
+      "title": "Khách hàng",
+      "content": "Video/hình ảnh khách hàng đã mua sản phẩm!"
+    },
+    {
+      "target": ".pagination",
+      "placement": "left-start",
+      "title": "Trang sản phẩm",
+      "content": "Click các trang để xem nhiều sản phẩm hơn!"
+    },
+    {
+      "target": "#toTop",
+      "placement": "left-end",
+      "title": "Lên trên",
+      "content": "Trở về đầu trang!"
+    },
+    {
+      "target": "#toBottom",
+      "placement": "left-end",
+      "title": "Xuống dưới",
+      "content": "Xuống cuối trang!"
+    },
+    {
+      "target": ".p-d-title",
+      "placement": "right-start",
+      "title": "Xem chi tiết",
+      "content": "Click tiêu đề để mở trang chi tiết về sản phẩm!"
+    },
+    {
+      "target": ".p-d-category",
+      "placement": "right-start",
+      "title": "Cùng nhóm",
+      "content": "Xem các sản phẩm khác cùng nhóm với sản phẩm này!"
+    },
+    {
+      "target": ".p-d-photo",
+      "placement": "right-start",
+      "title": "Ảnh sản phẩm",
+      "content": "Click để phóng lớn ảnh sản phẩm!"
+    },
+    {
+      "target": ".buy",
+      "placement": "right-start",
+      "title": "Đặt mua",
+      "content": "Click để đặt mua sản phẩm!"
+    }
+  ]
