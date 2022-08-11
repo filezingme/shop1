@@ -10,7 +10,7 @@
       "target": "#menu-ontop",
       "placement": "left-start",
       "title": "Menu",
-      "content": "Xem sản phẩm lọc theo nhóm!"
+      "content": "Xem sản phẩm lọc theo từng nhóm!"
     },
     {
       "target": "#pages-ontop",
@@ -55,15 +55,15 @@
       "content": "Xem các sản phẩm khác cùng nhóm với sản phẩm này!"
     },
     {
-      "target": ".p-d-photo",
-      "placement": "right-start",
-      "title": "Ảnh sản phẩm",
-      "content": "Click để phóng lớn ảnh sản phẩm!"
-    },
-    {
       "target": ".buy",
       "placement": "right-start",
       "title": "Đặt mua",
       "content": "Click để đặt mua sản phẩm!"
+    },
+    {
+      "target": ".p-d-photo",
+      "placement": "right-start",
+      "title": "Ảnh sản phẩm",
+      "content": "Click để phóng lớn ảnh sản phẩm!"
     }
   ]
