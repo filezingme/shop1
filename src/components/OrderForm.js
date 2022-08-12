@@ -37,11 +37,14 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
 
     const form = event.currentTarget;
 
+    setShowSentMsg(false)
+
     if (form.checkValidity() === false || !isVerifiedRecaptcha) {
         event.preventDefault();
         event.stopPropagation();
         
-        setIsVerifiedRecaptcha(false)
+        if (!isVerifiedRecaptcha)
+          setIsVerifiedRecaptcha(false)
     }
     else
     {

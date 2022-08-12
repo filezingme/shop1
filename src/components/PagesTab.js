@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Modal from "react-bootstrap/Modal";
 import Accordion from 'react-bootstrap/Accordion';
 import Button from "react-bootstrap/Button";
@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
 import axios from "axios";
+import GoogleRecaptcha from './GoogleRecaptcha';
 
 function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
   const [validated, setValidated] = useState(false);
@@ -17,15 +18,23 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
   const [loading, setLoading] = useState(false)
   const [showSentMsg, setShowSentMsg] = useState(false)
   const [showErrorMsg, setShowErrorMsg] = useState(false)
+  const [isVerifiedRecaptcha, setIsVerifiedRecaptcha] = useState(null)
+
+  const captchaRef = useRef(null)
 
   
   const handleSubmit = (event) => {
 
     const form = event.currentTarget;
 
-    if (form.checkValidity() === false) {
+    setShowSentMsg(false)
+
+    if (form.checkValidity() === false || !isVerifiedRecaptcha) {
         event.preventDefault();
-        event.stopPropagation();
+        event.stopPropagation();        
+        
+        if (!isVerifiedRecaptcha)
+          setIsVerifiedRecaptcha(false)
     }
     else
     {
@@ -61,13 +70,13 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
             if (response.data.result && response.data.result === 'error'){
               setShowErrorMsg(true)
             }
-            else {         
+            else {      
+            
+              //show sent msg
               setShowSentMsg(true)
-
+                 
               //reset form
-              setName('')
-              setEmail('')
-              setContent('')
+              resetForm()   
             }
 
             setValidated(false)
@@ -82,12 +91,40 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
   };
 
 
+  const resetForm = () => {   
+    setName('')
+    setEmail('')
+    setContent('')
+    
+    if(captchaRef.current)
+    {
+      captchaRef.current.reset()
+      setIsVerifiedRecaptcha(null)
+    }
+  }
+  
+  
+  function handleVerifyRecaptchaCallback(e) {
+
+    // const token = captchaRef.current.getValue();
+    // console.log('token:',token)
+
+    setIsVerifiedRecaptcha(true)
+  }
+
+
   useEffect(() => {
 
     setShowSentMsg(false)
-    setValidated(false)
+    setValidated(false)  
+
+    //reset form
+    if(!isShow) {
+      resetForm()
+    }
 
   }, [isShow])
+
 
   return (pagesTab && (
       <Modal
@@ -161,6 +198,18 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
                           onChange={(e) => setContent(e.target.value)}
                         />
                       </Form.Group>
+
+                      <Form.Group
+                        className="mt-3" controlId="GoogleRecaptcha">
+                        <Row>
+                          <Col xs={12} sm={12}>
+                            <div className={(isVerifiedRecaptcha !== null && !isVerifiedRecaptcha) ? 'google-recaptcha' : ''}>
+                              <GoogleRecaptcha handleVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
+                            </div>
+                          </Col>
+                        </Row>
+                      </Form.Group>
+                      
                     </Modal.Body>
                     <Modal.Footer>
                       <Button variant="primary" type="submit">Gửi</Button>

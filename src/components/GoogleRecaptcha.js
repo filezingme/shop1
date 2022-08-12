@@ -5,6 +5,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 function GoogleRecaptcha({handleVerifyRecaptchaCallback, forwardedCaptchaRef}) {
 
     //google's test site key "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+    //https://developers.google.com/recaptcha/docs/faq
+    //passing-useRef: https://github.com/wrongakram/passing-useRef/blob/master/src/components/child.js
 
     let siteKey = "6Lf1R2ghAAAAAG0AeeNNXyvh5ibCD7cu_xCofDqZ" //ihaywa site key
 
