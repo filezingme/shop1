@@ -119,6 +119,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     if(captchaRef.current)
     {
       captchaRef.current.reset()
+      setIsVerifiedRecaptcha(null)
     }
   }
 
