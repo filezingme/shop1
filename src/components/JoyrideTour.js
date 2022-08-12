@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Joyride, { STATUS } from "react-joyride";
 import axios from 'axios';
 
-{/* Joyride: https://docs.react-joyride.com/ */}
+//Joyride: https://docs.react-joyride.com/
 
 const TOURDONE_KEY = "tourDone"
 

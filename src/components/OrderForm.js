@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -9,33 +9,42 @@ import axios from "axios";
 import Loading from './Loading';
 import Alert from 'react-bootstrap/Alert';
 import parser from 'html-react-parser';
+import GoogleRecaptcha from './GoogleRecaptcha';
 
-function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyFormat }) {
+
+function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyFormat, isVerified }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
   const [promoCode, setPromoCode] = useState('')  
   const [promoObject, setPromoObject] = useState(null)
+  const [isVerifiedRecaptcha, setIsVerifiedRecaptcha] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [showSentMsg, setShowSentMsg] = useState(false)
+  const [showErrorMsg, setShowErrorMsg] = useState(false)
+  const [validPromoCode, setValidPromoCode] = useState(false)
 
   //orderId = current Timestamp, convert timestamp to date time: https://timestamp.online/
   const [orderId, setOrderId] = useState(() => { 
     return Date.now()
   })
 
-  const [loading, setLoading] = useState(false)
-  const [showSentMsg, setShowSentMsg] = useState(false)
-  const [showErrorMsg, setShowErrorMsg] = useState(false)
-  const [validPromoCode, setValidPromoCode] = useState(false)
+  const captchaRef = useRef(null)
 
   
   const handleSubmit = (event) => {
 
     const form = event.currentTarget;
 
-    if (form.checkValidity() === false) {
+    if (form.checkValidity() === false || !isVerifiedRecaptcha) {
         event.preventDefault();
         event.stopPropagation();
+        
+        if(!isVerifiedRecaptcha)
+        {
+          console.log(captchaRef)
+        }
     }
     else
     {
@@ -81,9 +90,6 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
           }
           else {//success
             
-            //reset orderId to new value
-            setOrderId(Date.now())   
-            
             //show sent msg
             setShowSentMsg(true)
                
@@ -109,6 +115,14 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     setContent('')
     setPromoCode('')
     setPromoObject(null)
+            
+    //reset orderId to new value
+    setOrderId(Date.now())   
+    
+    if(captchaRef.current)
+    {
+      captchaRef.current.reset()
+    }
   }
 
 
@@ -136,6 +150,15 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
     else {
       setValidPromoCode(false)
     }
+  }
+  
+  
+  function handleVerifyRecaptchaCallback(e) {
+
+    const token = captchaRef.current.getValue();
+    console.log('token:',token)
+
+    setIsVerifiedRecaptcha(true)
   }
 
 
@@ -173,7 +196,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
           </Modal.Header>
           <Modal.Body>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="ControlInput1">
               <Row>
                 <Col xs={6} md={6}>
                   <Form.Control 
@@ -192,7 +215,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
 
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1">
+              controlId="ControlTextarea1">
               <Form.Control
                 as="textarea"
                 rows={6}
@@ -204,7 +227,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
               <Form.Control type='hidden' value={orderId} />
             </Form.Group>
 
-            <Form.Group controlId="exampleForm.ControlInput2">
+            <Form.Group controlId="ControlInput2">
               <Row>
                 <Col xs={12} sm={12}>
                   <Form.Control type="text" className='prevent-validation' placeholder="Nhập mã khuyến mại (nếu có)" value={promoCode} 
@@ -224,7 +247,15 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
                         </Alert>
                       </Form.Text>
                     )}
+                </Col>
+              </Row>
+            </Form.Group>
 
+            <Form.Group
+              className="mt-3 abcd" controlId="GoogleRecaptcha">
+              <Row>
+                <Col xs={12} sm={12}>
+                  <GoogleRecaptcha handleVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
                 </Col>
               </Row>
             </Form.Group>
