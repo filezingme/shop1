@@ -19,7 +19,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
   const [content, setContent] = useState('')
   const [promoCode, setPromoCode] = useState('')  
   const [promoObject, setPromoObject] = useState(null)
-  const [isVerifiedRecaptcha, setIsVerifiedRecaptcha] = useState(false)
+  const [isVerifiedRecaptcha, setIsVerifiedRecaptcha] = useState(null)
   const [loading, setLoading] = useState(false)
   const [showSentMsg, setShowSentMsg] = useState(false)
   const [showErrorMsg, setShowErrorMsg] = useState(false)
@@ -33,7 +33,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
   const captchaRef = useRef(null)
 
   
-  const handleSubmit = (event) => {
+  const handleSubmitForm = (event) => {
 
     const form = event.currentTarget;
 
@@ -41,10 +41,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
         event.preventDefault();
         event.stopPropagation();
         
-        if(!isVerifiedRecaptcha)
-        {
-          console.log(captchaRef)
-        }
+        setIsVerifiedRecaptcha(false)
     }
     else
     {
@@ -155,8 +152,8 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
   
   function handleVerifyRecaptchaCallback(e) {
 
-    const token = captchaRef.current.getValue();
-    console.log('token:',token)
+    // const token = captchaRef.current.getValue();
+    // console.log('token:',token)
 
     setIsVerifiedRecaptcha(true)
   }
@@ -185,7 +182,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
         keyboard={false}
         className="OrderForm"
       >
-        <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
+        <Form noValidate validated={validated} onSubmit={handleSubmitForm.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Đặt mua "{product.title} ({product.id})"</Modal.Title>
 
@@ -252,10 +249,12 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
             </Form.Group>
 
             <Form.Group
-              className="mt-3 abcd" controlId="GoogleRecaptcha">
+              className="mt-3" controlId="GoogleRecaptcha">
               <Row>
                 <Col xs={12} sm={12}>
-                  <GoogleRecaptcha handleVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
+                  <div className={(isVerifiedRecaptcha !== null && !isVerifiedRecaptcha) ? 'google-recaptcha' : ''}>
+                    <GoogleRecaptcha handleVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
+                  </div>
                 </Col>
               </Row>
             </Form.Group>

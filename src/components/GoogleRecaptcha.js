@@ -4,15 +4,25 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 function GoogleRecaptcha({handleVerifyRecaptchaCallback, forwardedCaptchaRef}) {
 
+    //google's test site key "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+
+    let siteKey = "6Lf1R2ghAAAAAG0AeeNNXyvh5ibCD7cu_xCofDqZ" //ihaywa site key
+
+    const LOCAL_DOMAINS = ["localhost", "127.0.0.1"];
+
+    if (LOCAL_DOMAINS.includes(window.location.hostname))
+        siteKey = "6LfsTmghAAAAAI1T9yM8PJqZlZTFAn9Uaiz0lycU" //local site key
+
+
     useEffect(() => {
-        console.log(forwardedCaptchaRef.current, 'Child Component')
+        //console.log(forwardedCaptchaRef.current, 'Child Component')
     }, [])
 
     
 
     return (
         <ReCAPTCHA 
-            sitekey='6Lf1R2ghAAAAAG0AeeNNXyvh5ibCD7cu_xCofDqZ' //local test: 6LfsTmghAAAAAI1T9yM8PJqZlZTFAn9Uaiz0lycU
+            sitekey={siteKey} 
             // data-theme='dark'
             onChange={handleVerifyRecaptchaCallback}
             ref={forwardedCaptchaRef}
