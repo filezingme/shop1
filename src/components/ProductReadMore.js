@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
 
-function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFriendly, handleCurrencyFormat, handleShowOrderForm }) {
+function ProductReadMore({ onClose, isShow, product, onConvertToUrlFriendly, onCurrencyFormat, onShowOrderForm }) {
 
   useEffect(() => {
 
@@ -15,7 +15,7 @@ function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFrien
     <Modal
       size="lg"
       show={isShow}
-      onHide={() => handleClose(false)}
+      onHide={() => onClose(false)}
       aria-labelledby="example-modal-sizes-title-lg"
       className='productReadMore'
       scrollable={true}
@@ -27,15 +27,15 @@ function ProductReadMore({ handleClose, isShow, product, handleConvertToUrlFrien
       </Modal.Header>
       <Modal.Body>
 
-        <h2>Giá: <span className="price">{handleCurrencyFormat(product.priceToUser)}</span></h2>
+        <h2>Giá: <span className="price">{onCurrencyFormat(product.priceToUser)}</span></h2>
         <h3>
             <i>Mã: <strong>{product.id}</strong></i><br/>
             {product.category && (<>
-              <i>Nhóm: <a href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>{product.category}</a></i><br/><br/>
+              <i>Nhóm: <a href={process.env.PUBLIC_URL + `/${onConvertToUrlFriendly(product.category)}/1/`}>{product.category}</a></i><br/><br/>
             </>)}            
         </h3>
 
-        <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => handleShowOrderForm(e, product)}>Đặt mua</a></h2>
+        <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => onShowOrderForm(e, product)}>Đặt mua</a></h2>
 
         { product.DescByOtherPriceInPercentage ? (
             <div className='product-read-more-desc'>{parser(product.DescByOtherPriceInPercentage)}</div>

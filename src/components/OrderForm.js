@@ -12,7 +12,7 @@ import parser from 'html-react-parser';
 import GoogleRecaptcha from './GoogleRecaptcha';
 
 
-function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyFormat, isVerified }) {
+function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, isVerified }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -181,7 +181,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
       <Modal
         size="lg"
         show={isShow}
-        onHide={handleClose}
+        onHide={onClose}
         backdrop="static"
         keyboard={false}
         className="OrderForm"
@@ -241,7 +241,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
                       <Form.Text className="text-muted">
                         <Alert variant={validPromoCode ? 'success' : 'warning'} className='mt-1 mb-0'>
                           {validPromoCode ? (
-                              parser(`Giá đã áp dụng khuyến mại là <span>${handleCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${promoObject.percentDiscountForBuyer}% trên giá gốc ${handleCurrencyFormat(product.priceToUser)})`)
+                              parser(`Giá đã áp dụng khuyến mại là <span>${onCurrencyFormat(product.priceAfterDiscount)}</span> (giảm ${promoObject.percentDiscountForBuyer}% trên giá gốc ${onCurrencyFormat(product.priceToUser)})`)
                           ) : (
                               parser(`Mã khuyến mại không tồn tại`)
                           )}
@@ -257,7 +257,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
               <Row>
                 <Col xs={12} sm={12}>
                   <div className={(isVerifiedRecaptcha !== null && !isVerifiedRecaptcha) ? 'google-recaptcha' : ''}>
-                    <GoogleRecaptcha handleVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
+                    <GoogleRecaptcha onVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
                   </div>
                 </Col>
               </Row>
@@ -265,7 +265,7 @@ function OrderForm({ originalData, handleClose, isShow, product, handleCurrencyF
 
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>Đóng</Button>
+            <Button variant="secondary" onClick={onClose}>Đóng</Button>
             <Button variant="primary" type="submit">Gửi</Button>
           </Modal.Footer>
         </Form>

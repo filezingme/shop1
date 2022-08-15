@@ -10,7 +10,7 @@ import parser from 'html-react-parser';
 import axios from "axios";
 import GoogleRecaptcha from './GoogleRecaptcha';
 
-function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
+function PagesTab({ onClose, isShow, pagesTab, mailConfig }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -130,7 +130,7 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
       <Modal
         size="lg"
         show={isShow}
-        onHide={handleClose}
+        onHide={onClose}
         backdrop="static" //static='không đóng modal khi click ra ngoài, chỉ đóng modal khi click nút close'
         keyboard={false}
         className="pagesTab"
@@ -204,7 +204,7 @@ function PagesTab({ handleClose, isShow, pagesTab, mailConfig }) {
                         <Row>
                           <Col xs={12} sm={12}>
                             <div className={(isVerifiedRecaptcha !== null && !isVerifiedRecaptcha) ? 'google-recaptcha' : ''}>
-                              <GoogleRecaptcha handleVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
+                              <GoogleRecaptcha onVerifyRecaptchaCallback={handleVerifyRecaptchaCallback} forwardedCaptchaRef={captchaRef} />
                             </div>
                           </Col>
                         </Row>

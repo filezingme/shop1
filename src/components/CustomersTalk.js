@@ -8,13 +8,13 @@ import {
 } from "react-lightgallery";
 
 
-function CustomersTalk({customersTalkList, handleClose, isShow, handleShowLightGalleryAboveModal, showLightGalleryAboveModal}) {
+function CustomersTalk({customersTalkList, onClose, isShow, onShowLightGalleryAboveModal, showLightGalleryAboveModal}) {
 
     return (customersTalkList && (
         <Modal
             size="lg"
             show={isShow}
-            onHide={() => handleClose(false)}
+            onHide={() => onClose(false)}
             aria-labelledby="example-modal-sizes-title-lg"
             scrollable={true}
             className={showLightGalleryAboveModal ? 'customers_talk_modal' : ''}
@@ -32,7 +32,7 @@ function CustomersTalk({customersTalkList, handleClose, isShow, handleShowLightG
                                 <div className="customer_photos">
 
                                     <LightgalleryProvider 
-                                        onCloseAfter = {(e) => handleShowLightGalleryAboveModal(false)}
+                                        onCloseAfter = {(e) => onShowLightGalleryAboveModal(false)}
                                         // onBeforeOpen={() => console.info("onBeforeOpen")}
                                         // onAfterOpen={() => console.info("onAfterOpen")}
                                         // onSlideItemLoad={() => console.info("onSlideItemLoad")}
@@ -54,7 +54,7 @@ function CustomersTalk({customersTalkList, handleClose, isShow, handleShowLightG
                                             
                                             return (<div key={idx} className={`item item${item.images.length}`}>
                                                     <LightgalleryItem group={index.toString()} src={imagePath} thumb={thumbPath} >
-                                                        <img src={thumbPath} loading="lazy" alt={item.title} title={item.title} onClick={(e) => handleShowLightGalleryAboveModal(true)} />
+                                                        <img src={thumbPath} loading="lazy" alt={item.title} title={item.title} onClick={(e) => onShowLightGalleryAboveModal(true)} />
                                                     </LightgalleryItem>
                                                 </div>
                                             )

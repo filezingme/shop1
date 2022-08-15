@@ -230,19 +230,19 @@ function App() {
 
 
 				{/* Menu */}
-				<CategoryMenu categoryList={categories} handleClose={handleCloseCategoryMenu} isShow={showCategoryMenu} activedItem={activedMenuItem} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
+				<CategoryMenu categoryList={categories} onClose={handleCloseCategoryMenu} isShow={showCategoryMenu} activedItem={activedMenuItem} onConvertToUrlFriendly={handleConvertToUrlFriendly} />
 
 				{/* Contact form */}
-				<OrderForm originalData={originalData} handleClose={handleCloseOrderForm} isShow={showOrderForm} product={product} handleCurrencyFormat={handleCurrencyFormat} />	
+				<OrderForm originalData={originalData} onClose={handleCloseOrderForm} isShow={showOrderForm} product={product} onCurrencyFormat={handleCurrencyFormat} />	
 
 				{/* Pages tab */}
-				<PagesTab handleClose={handleClosePagesTab} isShow={showPagesTab} pagesTab={originalData.pagesTab} mailConfig={originalData.mailConfig} />	
+				<PagesTab onClose={handleClosePagesTab} isShow={showPagesTab} pagesTab={originalData.pagesTab} mailConfig={originalData.mailConfig} />	
 
 				{/* Customers talk */}
-				<CustomersTalk customersTalkList={originalData.customersTalk} handleClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  handleShowLightGalleryAboveModal={handleShowLightGalleryAboveModal} showLightGalleryAboveModal={showLightGalleryAboveModal} />	
+				<CustomersTalk customersTalkList={originalData.customersTalk} onClose={handleCloseCustomersTalk} isShow={showCustomersTalk}  onShowLightGalleryAboveModal={handleShowLightGalleryAboveModal} showLightGalleryAboveModal={showLightGalleryAboveModal} />	
 
 				{/* Product Read More */}
-				<ProductReadMore handleClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} handleConvertToUrlFriendly={handleConvertToUrlFriendly} handleCurrencyFormat={handleCurrencyFormat} handleShowOrderForm={handleShowOrderForm} />	
+				<ProductReadMore onClose={handleCloseProductReadMore} isShow={showProductReadMore} product={product} onConvertToUrlFriendly={handleConvertToUrlFriendly} onCurrencyFormat={handleCurrencyFormat} onShowOrderForm={handleShowOrderForm} />	
 
 
 				

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 
-function GoogleRecaptcha({handleVerifyRecaptchaCallback, forwardedCaptchaRef}) {
+function GoogleRecaptcha({onVerifyRecaptchaCallback, forwardedCaptchaRef}) {
 
     //google's test site key "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
     //https://developers.google.com/recaptcha/docs/faq
@@ -26,7 +26,7 @@ function GoogleRecaptcha({handleVerifyRecaptchaCallback, forwardedCaptchaRef}) {
         <ReCAPTCHA 
             sitekey={siteKey} 
             // data-theme='dark'
-            onChange={handleVerifyRecaptchaCallback}
+            onChange={onVerifyRecaptchaCallback}
             ref={forwardedCaptchaRef}
             size="normal" //["compact","normal","invisible"] > default = normal
         />
