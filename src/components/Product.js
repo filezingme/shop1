@@ -30,7 +30,7 @@ PhotoItem.propTypes = {
 };
 
 
-function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleActivedMenuItem,  handleConvertToUrlFriendly, handleCurrencyFormat }) {
+function Product({ data, onShowOrderForm, onShowProductReadMore, onActivedMenuItem,  onConvertToUrlFriendly, onCurrencyFormat }) {
     
 	const [dataObj, setDataObj] = useState(null)
     const charNumLimitedInDesc = 100
@@ -53,23 +53,23 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
             //product list
             let list = data.products
             if(categoryName) {
-                list = list.filter(product => handleConvertToUrlFriendly(product.category) === handleConvertToUrlFriendly(categoryName))
+                list = list.filter(product => onConvertToUrlFriendly(product.category) === onConvertToUrlFriendly(categoryName))
 
                 //auto callback CategoryName
-                ;(() => handleActivedMenuItem(categoryName))()
+                ;(() => onActivedMenuItem(categoryName))()
             }
 
             //product detail > callback > show ProductReadMore
             if(productName && productId) {
                 let productDetails = data.products.filter(product => 
-                    handleConvertToUrlFriendly(product.title) === handleConvertToUrlFriendly(productName) && 
+                    onConvertToUrlFriendly(product.title) === onConvertToUrlFriendly(productName) && 
                     product.id === parseInt(productId)
                 )[0]
 
                 productDetails.priceToUser = getPrice(productDetails.priceInfo.price, productDetails.priceInfo.percentagePriceIncrease, data.siteInfo.percentagePriceIncreaseAppliesToAllProducts)
                 
                 //auto callback product details
-                handleShowProductReadMore(null, productDetails, false)
+                onShowProductReadMore(null, productDetails, false)
             }
 
 
@@ -145,9 +145,10 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                     prices.forEach(function(price) 
                     {
                         //get price
-                        if(price > 10000){                        
-                            let percentagePriceIncrease = getPrice(Number(price), product.priceInfo.percentagePriceIncrease, percentagePriceIncreaseAppliesToAllProducts)
-                            description = description.replace(price, percentagePriceIncrease)
+                        let iPrice = Number(price)
+                        if(iPrice > 10000){                        
+                            let percentagePriceIncrease = getPrice(iPrice, product.priceInfo.percentagePriceIncrease, percentagePriceIncreaseAppliesToAllProducts)
+                            description = description.replace(price, onCurrencyFormat(percentagePriceIncrease))
 
                             //add more property 'DescByOtherPriceInPercentage' to object
                             product.DescByOtherPriceInPercentage = description
@@ -173,7 +174,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                     <header>
                         <h1 className='home-product-title' 
                             onClick={(e) => {
-                                handleShowProductReadMore(e, product)
+                                onShowProductReadMore(e, product)
                             }}
                         >
                             <span className='p-d-title'>{product.title}</span>
@@ -183,21 +184,21 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                         <section>
                             <header>
                                 <h2>
-                                    Giá: <span className="price">{handleCurrencyFormat(product.priceToUser)}</span>
-                                    <input type="hidden" id="price" value={handleCurrencyFormat(product.priceInfo.price)} />
+                                    Giá: <span className="price">{onCurrencyFormat(product.priceToUser)}</span>
+                                    <input type="hidden" id="price" value={onCurrencyFormat(product.priceInfo.price)} />
                                     <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
                                     <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
                                 </h2>
                                 <h3>
                                     <i>Mã: <strong>{product.id}</strong></i><br/>
-                                    <i>Nhóm: <a className='p-d-category' href={process.env.PUBLIC_URL + `/${handleConvertToUrlFriendly(product.category)}/1/`}>
+                                    <i>Nhóm: <a className='p-d-category' href={process.env.PUBLIC_URL + `/${onConvertToUrlFriendly(product.category)}/1/`}>
                                             {product.category}
                                     </a></i><br/><br/>
                                 </h3>
                                 
                                 {product.description && (<div>
                                     <i className="fas fa-quote-left fa-2x fa-pull-left"></i>
-                                    <p className='excerpt' onClick={(e) => handleShowProductReadMore(e, product)}>
+                                    <p className='excerpt' onClick={(e) => onShowProductReadMore(e, product)}>
                                         {showReadMore(product, charNumLimitedInDesc, ' ...', dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts)}                                    
                                         {validShowReadMore(product.description, charNumLimitedInDesc) && (
                                             <i className='read-more'>Xem thêm</i>
@@ -206,7 +207,7 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
                                 </div>
                                 )}
 
-                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => handleShowOrderForm(e, product)}>Đặt mua</a></h2>
+                                <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => onShowOrderForm(e, product)}>Đặt mua</a></h2>
                             </header>
                             <div className="content">
                                 <div className={`gallery`}>
@@ -230,14 +231,14 @@ function Product({ data, handleShowOrderForm, handleShowProductReadMore, handleA
 
         {/* pagination-box1 */}
         <div className="pagination-box1">
-            <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
+            <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} onConvertToUrlFriendly={onConvertToUrlFriendly} />
         </div>
 
         {/* pagination-box2 */}
         <section>
             <div className='content'>
                 <div className="pagination-box2">
-                    <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} handleConvertToUrlFriendly={handleConvertToUrlFriendly} />
+                    <Paginate page={parseInt(page)} pages={dataObj.totalPages} maxPageDisplay={dataObj.maxPageDisplay} category={categoryName} onConvertToUrlFriendly={onConvertToUrlFriendly} />
                 </div>
             </div>
         </section>

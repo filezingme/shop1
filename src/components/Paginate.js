@@ -2,10 +2,10 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 
 
-function Paginate({page, pages, maxPageDisplay=5, category=null, handleConvertToUrlFriendly}) { 
+function Paginate({page, pages, maxPageDisplay=5, category=null, onConvertToUrlFriendly}) { 
 
 
-    let url = category ?  `${process.env.PUBLIC_URL}/${handleConvertToUrlFriendly(category)}/` : `${process.env.PUBLIC_URL}/`
+    let url = category ?  `${process.env.PUBLIC_URL}/${onConvertToUrlFriendly(category)}/` : `${process.env.PUBLIC_URL}/`
 
 
     return (!isNaN(page) && pages && (

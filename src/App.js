@@ -11,6 +11,7 @@ import PageNotFound from './components/PageNotFound';
 import ProductReadMore from './components/ProductReadMore';
 import CustomersTalk from './components/CustomersTalk';
 import JoyrideTour from './components/JoyrideTour';
+import AudioPlayer from './components/AudioPlayer';
 
 
 function App() {
@@ -188,38 +189,38 @@ function App() {
 				<Routes>
 					<Route path="/" element={ <Product 
 						data={originalData} 
-						handleShowOrderForm={handleShowOrderForm} 
-						handleShowProductReadMore={handleShowProductReadMore} 
-						handleActivedMenuItem={handleActivedMenuItem} 
-						handleConvertToUrlFriendly={handleConvertToUrlFriendly}
-						handleCurrencyFormat={handleCurrencyFormat} /> 
+						onShowOrderForm={handleShowOrderForm} 
+						onShowProductReadMore={handleShowProductReadMore} 
+						onActivedMenuItem={handleActivedMenuItem} 
+						onConvertToUrlFriendly={handleConvertToUrlFriendly}
+						onCurrencyFormat={handleCurrencyFormat} /> 
 						} exact > 
 							<Route path=":page/" element={ <Product 
 								data={originalData} 
-								handleShowOrderForm={handleShowOrderForm} 
-								handleShowProductReadMore={handleShowProductReadMore} 
-								handleActivedMenuItem={handleActivedMenuItem} 
-								handleConvertToUrlFriendly={handleConvertToUrlFriendly}
-								handleCurrencyFormat={handleCurrencyFormat} /> 
+								onShowOrderForm={handleShowOrderForm} 
+								onShowProductReadMore={handleShowProductReadMore} 
+								onActivedMenuItem={handleActivedMenuItem} 
+								onConvertToUrlFriendly={handleConvertToUrlFriendly}
+								onCurrencyFormat={handleCurrencyFormat} /> 
 							} exact />
 					</Route>
 
 					<Route path="/:categoryName/:page/" element={ <Product 
 						data={originalData} 
-						handleShowOrderForm={handleShowOrderForm} 
-						handleShowProductReadMore={handleShowProductReadMore} 
-						handleActivedMenuItem={handleActivedMenuItem} 
-						handleConvertToUrlFriendly={handleConvertToUrlFriendly}
-						handleCurrencyFormat={handleCurrencyFormat} /> 
+						onShowOrderForm={handleShowOrderForm} 
+						onShowProductReadMore={handleShowProductReadMore} 
+						onActivedMenuItem={handleActivedMenuItem} 
+						onConvertToUrlFriendly={handleConvertToUrlFriendly}
+						onCurrencyFormat={handleCurrencyFormat} /> 
 					} exact />
 
 					<Route path="/product/:productName-:productId/" element={ <Product 
 						data={originalData} 
-						handleShowOrderForm={handleShowOrderForm} 
-						handleShowProductReadMore={handleShowProductReadMore} 
-						handleActivedMenuItem={handleActivedMenuItem} 
-						handleConvertToUrlFriendly={handleConvertToUrlFriendly}
-						handleCurrencyFormat={handleCurrencyFormat} /> 
+						onShowOrderForm={handleShowOrderForm} 
+						onShowProductReadMore={handleShowProductReadMore} 
+						onActivedMenuItem={handleActivedMenuItem} 
+						onConvertToUrlFriendly={handleConvertToUrlFriendly}
+						onCurrencyFormat={handleCurrencyFormat} /> 
 					} exact />
 
 					<Route path="*" element={ <PageNotFound 
@@ -272,6 +273,9 @@ function App() {
 
 			{/* JoyrideTour */}
 			<JoyrideTour />
+
+			{/* AudioPlayer */}
+			<AudioPlayer />
 			
 		</Router>
 	));
