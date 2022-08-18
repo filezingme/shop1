@@ -1,0 +1,298 @@
+- Site thông tin cho dự án
+	https://vidagiasi.com
+
+	https://redketchup.io/bulk-image-resizer
+
+	https://viblo.asia/p/deploy-ung-dung-reactjs-len-github-pages-1VgZvw3MlAw
+	https://www.youtube.com/watch?v=F8s4Ng-re0E
+	https://www.youtube.com/watch?v=LNe8mY91PUM&t=443s
+	https://filezingme.github.io/xtcbanhang.com/
+	https://docs.github.com/en/pages
+	
+	https://react-bootstrap.github.io/components/modal/
+	https://react-bootstrap.netlify.app/components/buttons/#button-loading-state
+	
+- How to use your Custom GoDaddy Domain Name for GitHub Pages
+	https://www.youtube.com/watch?v=dbgEWWBvIxY
+		> https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+
+
+- react-lightgallery
+	> https://codesandbox.io/examples/package/react-lightgallery 
+	> https://codesandbox.io/s/mo45kpo92j
+	> https://sachinchoolur.github.io/lightgallery.js/#more-demo
+		> Demo bao gồm cả Photo & Video
+	> https://www.lightgalleryjs.com/docs/react/
+		> lightgallery.js version 2
+			>>> npm install lightgallery
+				> Hỗ trợ trong React v18.2, nhưng bản này phải trả phí chán đời
+	
+- Font 'fontawesome'
+	> 5.15.4 > https://fontawesome.com/v5/docs/web/style/border-pull#contentHeader
+	> 6.1.1  > https://fontawesome.com/docs/web/style/pull
+
+- Lỗi sub url không hoạt động trên github pages (getting 404 for links with create-react-app deployed to github pages):
+	> Refs:
+		> https://create-react-app.dev/docs/deployment/#notes-on-client-side-routing
+		> https://stackoverflow.com/questions/46056414/getting-404-for-links-with-create-react-app-deployed-to-github-pages
+		> https://github.com/rafgraph/spa-github-pages
+			1. Copy over the 404.html file to your repo as is
+				Note that if you are setting up a Project Pages site and not using a custom domain (i.e. your site's address is username.github.io/repo-name), then you need to set pathSegmentsToKeep to 1 in the 404.html file in order to keep /repo-name in the path after the redirect. If you are using React Router you'll need to tell it to use the repo-name as the basename, for example <BrowserRouter basename="/repo-name" />.
+				> https://github.com/rafgraph/spa-github-pages/blob/gh-pages/404.html#L25
+				> public\404.html
+			2. Copy the redirect script in the index.html file and add it to your index.html file - Note that the redirect script must be placed before your single page app script in your index.html file.
+				> https://github.com/rafgraph/spa-github-pages/blob/gh-pages/index.html#L21-L42
+					<!-- Start Single Page Apps for GitHub Pages -->
+					....
+					<!-- End Single Page Apps for GitHub Pages -->
+				> public\index.html
+
+- React site warning: href="#" is invalid:
+	https://stackoverflow.com/questions/52801051/react-site-warning-the-href-attribute-requires-a-valid-address-provide-a-valid
+
+- Google Apps Script:
+	> Refs:
+		> https://hocggsheet.com/gui-email-bang-apps-script-co-ban/
+		> https://stackoverflow.com/questions/60694976/post-request-from-react-app-to-google-app-script-not-posting-and-refreshes-the-p
+			https://script.google.com/home (filezingme@gmail.com/bk...)
+			https://script.google.com/home/projects/1V6nlH8Nb4q2GJyFukJo7yrHFN6HrS-mLG1sA-Qc70-U5wiRfOb05VUUk/edit
+		> https://developers.google.com/apps-script/reference/mail/mail-app#sendemailmessage
+			> Hướng dẫn Class MailApp của google apps script
+	
+	
+			- Nằm trên tài khoản gmail: filezingme@gmail.com/bk...
+			- Apps script file ở đây: https://script.google.com/home
+				- Tên file "xtcbanhang.com - send mail" > link: https://script.google.com/home/projects/12Q12_Roq3mKFHXeAarK1upfoHYEq5FyMrNE2AF7U3U5Rd-ZYDTwIyJdi/edit
+			- Excel file lưu thông tin Contact ở đây: https://docs.google.com/spreadsheets/u/0/
+				- Tên file "xtcbanhang.com - send mail" > link: https://docs.google.com/spreadsheets/d/1QqJMYm7Qy0DJTR2tZjXoK6qCuug_arEzIqfypnDBC2U/edit#gid=0
+	- New Deploy sau khi lưu file Apps Script:
+		- Chọn: Anyone
+		- Copy Deploy URL dán vào axios > url: 'src\components\ContactForm.js'
+			axios({
+				url: "https://script.google.com/macros/s/AKfycbws3IRyhVC5QjuWWkDYzN4zy3-K3U4udXB3rvckZwJb8ZomgXMtJJD_plSUYqVdZZx8tw/exec",
+				...
+			})
+				
+- Deploy react app tới github pages
+	- Deploy truy cập như domain của github dạng: 'https://filezingme.github.io/shop1/'
+		- Mặc định github-pages không cho phép truy cập dang sub-page như kiểu 'https://filezingme.github.io/shop1/page1/', nó sẽ lỗi nhảy sang trang 404 nên cần:
+			- Tạo 1 trang 404.html với code phía trong như ở đây: 'G:\PROJECTS\xtcbanhang.com\frontend\public\404.html'
+					  var pathSegmentsToKeep = 1;
+					  var l = window.location;
+					  l.replace(
+						l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+						l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+						l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+						(l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+						l.hash
+					  );
+				- Lưu ý: 
+					- Nếu không custom domain thì để trong code: 
+						var pathSegmentsToKeep = 1;
+					- File 'package.json' thì cần để như sau:
+						"homepage": "https://filezingme.github.io/shop1/" > với /shop1 là repository name trên git
+			- Thêm đoạn code js trong file '\public\index.html' ở giữa thẻ <head> như sau:
+				<!-- Start Single Page Apps for GitHub Pages -->
+				<script type="text/javascript">
+					// Single Page Apps for GitHub Pages
+					// MIT License
+					// https://github.com/rafgraph/spa-github-pages
+					// This script checks to see if a redirect is present in the query string,
+					// converts it back into the correct url and adds it to the
+					// browser's history using window.history.replaceState(...),
+					// which won't cause the browser to attempt to load the new url.
+					// When the single page app is loaded further down in this file,
+					// the correct url will be waiting in the browser's history for
+					// the single page app to route accordingly.
+					(function(l) {
+					  if (l.search[1] === '/' ) {
+						var decoded = l.search.slice(1).split('&').map(function(s) { 
+						  return s.replace(/~and~/g, '&')
+						}).join('?');
+						window.history.replaceState(null, null,
+							l.pathname.slice(0, -1) + decoded + l.hash
+						);
+					  }
+					}(window.location))
+				</script>
+				<!-- End Single Page Apps for GitHub Pages -->
+			- Trong file '\src\App.js' thì cần bổ sung Router như sau, để nó nhận root domain bất cứ domain ở local hay domain mua trên internet:
+				<Router basename={process.env.PUBLIC_URL}>
+	- Deploy khi sử dụng một custom domain dạng: 'https://ihaywa.com'
+		- Vào Godaddy Domain control panel tạo các bản ghi DNS trỏ sang github-pages như sau:
+			Type	Name	Value					TTL
+			A		@		185.199.108.153     	1 hour
+			A		@		185.199.109.153     	1 hour
+			A		@		185.199.110.153     	1 hour
+			A		@		185.199.111.153     	1 hour
+			CNAME	www		filezingme.github.io.	1 hour
+		- Vào cloudflare control panel để chuyển hướng DNS từ Godaddy sang cloudflare để sử dụng SSL (https)
+			- Click nút 'Add site' và nhập tên domain 'ihaywa.com' rồi click submit
+			- Mặc định nó bê hết bản ghi DNS của Godaddy ở trên sang luôn
+				- Lưu ý chỉ cần để 5 bản ghi như ở trên là đủ, nếu thừa bản ghi nào thì xóa đi
+			- Tìm 2 bản ghi Cloudflare Nameservers để add sang bên Godaddy
+				Type	Value
+				NS		bonnie.ns.cloudflare.com
+				NS		darl.ns.cloudflare.com
+		- Bên Godaddy tìm chỗ đổi Đổi tên máy chủ 
+			> Chỗ 'Máy chủ tên' > nhấn nút 'Thay đổi' > popup 'Chỉnh sửa máy chủ tên' hiện lên thì:
+				> Click vào 'Nhập máy chủ tên miền của riêng tôi (nâng cao)' rồi điền 2 field như sau
+					bonnie.ns.cloudflare.com
+					darl.ns.cloudflare.com
+				> Click Lưu
+			
+		- Trong file 'package.json' cần cập nhật lại key 'homepage' như sau:
+			"homepage": "https://filezingme.github.io" 
+				> bỏ đi phần /shop1/ ở cuối để khi deploy nó nhận domain name là root, nếu không nó sẽ nhận domainName/shop/ là root thì gây lỗi khi xử lý js ở file '404.html'
+		- Trong file 'public\404.html' như thay đổi biến js 'pathSegmentsToKeep' như sau
+			var pathSegmentsToKeep = 0;
+		- Vào 'https://github.com/filezingme/shop1/settings/pages' 
+			- Ở phần 'Custom domain' > Điền 'ihaywa.com' và click Save
+				> Nếu check DNS ở cloudflare hoạt động ok thì sẽ hiển thị message 'DNS check successful'
+			- Tick vào checkbox 'Enforce HTTPS' nếu TLS/https ở cloudflare được active done
+		- Mỗi lần 'npm run deploy' để deploy site lên github-pages thì 'Custom domain' bị reset thành blank, giải pháp:
+			- Tạo một file tên là 'CNAME' ở root folder của git repository (ex: https://github.com/filezingme/shop1/blob/main/CNAME)
+				- File có nội dung là tên domain: 'ihaywa.com' > Save lại
+			- Update 'package.json' để thêm '&& COPY \"CNAME\" \"./build/CNAME\"' vào 'predeploy'
+				"predeploy": "npm run build && COPY \"CNAME\" \"./build/CNAME\"",
+			- Chạy lệnh 'npm run deploy' và check link sau là thấy custom domain tự gắn domain ở file CNAME vào
+				> https://github.com/filezingme/shop1/settings/pages
+			> Ref: https://dev.to/heymarkkop/how-to-set-up-a-custom-domain-on-github-pages-hc7
+				   https://github.com/gitname/react-gh-pages/issues/19
+
+
+- CI/CD GitHub Actions - Deploy tự động
+	- Vào 'https://github.com/filezingme/shop1/settings/actions'
+		- Trong phần General cần enable 'Allow all actions and reusable workflows'
+	- Trong thư mục root của React app:
+		- Tạo thư mục '.github' (nằm song song với thư mục 'public')
+			- Tạo thư mục con tên '.github\workflows'
+				- Tạo file '.github\workflows\auto-deploy-action.yaml'
+	- How to deploy a React app to Github Pages with Github Actions
+		> https://www.youtube.com/watch?v=5I37iVCDUTU
+		> Gặp lỗi kiểu như:
+			npm ERR! code ERESOLVE
+			npm ERR! ERESOLVE could not resolve
+			npm ERR! 
+			npm ERR! While resolving: react-lightgallery@0.9.0
+			npm ERR! Found: react@18.2.0
+			npm ERR! node_modules/react
+			
+			> Có nghĩ là phiên bản 'react-lightgallery' cài trong React App đã cũ và không được hỗ trợ bởi phiên bản React 18.2 hiện tại
+			> Giải pháp: https://www.jsfixing.com/2022/05/solved-how-to-get-npm-to-install-single.html
+				>>> npm install react-lightgallery --force
+				hoặc:
+				>>> npm install react-lightgallery --legacy-peer-deps
+		> How to Deploy Create React App to GitHub Pages? (Custom Domain & GitHub Actions)
+			> Cách chuẩn Good nhưng lệch version như kiểu 'react-lightgallery' ở trên cũng chịu
+				> https://www.youtube.com/watch?v=K5DTIf-jWhk
+	- Ref các link hướng dẫn hay khác:
+		> https://github.com/JamesIves/github-pages-deploy-action
+		> https://github.com/JamesIves/github-pages-deploy-action/tree/dev/.github/workflows
+		> https://dev.to/zainbinfurqan/deploy-react-app-on-github-pages-with-github-action-auto-deploy-4e39
+		> https://dev.to/fidalmathew/automatic-deployment-on-react-app-github-actions-gcj
+		> https://github.com/FidalMathew/Poke-dex/blob/main/.github/workflows/deploy.yml
+
+	- KHông thành công & Đã remove file '.github\workflows\workflow.yml' (khi nào muốn thử lại nhớ bỏ hết # ở đầu dòng đi)
+		# name: Build and Deploy React App to GitHub Pages
+		# on:
+		#   push:
+		#     branches: [ main ]
+		# jobs:
+		#   build-and-deploy:
+		#     name: Build and Deploy
+		#     runs-on: ubuntu-latest
+
+		#     steps:
+		#       - name: Checkout
+		#         uses: actions/checkout@v2
+
+		#       - name: Build
+		#         run: npm install
+
+		#       - name: Test
+		#         run: npm run test
+
+		#       - name: Deploy
+		#         run: | 
+		#           git config --global user.name 'TaiTD Workflow'
+		#           git config --global user.email 'taitd@ihaywa.com'
+		#           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+		#           npm run deploy
+		
+
+
+- Các lệnh terminal cần cho dự án:
+	npm install --save react-lightgallery --force
+		> v1.x không còn được maintained và hỗ trợ trong React v18.x
+		> Muốn biết 'react-lightgallery' có tương thích với phiên bản React hiện tại không thì chạy lệnh sau:
+			>>> npm info react-lightgallery peerDependencies
+				{ react: '^16.13.1', 'react-dom': '^16.13.1' }
+						> Như vậy nó cho biết 'react-lightgallery' tương thích với react: '^16.13.1' và 'react-dom': '^16.13.1' 
+	
+	npm install jquery --save
+	
+	npm install --save react-helmet
+	
+	npm install react-script-tag --force
+	
+	npm add react-element-to-jsx-string [--dev]
+	
+	npm install react-bootstrap bootstrap
+	
+	npm i react-html-parser --force 
+		> show html string to browser, bản này cũ 4-5 năm trước rồi (remove >>> npm uninstall react-html-parser)
+			> thay bằng:
+				>>> npm install html-react-parser --save
+					import parse from "html-react-parser";
+					...
+					{parse("<HTML string>")}
+				> ref: 'https://www.npmjs.com/package/html-react-parser'
+				
+	npm i sass
+	
+	npm i react-joyride
+		> Docs các option guide: https://docs.react-joyride.com/
+		
+	npm i react-google-recaptcha-v3		(v3)
+		> ref: https://www.npmjs.com/package/react-google-recaptcha-v3
+		- https://www.google.com/recaptcha/intro/v3.html
+			> filezingme@gmail.com/bk28
+
+	
+	npm i --save react-google-recaptcha   (v2)
+		> ref: https://www.youtube.com/watch?v=OxibMnPxe7A
+		
+	npm install --save react-audio-player
+		- https://openbase.com/js/react-audio-player/documentation
+		
+- Khác:
+	import { renderToString } from 'react-dom/server' //npm install react react-dom
+	import parser from 'react-html-parser';
+
+
+	npm run deploy 
+		> để deploy site tới github-pages
+		> Xem tiến trình deploy link này: https://github.com/filezingme/shop1/actions
+		
+	npm start
+
+	git status
+	git add .
+	git commit -m "commit"
+	git push origin master
+	
+- Check version:
+	- Check node version trong React app, chạy terminal:
+		>>> node -v hoặc >>> node --version
+		
+
+- Mã orderId trong Product component sử dụng timestamp:
+	//orderId = current Timestamp, 
+	//convert timestamp to date time: https://timestamp.online/
+	const [orderId, setOrderId] = useState(() => { 
+		return Date.now()
+	})
+	
+- Validate Phone number by Country,...
+	> https://catamphetamine.gitlab.io/react-phone-number-input/
