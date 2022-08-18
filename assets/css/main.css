@@ -3098,6 +3098,10 @@ input, select, textarea {
 				max-width: 100vw;
 			}
 
+			.audio-player {
+				text-align: center;
+			}
+
 		}
 
 		@media screen and (max-width: 736px) {
