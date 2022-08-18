@@ -16,6 +16,7 @@ function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, i
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [content, setContent] = useState('')
   const [promoCode, setPromoCode] = useState('')  
   const [promoObject, setPromoObject] = useState(null)
@@ -59,6 +60,7 @@ function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, i
             promoObject: promoObject,
             name: name,
             email: email,
+            phone: phone,
             content: content,
             orderId: orderId,
             productFirstThumbnailUrl: product.productFirstThumbnailUrl,
@@ -112,6 +114,7 @@ function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, i
   const resetForm = () => {   
     setName('')
     setEmail('')
+    setPhone('')
     setContent('')
     setPromoCode('')
     setPromoObject(null)
@@ -199,7 +202,7 @@ function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, i
 
             <Form.Group className="mb-3" controlId="ControlInput1">
               <Row>
-                <Col xs={6} md={6}>
+                <Col xs={12} md={12}>
                   <Form.Control 
                     type="text" 
                     placeholder="Họ tên" 
@@ -207,9 +210,16 @@ function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, i
                     onChange={(e) => setName(e.target.value)} 
                   />
                 </Col>
+              </Row>
+            </Form.Group>
 
+            <Form.Group className="mb-3" controlId="ControlInput2">
+              <Row>
                 <Col xs={6} md={6}>
                   <Form.Control type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                </Col>
+                <Col xs={6} md={6}>
+                  <Form.Control type="number" placeholder="Điện thoại" required value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </Col>
               </Row>
             </Form.Group>
@@ -220,15 +230,15 @@ function OrderForm({ originalData, onClose, isShow, product, onCurrencyFormat, i
               <Form.Control
                 as="textarea"
                 rows={6}
-                placeholder="Thông tin liên hệ"
-                required
+                placeholder="Thông tin khác"
+                // required
                 value={content} 
                 onChange={(e) => setContent(e.target.value)}
               />              
               <Form.Control type='hidden' value={orderId} />
             </Form.Group>
 
-            <Form.Group controlId="ControlInput2">
+            <Form.Group controlId="ControlInput3">
               <Row>
                 <Col xs={12} sm={12}>
                   <Form.Control type="text" className='prevent-validation' placeholder="Nhập mã khuyến mại (nếu có)" value={promoCode} 

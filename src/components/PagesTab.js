@@ -14,6 +14,7 @@ function PagesTab({ onClose, isShow, pagesTab, mailConfig }) {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false)
   const [showSentMsg, setShowSentMsg] = useState(false)
@@ -44,6 +45,7 @@ function PagesTab({ onClose, isShow, pagesTab, mailConfig }) {
             mailType: 'Contact',
             name: name,
             email: email,
+            phone: phone,
             content: content,
             mailConfig: {
                 toEmailAddress: mailConfig.toEmailAddress,
@@ -94,6 +96,7 @@ function PagesTab({ onClose, isShow, pagesTab, mailConfig }) {
   const resetForm = () => {   
     setName('')
     setEmail('')
+    setPhone('')
     setContent('')
     
     if(captchaRef.current)
@@ -176,12 +179,19 @@ function PagesTab({ onClose, isShow, pagesTab, mailConfig }) {
                     <Modal.Body>
                       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Row>
-                          <Col xs={6} md={6}>
+                          <Col xs={12} md={12}>
                             <Form.Control type="text" placeholder="Tên" required value={name} onChange={(e) => setName(e.target.value)} />
                           </Col>
+                        </Row>
+                      </Form.Group>
 
+                      <Form.Group className="mb-3" controlId="ControlInput2">
+                        <Row>
                           <Col xs={6} md={6}>
                             <Form.Control type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                          </Col>
+                          <Col xs={6} md={6}>
+                            <Form.Control type="number" placeholder="Điện thoại" required value={phone} onChange={(e) => setPhone(e.target.value)} />
                           </Col>
                         </Row>
                       </Form.Group>
@@ -192,8 +202,8 @@ function PagesTab({ onClose, isShow, pagesTab, mailConfig }) {
                         <Form.Control
                           as="textarea"
                           rows={6}
-                          placeholder="Thông tin liên hệ"
-                          required
+                          placeholder="Thông tin khác"
+                          // required
                           value={content} 
                           onChange={(e) => setContent(e.target.value)}
                         />

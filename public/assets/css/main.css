@@ -2142,7 +2142,8 @@ input, select, textarea {
 	input[type="email"],
 	input[type="tel"],
 	input[type="search"],
-	input[type="url"] {
+	input[type="url"],
+	input[type="number"] {
 		height: 3rem;
 	}
 
