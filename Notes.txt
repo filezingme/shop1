@@ -1,7 +1,9 @@
 - Site thông tin cho dự án
 	https://vidagiasi.com
 
-	https://redketchup.io/bulk-image-resizer
+	Resize ảnh hàng loạt:
+		https://redketchup.io/bulk-image-resizer
+		Tùy chọn: Configure Batch > Resize > Resize by > Width > 378
 
 	https://viblo.asia/p/deploy-ung-dung-reactjs-len-github-pages-1VgZvw3MlAw
 	https://www.youtube.com/watch?v=F8s4Ng-re0E
@@ -296,3 +298,5 @@
 	
 - Validate Phone number by Country,...
 	> https://catamphetamine.gitlab.io/react-phone-number-input/
+	
+- ihw logo: https://looka.com/editor/94796806
