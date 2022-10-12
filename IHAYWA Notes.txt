@@ -3,7 +3,9 @@
 
 	Resize ảnh hàng loạt:
 		https://redketchup.io/bulk-image-resizer
-		Tùy chọn: Configure Batch > Resize > Resize by > Width > 378
+		Tùy chọn: 
+			- Ảnh nhỏ: Configure Batch > Resize > Resize by > Width > 378		
+			- Ảnh lớn: Configure Batch > Resize > Resize by > Width > 960 (height: 1280)
 
 	https://viblo.asia/p/deploy-ung-dung-reactjs-len-github-pages-1VgZvw3MlAw
 	https://www.youtube.com/watch?v=F8s4Ng-re0E
@@ -162,6 +164,7 @@
 			> Ref: https://dev.to/heymarkkop/how-to-set-up-a-custom-domain-on-github-pages-hc7
 				   https://github.com/gitname/react-gh-pages/issues/19
 
+	Lưu ý >>> 'npm run deploy' ở G:\PROJECTS\xtcbanhang.com\frontend>
 
 - CI/CD GitHub Actions - Deploy tự động
 	- Vào 'https://github.com/filezingme/shop1/settings/actions'
@@ -300,3 +303,26 @@
 	> https://catamphetamine.gitlab.io/react-phone-number-input/
 	
 - ihw logo: https://looka.com/editor/94796806
+
+- Deploy nếu bị lỗi
+	- Khi deploy bằng lệnh:
+		>>>npm run deploy
+
+	- Xuất hiện lỗi:
+		...
+		Creating an optimized production build...
+		Error: error:0308010C:digital envelope routines::unsupported
+		...
+		
+	- Thì cần fix:
+		>>> set NODE_OPTIONS=--openssl-legacy-provider
+		>>> npm run deploy
+		
+	- Hoặc fix cách này:
+		- In your package.json: change this line:
+			"start": "react-scripts start"
+			to
+			"start": "react-scripts --openssl-legacy-provider start"
+			
+	> ref: https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
+		
