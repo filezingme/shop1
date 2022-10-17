@@ -230,7 +230,8 @@
 			"title": "Cặp Laptop cá sấu",
 			"description": null,
 			"priceInfo": {
-				"price": 4500000
+				"price": 4500000,
+				"percentagePriceIncrease": 200
 			},
 			"category": "Cặp cá sấu",
 			"images": [
