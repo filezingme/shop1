@@ -4,7 +4,7 @@
 		"description": "<p><strong>Chúng tôi</strong> có xưởng trực tiếp sản xuất các sản phẩm đồ da cá sấu/da bò cao cấp thật 100% (cam kết đền gấp 10 giá trị đơn hàng nếu phát hiện sản phẩm không phải da thật).<br/>- Chúng tôi sản xuất nhiều loại sản phẩm.<br/>- Chúng tôi nhận gia công cho khách hàng có nhu cầu đặt hàng theo thương hiệu riêng, sản xuất mẫu mã theo yêu cầu.<br/>- Chúng tôi có đội ngũ công nhân tay nghề cao có nhiều năm kinh nghiệm.<br/>Hãy liên hệ với chúng tôi để được phục vụ!</p>",
 		"phone": "0971265356",
 		"email": "xuongvitruongchinh@gmail.com",
-		"percentagePriceIncreaseAppliesToAllProducts": 20
+		"percentagePriceIncreaseAppliesToAllProducts": 130
 	},
 	"mailConfig": {
 		"mailServiceUrl": "https://script.google.com/macros/s/AKfycbwhCUH5glQUQpRqDma0gEtZyZ3aXH810bYKEXL3SVWFFuToiw-ox28Ooj2fgFMxEan71g/exec",
@@ -47,8 +47,8 @@
 	"customersTalk": [
 		{
 			"id": 3107001,
-			"author": "Nguyễn Văn A",
-			"title": "Ví cá sấu A mặt",
+			"author": "Ms...",
+			"title": "Đang cập nhật",
 			"images": [
 				"1616562928468555899683.jpg", 
 				"1616562928201234021868.jpg", 
@@ -56,27 +56,27 @@
 				"1616562928468555899683.jpg", 
 				"1616562928201234021868.jpg"
 			],
-			"content": "Cụ thể, kích thước dài x rộng x cao của ôtô 4 chỗ là từ 3.300 x 1.450 x 1.400 đến 3.700 x 1.500 x 1.450 mm. Trong khi đó, các xe ôtô 5 chỗ hạng A sẽ có kích thước từ 3.900 x 1.650 x 1.550 tới 4.100 x 1.670 x 1.550 mm."
+			"content": "Đang cập nhật nội dung..."
 		},
 		{
 			"id": 3107002,
-			"author": "Nguyễn Văn B",
-			"title": "Ví cá sấu B mặt",
+			"author": "Ms...",
+			"title": "Đang cập nhật",
 			"images": [
 				"1-1024x683.jpg", 
 				"2-1024x683.jpg", 
 				"3-1024x683.jpg"
 			],
-			"content": "Cụ thể, kích thước dài x rộng x cao của ôtô 4 chỗ là từ 3.300 x 1.450 x 1.400 đến 3.700 x 1.500 x 1.450 mm. Trong khi đó, các xe ôtô 5 chỗ hạng A sẽ có kích thước từ 3.900 x 1.650 x 1.550 tới 4.100 x 1.670 x 1.550 mm."
+			"content": "Đang cập nhật nội dung..."
 		},
 		{
 			"id": 3107003,
-			"author": "Nguyễn Văn C",
-			"title": "Ví cá sấu C mặt",
+			"author": "Ms...",
+			"title": "Đang cập nhật",
 			"images": [
 				"1365856856.jpg"
 			],
-			"content": "Ôtô hạng A, hay còn gọi là dòng xe mini, xe gia đình cỡ nhỏ, là ôtô sử dụng hệ thống động cơ dung tích từ 1.0L đến 1.2L, được các chuyên gia phân loại theo kích thước tổng thể.<br>Cụ thể, kích thước dài x rộng x cao của ôtô 4 chỗ là từ 3.300 x 1.450 x 1.400 đến 3.700 x 1.500 x 1.450 mm. Trong khi đó, các xe ôtô 5 chỗ hạng A sẽ có kích thước từ 3.900 x 1.650 x 1.550 tới 4.100 x 1.670 x 1.550 mm."
+			"content": "Đang cập nhật nội dung..."
 		}
 	],
 	"products": [
@@ -86,7 +86,7 @@
 			"description": "100% làm từ da cá sấu thật, sản xuất số lượng không giới hạn mỗi tháng, khách lấy số lượng liên hệ để có giá tốt.",
 			"priceInfo": {
 				"price": 450000,
-				"percentagePriceIncrease": 20
+				"percentagePriceIncrease": 130
 			},
 			"category": "Ví cá sấu",
 			"images": [
