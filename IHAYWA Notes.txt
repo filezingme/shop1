@@ -285,7 +285,7 @@
 	git status
 	git add .
 	git commit -m "commit"
-	git push origin master
+	git push origin main
 	
 - Check version:
 	- Check node version trong React app, chạy terminal:

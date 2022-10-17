@@ -85,8 +85,7 @@
 			"title": "Ví cá sấu 2 mặt",
 			"description": "100% làm từ da cá sấu thật, sản xuất số lượng không giới hạn mỗi tháng, khách lấy số lượng liên hệ để có giá tốt.",
 			"priceInfo": {
-				"price": 450000,
-				"percentagePriceIncrease": 130
+				"price": 450000
 			},
 			"category": "Ví cá sấu",
 			"images": [
@@ -244,7 +243,8 @@
 			"title": "Ví hộp unisex",
 			"description": null,
 			"priceInfo": {
-				"price": 180000
+				"price": 180000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -258,7 +258,8 @@
 			"title": "Ví sần lá",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [				
@@ -273,7 +274,8 @@
 			"title": "Ví sáp",
 			"description": null,
 			"priceInfo": {
-				"price": 150000
+				"price": 150000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -286,7 +288,8 @@
 			"title": "Ví thẻ card sếp lê",
 			"description": null,
 			"priceInfo": {
-				"price": 150000
+				"price": 150000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -299,7 +302,8 @@
 			"title": "Ví pullup đỏ",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -314,7 +318,8 @@
 			"title": "Ví nappa sọc L/Y",
 			"description": null,
 			"priceInfo": {
-				"price": 140000
+				"price": 140000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -329,7 +334,8 @@
 			"title": "Ví Taiga sọc Y",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -342,7 +348,8 @@
 			"title": "Ví khâu viền chân kim",
 			"description": null,
 			"priceInfo": {
-				"price": 115000
+				"price": 115000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -356,7 +363,8 @@
 			"title": "Ví Taiga phối",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -370,7 +378,8 @@
 			"title": "Ví duti",
 			"description": null,
 			"priceInfo": {
-				"price": 125000
+				"price": 125000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -384,7 +393,8 @@
 			"title": "Ví Taiga trơn",
 			"description": null,
 			"priceInfo": {
-				"price": 150000
+				"price": 150000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -398,7 +408,8 @@
 			"title": "Ví Safiano",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -412,7 +423,8 @@
 			"title": "Ví nappa súp lê",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -427,7 +439,8 @@
 			"title": "Ví Toda",
 			"description": null,
 			"priceInfo": {
-				"price": 150000
+				"price": 150000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -439,7 +452,8 @@
 			"title": "Ví dập vân cá",
 			"description": null,
 			"priceInfo": {
-				"price": 140000
+				"price": 140000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -453,7 +467,8 @@
 			"title": "Ví Nappa lá đứng",
 			"description": null,
 			"priceInfo": {
-				"price": 150000
+				"price": 150000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -463,10 +478,11 @@
 		},
 		{
 			"id": 1307027,
-			"title": "Ví cầm tay  phối",
+			"title": "Ví cầm tay phối",
 			"description": null,
 			"priceInfo": {
-				"price": 550000
+				"price": 550000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -480,7 +496,8 @@
 			"title": "Ví cầm tay epi",
 			"description": null,
 			"priceInfo": {
-				"price": 280000
+				"price": 280000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -494,7 +511,8 @@
 			"title": "Ví thẻ card",
 			"description": null,
 			"priceInfo": {
-				"price": 130000
+				"price": 130000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Ví da bò",
 			"images": [
@@ -508,7 +526,8 @@
 			"title": "Dây miu mộc",
 			"description": null,
 			"priceInfo": {
-				"price": 130000
+				"price": 130000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -523,7 +542,8 @@
 			"title": "Dây Nappa 3 lớp da bò tỳ",
 			"description": null,
 			"priceInfo": {
-				"price": 220000
+				"price": 220000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -537,7 +557,8 @@
 			"title": "Dây miu mộc Pakistan",
 			"description": null,
 			"priceInfo": {
-				"price": 140000
+				"price": 140000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -552,7 +573,8 @@
 			"title": "Dây miu lăn",
 			"description": null,
 			"priceInfo": {
-				"price": 140000
+				"price": 140000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -567,7 +589,8 @@
 			"title": "Dây dập vân cá 3 lớp",
 			"description": null,
 			"priceInfo": {
-				"price": 180000
+				"price": 180000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -581,7 +604,8 @@
 			"title": "Dây miu tăng",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -596,7 +620,8 @@
 			"title": "Dây Nappa 3 lớp tăng",
 			"description": null,
 			"priceInfo": {
-				"price": 220000
+				"price": 220000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -611,7 +636,8 @@
 			"title": "Dây safiano",
 			"description": null,
 			"priceInfo": {
-				"price": 160000
+				"price": 160000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -624,7 +650,8 @@
 			"title": "Dây miu hạt 3 lớp",
 			"description": null,
 			"priceInfo": {
-				"price": 180000
+				"price": 180000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -638,7 +665,8 @@
 			"title": "Dây cháy",
 			"description": null,
 			"priceInfo": {
-				"price": 175000
+				"price": 175000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [
@@ -651,7 +679,8 @@
 			"title": "Dây Latigo đầu đồng đúc",
 			"description": null,
 			"priceInfo": {
-				"price": 180000
+				"price": 180000,
+				"percentagePriceIncrease": 250
 			},
 			"category": "Thắt lưng da bò",
 			"images": [

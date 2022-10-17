@@ -185,9 +185,6 @@ function Product({ data, onShowOrderForm, onShowProductReadMore, onActivedMenuIt
                             <header>
                                 <h2>
                                     Giá: <span className="price">{onCurrencyFormat(product.priceToUser)}</span>
-                                    <input type="hidden" id="price" value={onCurrencyFormat(product.priceInfo.price)} />
-                                    <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
-                                    <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
                                 </h2>
                                 <h3>
                                     <i>Mã: <strong>{product.id}</strong></i><br/>
@@ -210,6 +207,10 @@ function Product({ data, onShowOrderForm, onShowProductReadMore, onActivedMenuIt
                                 <h2 className='h2buy'><a href="/#" className="buy" onClick={(e) => onShowOrderForm(e, product)}>Đặt mua</a></h2>
                             </header>
                             <div className="content">
+                                <input type="hidden" id="price" value={onCurrencyFormat(product.priceInfo.price)} />
+                                <input type="hidden" id="percentagePriceIncrease" value={product.priceInfo.percentagePriceIncrease} />
+                                <input type="hidden" id="percentagePriceIncreaseAppliesToAllProducts" value={dataObj.siteInfo.percentagePriceIncreaseAppliesToAllProducts} />
+                                
                                 <div className={`gallery`}>
                                     <LightgalleryProvider>
                                         {product.images.map((image, index) => (
