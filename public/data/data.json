@@ -185,7 +185,8 @@
 			"title": "Giày cá sấu",
 			"description": "Sỉ từng đôi 1700000. Sỉ theo ri 4 đôi(size 39-42) giá 1500000",
 			"priceInfo": {
-				"price": 1700000
+				"price": 1700000,
+				"percentagePriceIncrease": 50
 			},
 			"category": "Giày cá sấu",
 			"images": [
@@ -200,7 +201,8 @@
 			"title": "Dép đầu cá sấu",
 			"description": null,
 			"priceInfo": {
-				"price": 1180000
+				"price": 1180000,
+				"percentagePriceIncrease": 50
 			},
 			"category": "Dép cá sấu",
 			"images": [
@@ -212,7 +214,8 @@
 			"title": "Dép cá sấu",
 			"description": null,
 			"priceInfo": {
-				"price": 680000
+				"price": 680000,
+				"percentagePriceIncrease": 50
 			},
 			"category": "Dép cá sấu",
 			"images": [
@@ -231,7 +234,7 @@
 			"description": null,
 			"priceInfo": {
 				"price": 4500000,
-				"percentagePriceIncrease": 100
+				"percentagePriceIncrease": 50
 			},
 			"category": "Cặp cá sấu",
 			"images": [
