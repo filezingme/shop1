@@ -56,9 +56,6 @@ function Product({ data, onShowOrderForm, onShowProductReadMore, onActivedMenuIt
             if(categoryName) {
                 list = list.filter(product => onConvertToUrlFriendly(product.category) === onConvertToUrlFriendly(categoryName))
 
-                //set current page url to localStorage under key 'CURRENT_PAGE_URL'
-                localStorage.setItem(CURRENT_PAGE_URL, window.location.pathname)
-
                 //auto callback CategoryName
                 ;(() => onActivedMenuItem(categoryName))()
             }
@@ -88,6 +85,9 @@ function Product({ data, onShowOrderForm, onShowProductReadMore, onActivedMenuIt
             obj.siteInfo = data.siteInfo
 
             setDataObj(obj)
+
+            //set current page url to localStorage under key 'CURRENT_PAGE_URL'
+            localStorage.setItem(CURRENT_PAGE_URL, window.location.pathname)
         }
 	}, [categoryName, page])
 
