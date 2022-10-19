@@ -23,11 +23,17 @@ function ProductReadMore({ onClose, isShow, product, onConvertToUrlFriendly, onC
       aria-labelledby="example-modal-sizes-title-lg"
       className='productReadMore'
       scrollable={true}
-
       onExit = { function(){ 
         //get current page url from localStorage under key 'CURRENT_PAGE_URL'        
         let currentPageUrl = localStorage.getItem(CURRENT_PAGE_URL)
-        navigate(currentPageUrl)
+        
+        if (currentPageUrl)
+          navigate(currentPageUrl)            
+        else
+          navigate('/')
+
+        //https://vzn.vn/su-khac-nhau-giua-window-location-va-window-location-replace/
+        //document.location.assign(currentPageUrl)
       }}
       // onExiting  = { function(){ console.log( "onExiting " ) }}
       // onExited   = { function(){ console.log( "onExited  " ) }}
