@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import Joyride, { STATUS } from "react-joyride";
 import axios from 'axios';
+import {TOURDONE_KEY} from '../constants/localStorageConstant'
 
 //Joyride: https://docs.react-joyride.com/
-
-const TOURDONE_KEY = "tourDone"
 
 function JoyrideTour() {       
 

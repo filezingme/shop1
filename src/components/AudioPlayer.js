@@ -6,7 +6,7 @@ function AudioPlayer() {
     <div className='audio-player'>
         <ReactAudioPlayer controls
             src={process.env.PUBLIC_URL+'/media/Wo-Men-Bu-Yi-Yang.mp3'}
-            autoPlay={true}
+            autoPlay={false}
             onPlay={e => console.log("AudioPlayer: onPlay")}
         />
     </div>

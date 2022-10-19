@@ -11,6 +11,7 @@ import "lightgallery.js/dist/css/lightgallery.css"; //https://codesandbox.io/exa
 
 import parser from 'html-react-parser';
 import Paginate from './Paginate';
+import {CURRENT_PAGE_URL} from '../constants/localStorageConstant'
 
 // import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
@@ -54,6 +55,9 @@ function Product({ data, onShowOrderForm, onShowProductReadMore, onActivedMenuIt
             let list = data.products
             if(categoryName) {
                 list = list.filter(product => onConvertToUrlFriendly(product.category) === onConvertToUrlFriendly(categoryName))
+
+                //set current page url to localStorage under key 'CURRENT_PAGE_URL'
+                localStorage.setItem(CURRENT_PAGE_URL, window.location.pathname)
 
                 //auto callback CategoryName
                 ;(() => onActivedMenuItem(categoryName))()

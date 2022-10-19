@@ -1,13 +1,17 @@
 import React, {useEffect} from 'react'
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import parser from 'html-react-parser';
+import {CURRENT_PAGE_URL} from '../constants/localStorageConstant'
 
 function ProductReadMore({ onClose, isShow, product, onConvertToUrlFriendly, onCurrencyFormat, onShowOrderForm }) {
 
+  const navigate = useNavigate();
+
   useEffect(() => {
 
-    //
+    //console.log(2,params, window.location)
 
   }, [isShow])
 
@@ -19,6 +23,17 @@ function ProductReadMore({ onClose, isShow, product, onConvertToUrlFriendly, onC
       aria-labelledby="example-modal-sizes-title-lg"
       className='productReadMore'
       scrollable={true}
+
+      onExit = { function(){ 
+        //get current page url from localStorage under key 'CURRENT_PAGE_URL'        
+        let currentPageUrl = localStorage.getItem(CURRENT_PAGE_URL)
+        navigate(currentPageUrl)
+      }}
+      // onExiting  = { function(){ console.log( "onExiting " ) }}
+      // onExited   = { function(){ console.log( "onExited  " ) }}
+      // onEnter    = { function(){ console.log( "onEnter   " ) }}
+      // onEntering = { function(){ console.log( "onEntering" ) }}
+      // onEntered  = { function(){ console.log( "onEntered " ) }}
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">
