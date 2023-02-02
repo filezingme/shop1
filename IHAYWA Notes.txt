@@ -131,6 +131,7 @@
 			A		@		185.199.111.153     	1 hour
 			CNAME	www		filezingme.github.io.	1 hour
 		- Vào cloudflare control panel để chuyển hướng DNS từ Godaddy sang cloudflare để sử dụng SSL (https)
+			> cloudflare account: truongductai.vn@gmail.com/fbi..a
 			- Click nút 'Add site' và nhập tên domain 'ihaywa.com' rồi click submit
 			- Mặc định nó bê hết bản ghi DNS của Godaddy ở trên sang luôn
 				- Lưu ý chỉ cần để 5 bản ghi như ở trên là đủ, nếu thừa bản ghi nào thì xóa đi
